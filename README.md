@@ -13,7 +13,7 @@ Avilo is an educational SaaS app for children, built as a native iOS app.
 
 ## Getting started
 
-1. Clone: `git clone https://github.com/arminnnkarimiii/Avilo.git`
+1. Clone: `git clone https://github.com/arminnnkarimiii/avilo.app.git`
 2. Open `Avilo.xcodeproj` in Xcode (added in the first app commit).
 3. Create a branch per task, open a PR, and have your collaborator review.
 
