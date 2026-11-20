@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Avilo Education+ paywall</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.avi{image-rendering:pixelated;mix-blend-mode:multiply;object-fit:contain}
+a{color:#7A5A45}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; padding: 52px 20px 24px; gap: 14px">
+  <div style="display: flex; align-items: center; gap: 12px">
+    <div style="width: 96px; height: 96px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center; flex: none"><img class="avi" src="/_blob/02ed70c93c5cdb78ced2aded4bf8695b" alt="Avi giving a thumbs up" style="width: 90px; height: 90px"></div>
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 13px; font-weight: 900; letter-spacing: 1px; color: #A0531C">AVILO EDUCATION+</span>
+      <h1 style="margin: 0; font-size: 25px; line-height: 30px; font-weight: 900; text-wrap: balance">{{txt1}}</h1>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 9px; padding: 4px 2px">
+    <sc-for list="{{perks}}" as="p" hint-placeholder-count="4">
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700"><span style="width: 24px; height: 24px; border-radius: 999px; background: #4E9F3D; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>{{p}}</div>
+    </sc-for>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <sc-if value="{{yearly}}" hint-placeholder-val="{{true}}">
+      <button type="button" onClick="{{pickYear}}" aria-pressed="true" style="position: relative; display: flex; align-items: center; gap: 12px; padding: 16px; border-radius: 20px; border: 3px solid #D63B2F; background: #FFFFFF; text-align: left; font-family: inherit; color: #3B2418; cursor: pointer">
+        <span style="position: absolute; top: -11px; right: 16px; padding: 3px 10px; border-radius: 999px; background: #F5B53D; font-size: 12px; font-weight: 900; color: #3B2418">SAVE 37%</span>
+        <span style="width: 22px; height: 22px; border-radius: 999px; border: 7px solid #D63B2F; box-sizing: border-box; flex: none"></span>
+        <span style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 17px; font-weight: 900">Yearly</span><span style="font-size: 13px; font-weight: 700; color: #7A5A45">7 days free, then $59.99/year</span></span>
+        <span style="font-size: 17px; font-weight: 900">$5.00<span style="font-size: 12px; color: #7A5A45">/mo</span></span>
+      </button>
+      <button type="button" onClick="{{pickMonth}}" aria-pressed="false" style="display: flex; align-items: center; gap: 12px; padding: 17px; border-radius: 20px; border: 2px solid #EED9BF; background: #FFFFFF; text-align: left; font-family: inherit; color: #3B2418; cursor: pointer">
+        <span style="width: 22px; height: 22px; border-radius: 999px; border: 2px solid #C9AE92; box-sizing: border-box; flex: none"></span>
+        <span style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 17px; font-weight: 900">Monthly</span><span style="font-size: 13px; font-weight: 700; color: #7A5A45">7 days free, then $7.99/month</span></span>
+        <span style="font-size: 17px; font-weight: 900">$7.99<span style="font-size: 12px; color: #7A5A45">/mo</span></span>
+      </button>
+    </sc-if>
+    <sc-if value="{{monthly}}" hint-placeholder-val="{{false}}">
+      <button type="button" onClick="{{pickYear}}" aria-pressed="false" style="position: relative; display: flex; align-items: center; gap: 12px; padding: 17px; border-radius: 20px; border: 2px solid #EED9BF; background: #FFFFFF; text-align: left; font-family: inherit; color: #3B2418; cursor: pointer">
+        <span style="position: absolute; top: -11px; right: 16px; padding: 3px 10px; border-radius: 999px; background: #F5B53D; font-size: 12px; font-weight: 900; color: #3B2418">SAVE 37%</span>
+        <span style="width: 22px; height: 22px; border-radius: 999px; border: 2px solid #C9AE92; box-sizing: border-box; flex: none"></span>
+        <span style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 17px; font-weight: 900">Yearly</span><span style="font-size: 13px; font-weight: 700; color: #7A5A45">7 days free, then $59.99/year</span></span>
+        <span style="font-size: 17px; font-weight: 900">$5.00<span style="font-size: 12px; color: #7A5A45">/mo</span></span>
+      </button>
+      <button type="button" onClick="{{pickMonth}}" aria-pressed="true" style="display: flex; align-items: center; gap: 12px; padding: 16px; border-radius: 20px; border: 3px solid #D63B2F; background: #FFFFFF; text-align: left; font-family: inherit; color: #3B2418; cursor: pointer">
+        <span style="width: 22px; height: 22px; border-radius: 999px; border: 7px solid #D63B2F; box-sizing: border-box; flex: none"></span>
+        <span style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 17px; font-weight: 900">Monthly</span><span style="font-size: 13px; font-weight: 700; color: #7A5A45">7 days free, then $7.99/month</span></span>
+        <span style="font-size: 17px; font-weight: 900">$7.99<span style="font-size: 12px; color: #7A5A45">/mo</span></span>
+      </button>
+    </sc-if>
+  </div>
+  <div style="display: flex; align-items: center; gap: 10px; background: #FCEBD3; border-radius: 16px; padding: 10px 12px; font-size: 13px; line-height: 18px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0531C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>We'll remind you 2 days before your trial ends. Cancel anytime in Settings.</div>
+  <div style="flex-grow: 1"></div>
+  <a href="SignIn.dc.html" style="display: flex; align-items: center; justify-content: center; height: 58px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 800; text-decoration: none; box-shadow: 0 5px 0 #A8281E">Start 7-day free trial</a>
+  <div style="display: flex; justify-content: center; gap: 18px; font-size: 13px; font-weight: 700"><a href="#restore">Restore</a><a href="#terms">Terms</a><a href="#privacy">Privacy</a></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+kidNames() {
+let v = '';
+try { v = (localStorage.getItem('avilo.kid') || '').trim(); } catch (e) {}
+const has = !!v;
+const K = has ? v : 'your child';
+const KC = has ? v : 'Your child';
+const KP = has ? v + (/s$/i.test(v) ? "'" : "'s") : "your child's";
+const KPC = has ? KP : "Your child's";
+return { K: K, KC: KC, KP: KP, KPC: KPC, KPU: KP.toUpperCase(), KI: has ? v.charAt(0).toUpperCase() : '?' };
+}
+renderVals() {
+const n = this.kidNames();
+return Object.assign({ txt1: (n.KPC + " plan is ready. Try it free for 7 days.").trim(), kid: n.K, kidCap: n.KC, kidPos: n.KP, kidPosCap: n.KPC, kidPosUpper: n.KPU, kidInitial: n.KI }, this._rv());
+}
+_rv() {
+const { K, KC, KP, KPC } = this.kidNames();
+const yearly = !this.state || this.state.plan !== 'month';
+return {
+yearly: yearly, monthly: !yearly,
+pickYear: () => this.setState({ plan: 'year' }),
+pickMonth: () => this.setState({ plan: 'month' }),
+perks: ['A path made for ' + K + ', updated as they grow', 'New stories starring ' + K + ' every night', 'All 4 worlds: math, reading, science, feelings', 'Weekly progress reports for you']
+};
+}
+}
+</script>
+</body>
+</html>

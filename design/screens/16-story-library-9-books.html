@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Story library</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.px{image-rendering:pixelated;object-fit:contain}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; padding-top: 54px">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 0 18px 10px">
+    <a href="KidHome.dc.html" aria-label="Back home" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 24px; line-height: 28px; font-weight: 900">{{heading}}</span><span style="font-size: 13px; font-weight: 800; color: #7A5A45">{{sub}}</span></div>
+    <img class="px" src="/_blob/4b387dc2f7645d73c6b33a6ed6c14a18" alt="Avi reading" style="width: 64px; height: 64px; mix-blend-mode: multiply">
+  </div>
+  <div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 4px 18px 28px; display: flex; flex-direction: column; gap: 12px">
+    <sc-for list="{{groups}}" as="g" hint-placeholder-count="2">
+      <span style="font-size: 17px; font-weight: 900; margin-top: 6px">{{g.label}}</span>
+      <sc-for list="{{g.books}}" as="b" hint-placeholder-count="3">
+        <sc-if value="{{b.open}}" hint-placeholder-val="{{true}}">
+          <a href="Story.dc.html" onClick="{{b.pick}}" style="display: flex; gap: 12px; align-items: stretch; padding: 12px; border-radius: 22px; background: #FFFFFF; border: 2px solid {{b.border}}; text-decoration: none; color: #3B2418">
+            <span style="width: 74px; border-radius: 14px; background: {{b.c}}; display: grid; place-items: center; flex: none; min-height: 96px"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2zM4 19V5M8 7h6"/></svg></span>
+            <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex-grow: 1"><span style="font-size: 16px; line-height: 20px; font-weight: 900">{{b.title}}</span><span style="font-size: 12px; font-weight: 800; color: #7A5A45">{{b.meta}}</span><span style="font-size: 12px; font-weight: 800; color: {{b.tagFg}}">{{b.why}}</span></span>
+          </a>
+        </sc-if>
+        <sc-if value="{{b.locked}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; gap: 12px; align-items: center; padding: 12px; border-radius: 22px; background: #FCEBD3; border: 2px dashed #D9894A; opacity: .85">
+            <span style="width: 74px; height: 96px; border-radius: 14px; background: #EED9BF; display: grid; place-items: center; flex: none"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0531C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+            <span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; line-height: 20px; font-weight: 900">{{b.title}}</span><span style="font-size: 12px; font-weight: 800; color: #A0531C">{{b.lockText}}</span></span>
+          </div>
+        </sc-if>
+      </sc-for>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  componentDidMount() { fetch('content/stories.json').then((r) => r.json()).then((d) => this.setState({ lib: d })).catch(() => this.setState({ failed: true })); }
+  renderVals() {
+    const s = this.state || {};
+    const get = (k) => { try { return (localStorage.getItem(k) || '').trim(); } catch (e) { return ''; } };
+    const name = get('avilo.kid') || 'your child';
+    const age = parseInt(get('avilo.age') || '5', 10);
+    const band = age <= 5 ? 'cubs' : age <= 8 ? 'explorers' : 'trailblazers';
+    let interests = []; try { interests = JSON.parse(get('avilo.interests') || '[]'); } catch (e) {}
+    let unlocked = []; try { unlocked = JSON.parse(get('avilo.unlocked') || '[]'); } catch (e) {}
+    const NAMES = { cubs: 'Little Cubs', explorers: 'Explorers', trailblazers: 'Trailblazers' };
+    const COLOR = { cubs: '#E46A8E', explorers: '#2F86C9', trailblazers: '#8466D6' };
+    const MIN = { cubs: 5, explorers: 10, trailblazers: 18 };
+    const books = (s.lib && s.lib.books) || [];
+    const order = [band].concat(['cubs', 'explorers', 'trailblazers'].filter((b) => b !== band));
+    const fill = (t) => t.replace(/\{name\}/g, name.charAt(0).toUpperCase() + name.slice(1));
+    const groups = order.map((bd, gi) => ({
+      label: gi === 0 ? 'Made for ' + fill('{name}') + ' · ' + NAMES[bd] : NAMES[bd] + ' books',
+      books: books.filter((b) => b.band === bd).map((b, bi) => {
+        const open = (bd === band && bi === 0) || unlocked.includes(b.id);
+        const LABEL = { dino: 'dinosaurs', space: 'space', animals: 'animals', ocean: 'the ocean', music: 'music', pets: 'pets', robots: 'robots', building: 'building', coding: 'coding', science: 'science', nature: 'nature', fairy: 'fairy tales', books: 'books', magic: 'magic', mystery: 'mysteries', sports: 'sports' };
+        const match = b.tags.filter((t) => interests.includes(t) && LABEL[t]).map((t) => LABEL[t]).slice(0, 2);
+        return { open: open, locked: !open, title: fill(b.title), c: COLOR[bd], border: gi === 0 && bi === 0 ? '#D63B2F' : '#EED9BF',
+          meta: b.pages.length + ' pages · ' + MIN[bd] + ' min · illustrated',
+          why: match.length ? 'Because ' + fill('{name}') + ' loves ' + match.join(' and ') : 'Practises ' + b.skill.toLowerCase(), tagFg: match.length ? '#A3355A' : '#2F6B23',
+          lockText: bd === band ? 'Unlock it from a treasure chest on the road' : 'For ' + NAMES[bd] + '. Unlocks from a chest on the road',
+          pick: () => { try { localStorage.setItem('avilo.book', b.id); } catch (e) {} } };
+      })
+    }));
+    return { heading: 'Story library', sub: s.failed ? 'Could not load the library.' : books.length + ' books, read aloud and illustrated', groups: groups };
+  }
+}
+</script>
+</body>
+</html>

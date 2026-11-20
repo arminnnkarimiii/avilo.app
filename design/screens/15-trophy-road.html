@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trophy road</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.px{image-rendering:pixelated}
+@keyframes pulse{0%,100%{box-shadow:0 6px 0 #A8281E,0 0 0 0 rgba(214,59,47,.4)}50%{box-shadow:0 6px 0 #A8281E,0 0 0 12px rgba(214,59,47,0)}}
+.pulse{animation:pulse 1.8s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.wiggle{animation:wiggle .8s ease-in-out infinite}
+@keyframes shakehard{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-10px) rotate(-6deg)}40%{transform:translateX(10px) rotate(6deg)}60%{transform:translateX(-8px) rotate(-4deg)}80%{transform:translateX(8px) rotate(4deg)}}
+.shakehard{animation:shakehard .5s ease-in-out 2}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rays{animation:spin 9s linear infinite}
+@keyframes rise{0%{transform:translateY(60px) scale(.2);opacity:0}60%{transform:translateY(-14px) scale(1.15);opacity:1}100%{transform:none;opacity:1}}
+.rise{animation:rise .8s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.fade{animation:fade .25s ease-out both}
+@keyframes f1{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(-120px,260px) rotate(320deg);opacity:0}}
+@keyframes f2{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(110px,280px) rotate(-280deg);opacity:0}}
+@keyframes f3{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(20px,320px) rotate(200deg);opacity:0}}
+.cf{position:absolute;left:190px;top:300px;width:10px;height:10px;border-radius:2px;opacity:0}
+.f1{animation:f1 1.6s ease-out forwards}.f2{animation:f2 1.8s ease-out forwards}.f3{animation:f3 1.5s ease-out forwards}
+@media (prefers-reduced-motion: reduce){.pulse,.wiggle,.shakehard,.rays,.rise,.f1,.f2,.f3{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; position: relative; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 54px 18px 12px; background: #FFF6E8; position: relative; z-index: 2">
+    <a href="KidHome.dc.html" aria-label="Back home" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 24px; line-height: 28px; font-weight: 900">{{txt1}}</span><span style="font-size: 13px; font-weight: 800; color: #7A5A45">Level 11 · Pancake Valley</span></div>
+    <span style="padding: 6px 11px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; font-size: 14px; font-weight: 900">{{badgeCount}}</span>
+  </div>
+  <div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding-bottom: 30px">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="12">
+      <sc-if value="{{r.isZone}}" hint-placeholder-val="{{false}}">
+        <div style="margin: 14px 18px 6px; padding: 14px 16px; border-radius: 24px; background: {{r.bg}}; display: flex; align-items: center; gap: 12px">
+          <span style="width: 46px; height: 46px; border-radius: 14px; background: {{r.c}}; display: grid; place-items: center; flex: none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{r.d}}"/></svg></span>
+          <div style="display: flex; flex-direction: column"><span style="font-size: 18px; font-weight: 900">{{r.name}}</span><span style="font-size: 13px; font-weight: 800; color: #5C4334">{{r.sub}}</span></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{r.isLevel}}" hint-placeholder-val="{{true}}">
+        <div style="height: 84px; position: relative">
+          <div style="position: absolute; left: {{r.x}}px; top: 6px; display: flex; align-items: center; gap: 10px">
+            <a href="Game.dc.html" class="{{r.cls}}" aria-label="{{r.label}}" style="width: 68px; height: 68px; border-radius: 999px; background: {{r.bg}}; box-shadow: 0 6px 0 {{r.edge}}; display: grid; place-items: center; text-decoration: none; color: {{r.fg}}; font-size: 22px; font-weight: 900">{{r.n}}</a>
+            <sc-if value="{{r.reward}}" hint-placeholder-val="{{false}}"><span style="padding: 5px 9px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; font-size: 12px; font-weight: 900; color: #A0531C">{{r.reward}}</span></sc-if>
+            <sc-if value="{{r.here}}" hint-placeholder-val="{{false}}"><img class="px" src="/_blob/485777b8dd40805eecc5714902d6151d" alt="Avi is here" style="width: 58px; height: 40px"></sc-if>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{r.isChest}}" hint-placeholder-val="{{false}}">
+        <div style="height: 120px; display: grid; place-items: center">
+          <button type="button" onClick="{{r.open}}" class="{{r.cls}}" aria-label="{{r.label}}" style="width: 110px; height: 96px; border: 0; background: none; cursor: pointer; position: relative">
+            <svg width="110" height="90" viewBox="0 0 110 90" aria-hidden="true"><rect x="8" y="34" width="94" height="52" rx="10" fill="{{r.body}}"/><rect x="4" y="14" width="102" height="30" rx="12" fill="{{r.lid}}"/><rect x="47" y="30" width="16" height="22" rx="4" fill="#F5B53D"/><rect x="8" y="58" width="94" height="6" fill="{{r.band}}"/></svg>
+            <span style="position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); white-space: nowrap; padding: 4px 10px; border-radius: 999px; background: {{r.tagBg}}; color: #FFFFFF; font-size: 12px; font-weight: 900">{{r.tag}}</span>
+          </button>
+        </div>
+      </sc-if>
+    </sc-for>
+  </div>
+  <sc-if value="{{opening}}" hint-placeholder-val="{{false}}">
+    <div class="fade" role="dialog" aria-label="Treasure chest" style="position: absolute; inset: 0; z-index: 20; background: rgba(42, 30, 23, 0.9); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px; box-sizing: border-box; text-align: center; color: #FFF6E8">
+      <sc-if value="{{shaking}}" hint-placeholder-val="{{true}}">
+        <svg class="shakehard" width="150" height="124" viewBox="0 0 110 90" aria-hidden="true"><rect x="8" y="34" width="94" height="52" rx="10" fill="#A0531C"/><rect x="4" y="14" width="102" height="30" rx="12" fill="#D9894A"/><rect x="47" y="30" width="16" height="22" rx="4" fill="#F5B53D"/><rect x="8" y="58" width="94" height="6" fill="#7A3E14"/></svg>
+        <span style="font-size: 22px; font-weight: 900">Opening…</span>
+      </sc-if>
+      <sc-if value="{{revealed}}" hint-placeholder-val="{{false}}">
+        <div style="position: relative; width: 260px; height: 260px; display: grid; place-items: center">
+          <svg class="rays" width="260" height="260" viewBox="0 0 260 260" aria-hidden="true" style="position: absolute; inset: 0"><g fill="#F5B53D" opacity=".35"><path d="M130 130 L120 0 L140 0Z"/><path d="M130 130 L260 120 L260 140Z"/><path d="M130 130 L140 260 L120 260Z"/><path d="M130 130 L0 140 L0 120Z"/><path d="M130 130 L215 30 L230 45Z"/><path d="M130 130 L230 215 L215 230Z"/><path d="M130 130 L45 230 L30 215Z"/><path d="M130 130 L30 45 L45 30Z"/></g></svg>
+          <div class="rise" style="width: 170px; height: 170px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center; position: relative"><svg width="120" height="120" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4l-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z" fill="#F5B53D"/><path d="M8 15l-2 7 6-3 6 3-2-7" fill="#E46A8E"/></svg></div>
+        </div>
+        <span style="font-size: 14px; font-weight: 900; letter-spacing: 1px; color: #F7C25A">RAINBOW HILLS BADGE</span>
+        <span style="font-size: 28px; line-height: 32px; font-weight: 900">New story unlocked!</span>
+        <span style="font-size: 17px; font-weight: 800; color: #FCEFDF">{{unlockTitle}}</span>
+        <span style="font-size: 14px; font-weight: 700; color: #E9D6C2">{{unlockText}}</span>
+        <a href="Stories.dc.html" style="width: 100%; display: flex; align-items: center; justify-content: center; height: 58px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 900; text-decoration: none; box-shadow: 0 5px 0 #A8281E">Read it now</a>
+        <button type="button" onClick="{{close}}" style="border: 0; background: none; color: #F7C25A; font: 800 15px Nunito, ui-rounded, system-ui, sans-serif; cursor: pointer">Keep going on the road</button>
+        <sc-for list="{{pieces}}" as="p" hint-placeholder-count="0"><span class="cf {{p.k}}" style="background: {{p.c}}; animation-delay: {{p.d}}s"></span></sc-for>
+      </sc-if>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+componentWillUnmount() { clearTimeout(this.t); }
+kidNames() {
+let v = '';
+try { v = (localStorage.getItem('avilo.kid') || '').trim(); } catch (e) {}
+const has = !!v;
+const K = has ? v : 'your child';
+const KC = has ? v : 'Your child';
+const KP = has ? v + (/s$/i.test(v) ? "'" : "'s") : "your child's";
+const KPC = has ? KP : "Your child's";
+return { K: K, KC: KC, KP: KP, KPC: KPC, KPU: KP.toUpperCase(), KI: has ? v.charAt(0).toUpperCase() : '?' };
+}
+renderVals() {
+const n = this.kidNames();
+return Object.assign({ txt1: (n.KPC + " road").trim(), kid: n.K, kidCap: n.KC, kidPos: n.KP, kidPosCap: n.KPC, kidPosUpper: n.KPU, kidInitial: n.KI }, this._rv());
+}
+_rv() {
+const { K, KC, KP, KPC } = this.kidNames();
+const s = this.state || {};
+const current = 11;
+const age = (() => { try { return parseInt(localStorage.getItem('avilo.age') || '5', 10); } catch (e) { return 5; } })();
+const band = age <= 5 ? 'cubs' : age <= 8 ? 'explorers' : 'trailblazers';
+const UNLOCK = { cubs: ['cubs-ocean-splash', '{name}’s Big Ocean Splash'], explorers: ['exp-volcano-mystery', '{name} and the Volcano Mystery'], trailblazers: ['tb-whispering-woods', '{name} and the Secret of Whispering Woods'] }[band];
+const zones = [
+{ name: 'Rainbow Hills', sub: 'Levels 1–10 · done!', bg: '#FCE4EB', c: '#E46A8E', d: 'M3 18a9 9 0 0 1 18 0M6.5 18a5.5 5.5 0 0 1 11 0M10 18a2 2 0 0 1 4 0' },
+{ name: 'Pancake Valley', sub: 'Levels 11–20 · chest: badge + new story', bg: '#FCEBD3', c: '#D9894A', d: 'M4 10h16M5 14h14M6 18h12M9 6c0-1 1-2 3-2s3 1 3 2' },
+{ name: 'Fruit Forest', sub: 'Levels 21–30 · chest: badge + new story', bg: '#E3F3DD', c: '#4E9F3D', d: 'M12 8a5 5 0 1 0 0 12 5 5 0 0 0 0-12zM12 8c0-2 1-4 3-5' },
+{ name: 'Cloud Castle', sub: 'Levels 31–40 · chest: badge + new story', bg: '#DDEEFB', c: '#2F86C9', d: 'M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1A3.5 3.5 0 0 1 17 18z' }
+];
+const stickers = { 3: 'Sticker: rainbow', 6: 'Room: lamp', 9: 'Sticker: sun', 13: 'Sticker: syrup', 16: 'Room: rug', 19: 'Sticker: pancake', 23: 'Sticker: apple', 26: 'Room: plant', 29: 'Sticker: cherry' };
+const X = [150, 220, 250, 200, 120, 70, 100, 170, 240, 200];
+const rows = [];
+const chestOpened = !!s.chestOpened;
+zones.forEach((z, zi) => {
+rows.push({ isZone: true, isLevel: false, isChest: false, ...z });
+for (let k = 1; k <= 10; k++) {
+const n = zi * 10 + k;
+const done = n < current, here = n === current;
+rows.push({ isZone: false, isLevel: true, isChest: false, n: done ? '✓' : String(n), label: 'Level ' + n,
+x: X[(k - 1) % 10] - 34, here: here, reward: stickers[n] || '',
+bg: done ? '#D9894A' : here ? '#D63B2F' : '#EED9BF', edge: done ? '#A0531C' : here ? '#A8281E' : '#D8C2A6',
+fg: done || here ? '#FFFFFF' : '#7A5A45', cls: here ? 'pulse' : '' });
+}
+const ready = zi === 0 && !chestOpened;
+rows.push({ isZone: false, isLevel: false, isChest: true,
+label: ready ? 'Open the Rainbow Hills chest' : zi === 0 ? 'Chest opened' : 'Locked chest',
+cls: ready ? 'wiggle' : '', open: ready ? () => this.openChest() : () => {},
+body: zi === 0 ? '#A0531C' : '#C9AE92', lid: zi === 0 ? '#D9894A' : '#D8C2A6', band: zi === 0 ? '#7A3E14' : '#B39A80',
+tag: ready ? 'Tap to open!' : zi === 0 ? 'Opened' : 'Level ' + (zi * 10 + 10), tagBg: ready ? '#D63B2F' : '#A08670' });
+});
+const colors = ['#F5B53D', '#D63B2F', '#2F86C9', '#4E9F3D', '#8466D6', '#E46A8E'];
+const pieces = [];
+for (let k = 0; k < 30; k++) pieces.push({ c: colors[k % 6], k: ['f1', 'f2', 'f3'][k % 3], d: ((k * 7) % 10) / 20 });
+return {
+rows: rows, pieces: pieces, badgeCount: (chestOpened ? 1 : 0) + ' badge' + (chestOpened ? '' : 's'),
+unlockTitle: UNLOCK[1].replace('{name}', KC), unlockText: 'You finished Rainbow Hills! The new book is waiting in your story library.',
+opening: !!s.opening, shaking: s.opening === 'shake', revealed: s.opening === 'reveal',
+close: () => this.setState({ opening: null })
+};
+}
+openChest() {
+this.setState({ opening: 'shake' });
+clearTimeout(this.t);
+this.t = setTimeout(() => { this.setState({ opening: 'reveal', chestOpened: true }); try { const age = parseInt(localStorage.getItem('avilo.age') || '5', 10); const id = age <= 5 ? 'cubs-ocean-splash' : age <= 8 ? 'exp-volcano-mystery' : 'tb-whispering-woods'; const u = JSON.parse(localStorage.getItem('avilo.unlocked') || '[]'); if (!u.includes(id)) u.push(id); localStorage.setItem('avilo.unlocked', JSON.stringify(u)); } catch (e) {} }, 1100);
+}
+}
+</script>
+</body>
+</html>

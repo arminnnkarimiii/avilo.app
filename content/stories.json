@@ -1,0 +1,2881 @@
+{
+ "version": 1,
+ "books": [
+  {
+   "id": "cubs-star-dino",
+   "band": "cubs",
+   "tags": [
+    "dino",
+    "space",
+    "animals"
+   ],
+   "skill": "Counting to 5",
+   "title": "{name} and the Star-Counting Dinosaur",
+   "pages": [
+    {
+     "t": "{name} lived in a cozy house with a cat named Pepper. Every night, {he} looked out of the window at the twinkly stars.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "hills",
+      "props": [
+       {
+        "k": "house",
+        "x": 70,
+        "y": 170,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "cat",
+        "x": 245,
+        "y": 200,
+        "s": 0.8
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 40,
+        "s": 0.6
+       },
+       {
+        "k": "star",
+        "x": 250,
+        "y": 60,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "One night, a little green dinosaur peeked over the garden fence. \"Hello,\" he whispered. \"My name is Tops.\""
+    },
+    {
+     "t": "\"I fell down from Star Valley,\" said Tops, wiping a tear. \"Can you help me get home?\" {name} nodded. \"Of course I can!\"",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "dino",
+        "x": 120,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "moon",
+        "x": 300,
+        "y": 50,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 40,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} found {his} crayons and drew a big red rocket on the garden wall. Pepper meowed, \"Me too, please!\""
+    },
+    {
+     "t": "Swoosh! The rocket zoomed up, up, up. It flew past one, two, three fluffy clouds. \"Wheee!\" said Tops.",
+     "scene": {
+      "sky": "night",
+      "ground": "none",
+      "props": [
+       {
+        "k": "rocket",
+        "x": 180,
+        "y": 150,
+        "s": 1.3
+       },
+       {
+        "k": "cloud",
+        "x": 60,
+        "y": 180,
+        "s": 1
+       },
+       {
+        "k": "cloud",
+        "x": 290,
+        "y": 150,
+        "s": 0.9
+       },
+       {
+        "k": "cloud",
+        "x": 110,
+        "y": 70,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "Up in space, the stars sparkled like glitter. \"My home has five stars in a row,\" said Tops. \"Can you find them?\""
+    },
+    {
+     "t": "{name} counted carefully: one, two, three, four. \"There are only four!\" {he} said. \"Where is the fifth star?\"",
+     "scene": {
+      "sky": "space",
+      "ground": "none",
+      "props": [
+       {
+        "k": "star",
+        "x": 60,
+        "y": 80,
+        "s": 0.7
+       },
+       {
+        "k": "star",
+        "x": 130,
+        "y": 80,
+        "s": 0.7
+       },
+       {
+        "k": "star",
+        "x": 200,
+        "y": 80,
+        "s": 0.7
+       },
+       {
+        "k": "star",
+        "x": 270,
+        "y": 80,
+        "s": 0.7
+       },
+       {
+        "k": "rocket",
+        "x": 180,
+        "y": 180,
+        "s": 0.9
+       },
+       {
+        "k": "planet",
+        "x": 320,
+        "y": 190,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "Pepper pointed a fluffy paw. A tiny star was hiding behind the moon. \"Five!\" shouted {name}. The stars began to glow."
+    },
+    {
+     "t": "Tops gave {name} a big dinosaur hug. \"Thank you! You are the best star-counter in the whole sky.\"",
+     "scene": {
+      "sky": "space",
+      "ground": "moon",
+      "props": [
+       {
+        "k": "dino",
+        "x": 150,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 220,
+        "y": 195,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 60,
+        "s": 0.6
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 50,
+        "s": 0.6
+       },
+       {
+        "k": "planet",
+        "x": 320,
+        "y": 120,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "Back in bed, {name} smiled a sleepy smile. Up above, five stars twinkled in a row, just for {him}. The end."
+    }
+   ]
+  },
+  {
+   "id": "cubs-ocean-splash",
+   "band": "cubs",
+   "tags": [
+    "ocean",
+    "animals",
+    "music"
+   ],
+   "skill": "Colours and counting",
+   "title": "{name}'s Big Ocean Splash",
+   "pages": [
+    {
+     "t": "{name} went to the beach with a bucket and a spade. The waves went splish, splash, splosh.",
+     "scene": {
+      "sky": "day",
+      "ground": "sand",
+      "props": [
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 300,
+        "y": 50,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 220,
+        "y": 205,
+        "s": 0.7
+       },
+       {
+        "k": "boat",
+        "x": 300,
+        "y": 150,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "A shiny shell sat on the sand. When {name} held it to {his} ear, it sang a little song: \"Come and play under the sea!\""
+    },
+    {
+     "t": "{name} put on goggles and dived into the bubbly blue water. Down, down, down {he} went.",
+     "scene": {
+      "sky": "sea",
+      "ground": "sand",
+      "props": [
+       {
+        "k": "kid",
+        "x": 170,
+        "y": 120,
+        "s": 1
+       },
+       {
+        "k": "fish",
+        "x": 80,
+        "y": 80,
+        "s": 0.8
+       },
+       {
+        "k": "fish",
+        "x": 280,
+        "y": 160,
+        "s": 0.8
+       },
+       {
+        "k": "flower",
+        "x": 60,
+        "y": 205,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "A yellow fish swam by. Then a red fish. Then a blue fish. \"One, two, three fish!\" counted {name}."
+    },
+    {
+     "t": "A big whale smiled at {name}. \"Would you like a ride?\" she rumbled. \"Yes, please!\" said {name}.",
+     "scene": {
+      "sky": "sea",
+      "ground": "sand",
+      "props": [
+       {
+        "k": "whale",
+        "x": 170,
+        "y": 130,
+        "s": 1.3
+       },
+       {
+        "k": "kid",
+        "x": 190,
+        "y": 85,
+        "s": 0.8
+       },
+       {
+        "k": "fish",
+        "x": 60,
+        "y": 190,
+        "s": 0.6
+       },
+       {
+        "k": "fish",
+        "x": 310,
+        "y": 80,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "They swam past green seaweed and pink coral. A crab waved one claw, then two claws. Hello, crab!"
+    },
+    {
+     "t": "The fish wanted to play a colour game. \"Find something orange!\" {name} pointed to a bright orange starfish.",
+     "scene": {
+      "sky": "sea",
+      "ground": "sand",
+      "props": [
+       {
+        "k": "star",
+        "x": 120,
+        "y": 200,
+        "s": 0.8
+       },
+       {
+        "k": "fish",
+        "x": 220,
+        "y": 110,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 280,
+        "y": 170,
+        "s": 0.9
+       },
+       {
+        "k": "flower",
+        "x": 60,
+        "y": 200,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "Then the whale sang a song, and all the fish danced in a twirly circle. {name} danced too!"
+    },
+    {
+     "t": "Soon it was time to go home. The whale gave {name} a gentle push back up to the sunny beach.",
+     "scene": {
+      "sky": "day",
+      "ground": "sand",
+      "props": [
+       {
+        "k": "whale",
+        "x": 270,
+        "y": 150,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 120,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 60,
+        "y": 50,
+        "s": 0.9
+       },
+       {
+        "k": "boat",
+        "x": 200,
+        "y": 150,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} held the shell to {his} ear one more time. It whispered, \"Come back soon!\" And {he} promised {he} would. The end."
+    }
+   ]
+  },
+  {
+   "id": "cubs-lost-puppy",
+   "band": "cubs",
+   "tags": [
+    "animals",
+    "pets",
+    "dog",
+    "feelings"
+   ],
+   "skill": "Kindness and helping",
+   "title": "{name} and the Lost Puppy",
+   "pages": [
+    {
+     "t": "It was a sunny morning in the park. {name} was swinging high when {he} heard a tiny sound. Whimper, whimper.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "tree",
+        "x": 70,
+        "y": 160,
+        "s": 1.2
+       },
+       {
+        "k": "kid",
+        "x": 190,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 300,
+        "y": 50,
+        "s": 0.9
+       },
+       {
+        "k": "flower",
+        "x": 280,
+        "y": 205,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "Under a bench sat a little brown puppy with floppy ears. The puppy looked very sad and a little bit scared."
+    },
+    {
+     "t": "\"Hello, little puppy,\" said {name} in a soft, gentle voice. \"Are you lost?\" The puppy wagged its tail, just a tiny bit.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "dog",
+        "x": 150,
+        "y": 195,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 50,
+        "y": 160,
+        "s": 1
+       },
+       {
+        "k": "cloud",
+        "x": 280,
+        "y": 60,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "The puppy had a red collar with a name on it. \"Biscuit,\" read Grandma. \"And here is a phone number!\""
+    },
+    {
+     "t": "While Grandma made the call, {name} sat with Biscuit so he wouldn't feel lonely. They shared a cuddle.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "dog",
+        "x": 170,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 300,
+        "y": 160,
+        "s": 1
+       },
+       {
+        "k": "flower",
+        "x": 60,
+        "y": 205,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} felt a little worried. \"What if nobody comes?\" Grandma smiled. \"Someone is already on the way.\""
+    },
+    {
+     "t": "Then a girl came running across the grass. \"Biscuit! I looked everywhere for you!\" Biscuit jumped and barked with joy.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 110,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "dog",
+        "x": 180,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 260,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 320,
+        "y": 40,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"Thank you for looking after him,\" said the girl. \"You were very kind.\" {name} felt warm and happy inside."
+    },
+    {
+     "t": "The girl's name was Ruby, and she asked if {name} wanted to play ball with her and Biscuit. Of course {he} did!",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 100,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 180,
+        "y": 150,
+        "s": 0.7
+       },
+       {
+        "k": "dog",
+        "x": 230,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 290,
+        "y": 190,
+        "s": 1
+       }
+      ]
+     }
+    },
+    {
+     "t": "That night, {name} told {his} family all about Biscuit. Helping a friend felt like the best feeling in the world. The end."
+    }
+   ]
+  },
+  {
+   "id": "exp-robot-friend",
+   "band": "explorers",
+   "tags": [
+    "robots",
+    "building",
+    "coding"
+   ],
+   "skill": "Friendship and problem solving",
+   "title": "{name} and the Robot Who Wanted a Friend",
+   "pages": [
+    {
+     "t": "At the end of {name}'s street was a junkyard full of old bikes, broken clocks and rusty teapots. Most kids walked straight past it, but {name} always peeked through the fence.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "house",
+        "x": 60,
+        "y": 165,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 190,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "chest",
+        "x": 290,
+        "y": 195,
+        "s": 0.8
+       },
+       {
+        "k": "cloud",
+        "x": 260,
+        "y": 60,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "One afternoon, something in the junk pile blinked. Beep. Then again. Beep beep. {name} squeezed through the gap in the fence to look."
+    },
+    {
+     "t": "Under a pile of tyres sat a small robot with one wobbly antenna. Its screen showed a sad face. \"Hello,\" it said slowly. \"I am Bolt. I do not have a friend.\"",
+     "scene": {
+      "sky": "dusk",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "robot",
+        "x": 160,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 250,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "chest",
+        "x": 70,
+        "y": 200,
+        "s": 0.7
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 40,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} sat down next to Bolt. \"I can be your friend,\" {he} said. Bolt's screen flickered. A tiny smile appeared, then vanished. \"My smile is broken,\" Bolt said."
+    },
+    {
+     "t": "{name} looked closely. A loose wire dangled behind Bolt's screen. \"I think I can fix that,\" {he} said, pulling a small screwdriver from {his} backpack.",
+     "scene": {
+      "sky": "day",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "robot",
+        "x": 150,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "book",
+        "x": 300,
+        "y": 205,
+        "s": 0.6
+       },
+       {
+        "k": "sun",
+        "x": 320,
+        "y": 40,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "Twist, twist, click. The wire snapped into place. Bolt's screen lit up with the biggest smile {name} had ever seen. \"Thank you, friend!\""
+    },
+    {
+     "t": "Every day after school, {name} visited Bolt. They built a ramp from old planks and raced toy cars down it. They made a drum kit from buckets.",
+     "scene": {
+      "sky": "day",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "robot",
+        "x": 110,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 270,
+        "y": 200,
+        "s": 0.6
+       },
+       {
+        "k": "chest",
+        "x": 320,
+        "y": 200,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "But Bolt worried. \"Other kids think junkyards are boring. They will never come.\" {name} thought hard. \"Then let's make something they can't resist.\""
+    },
+    {
+     "t": "They planned a Junkyard Fair. {name} drew a map of where everything would go: a marble run, a spinning teacup ride and a robot dance stage.",
+     "scene": {
+      "sky": "day",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "map",
+        "x": 180,
+        "y": 150,
+        "s": 1.3
+       },
+       {
+        "k": "kid",
+        "x": 90,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "robot",
+        "x": 280,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 320,
+        "y": 40,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "They worked for a whole week. Some ideas failed. The marble run collapsed three times. Each time, {name} said, \"Let's try a stronger base,\" and they tried again."
+    },
+    {
+     "t": "On Saturday, {name} hung a sign on the gate: JUNKYARD FAIR, EVERYONE WELCOME. Then {he} waited. Nobody came. Bolt's antenna drooped.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "robot",
+        "x": 150,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "house",
+        "x": 60,
+        "y": 165,
+        "s": 0.8
+       },
+       {
+        "k": "cloud",
+        "x": 290,
+        "y": 60,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "Then a small voice said, \"Is that a robot?\" A boy from {name}'s class stood at the gate. Behind him, two more kids were peeking in."
+    },
+    {
+     "t": "Bolt switched on his best dance moves. The kids laughed and cheered. Soon the whole street had come to ride the teacups and race marbles.",
+     "scene": {
+      "sky": "day",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "robot",
+        "x": 180,
+        "y": 180,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 80,
+        "y": 190,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 270,
+        "y": 190,
+        "s": 0.9
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 50,
+        "s": 0.5
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 50,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"I have so many friends now,\" Bolt beeped. \"But you were my first one.\" {name} grinned. \"And you were the first robot I ever fixed.\""
+    },
+    {
+     "t": "From then on, the junkyard became the most popular place on the street. Every Saturday, kids came to build, invent and dance with Bolt.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "robot",
+        "x": 150,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 60,
+        "y": 160,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 310,
+        "y": 45,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "And whenever someone new looked lonely, {name} remembered the little robot under the tyres and said, \"Want to come and build something with us?\" The end."
+    }
+   ]
+  },
+  {
+   "id": "exp-volcano-mystery",
+   "band": "explorers",
+   "tags": [
+    "science",
+    "nature",
+    "dino",
+    "volcanoes"
+   ],
+   "skill": "Science and observation",
+   "title": "{name} and the Volcano Mystery",
+   "pages": [
+    {
+     "t": "{name}'s family went camping on Ember Island, where a sleepy old volcano stood in the middle of the forest. A ranger told them it hadn't erupted in a thousand years.",
+     "scene": {
+      "sky": "day",
+      "ground": "hills",
+      "props": [
+       {
+        "k": "volcano",
+        "x": 200,
+        "y": 170,
+        "s": 1.3
+       },
+       {
+        "k": "tree",
+        "x": 70,
+        "y": 170,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 300,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "cloud",
+        "x": 100,
+        "y": 60,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "But that night, {name} felt the ground tremble. The cups in the tent rattled. \"Did you feel that?\" {he} whispered to {his} sister. She was fast asleep."
+    },
+    {
+     "t": "In the morning, {name} noticed something strange. The stream by the campsite was warm, and little bubbles were popping on the surface.",
+     "scene": {
+      "sky": "day",
+      "ground": "water",
+      "props": [
+       {
+        "k": "kid",
+        "x": 130,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 60,
+        "y": 160,
+        "s": 1
+       },
+       {
+        "k": "volcano",
+        "x": 290,
+        "y": 150,
+        "s": 0.8
+       },
+       {
+        "k": "fish",
+        "x": 200,
+        "y": 210,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} took out a notebook and became a scientist. Observation one: the ground shook. Observation two: the water is warmer. Observation three: there's a smell like rotten eggs."
+    },
+    {
+     "t": "{He} found the ranger, Mira, and showed her the notes. Mira's eyebrows shot up. \"These are all signs that magma is moving underground,\" she said.",
+     "scene": {
+      "sky": "day",
+      "ground": "hills",
+      "props": [
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 220,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "volcano",
+        "x": 300,
+        "y": 150,
+        "s": 0.8
+       },
+       {
+        "k": "book",
+        "x": 70,
+        "y": 205,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"Is the volcano going to erupt?\" asked {name}. \"We need more evidence,\" said Mira. \"Want to help me collect it?\" {name} nodded so fast {his} hat nearly fell off."
+    },
+    {
+     "t": "They hiked up the volcano with a thermometer, a compass and a jar for samples. Halfway up, they found fresh cracks in the rock, with steam hissing out.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "hills",
+      "props": [
+       {
+        "k": "volcano",
+        "x": 190,
+        "y": 160,
+        "s": 1.4
+       },
+       {
+        "k": "kid",
+        "x": 100,
+        "y": 195,
+        "s": 0.8
+       },
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "cloud",
+        "x": 260,
+        "y": 50,
+        "s": 0.9
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} measured the steam. Ninety degrees! Mira radioed the island scientists. \"We have a young researcher here with excellent data,\" she said."
+    },
+    {
+     "t": "The scientists set up sensors all around the volcano. The data showed the magma rising slowly. They decided everyone should leave the island to be safe.",
+     "scene": {
+      "sky": "day",
+      "ground": "sand",
+      "props": [
+       {
+        "k": "boat",
+        "x": 180,
+        "y": 160,
+        "s": 1.2
+       },
+       {
+        "k": "kid",
+        "x": 90,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "volcano",
+        "x": 300,
+        "y": 140,
+        "s": 0.8
+       },
+       {
+        "k": "sun",
+        "x": 60,
+        "y": 45,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "On the boat, {name} watched the volcano puff a small grey cloud. {He} felt nervous, but also proud. {His} careful noticing had helped keep people safe."
+    },
+    {
+     "t": "Two days later, the volcano gave a gentle rumble and a ribbon of lava slid down its far side, away from the campsites. Nobody was hurt.",
+     "scene": {
+      "sky": "night",
+      "ground": "hills",
+      "props": [
+       {
+        "k": "volcano",
+        "x": 190,
+        "y": 160,
+        "s": 1.4
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 40,
+        "s": 0.5
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 50,
+        "s": 0.5
+       },
+       {
+        "k": "boat",
+        "x": 320,
+        "y": 205,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "When the lava cooled, it turned into new black rock. \"In time, plants will grow here again,\" Mira explained. \"Volcanoes build new land.\""
+    },
+    {
+     "t": "The island scientists gave {name} a badge that said JUNIOR VOLCANOLOGIST. {He} pinned it to {his} backpack and grinned all the way home.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 170,
+        "y": 190,
+        "s": 1.1
+       },
+       {
+        "k": "star",
+        "x": 210,
+        "y": 160,
+        "s": 0.4
+       },
+       {
+        "k": "tree",
+        "x": 70,
+        "y": 160,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 310,
+        "y": 45,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "At school, {name} told the class about the trembles, the warm stream and the bubbling water. \"Science starts with noticing,\" {he} said."
+    },
+    {
+     "t": "The next summer, {name} went back to Ember Island. Tiny green ferns were already pushing up through the black rock.",
+     "scene": {
+      "sky": "day",
+      "ground": "hills",
+      "props": [
+       {
+        "k": "volcano",
+        "x": 220,
+        "y": 160,
+        "s": 1
+       },
+       {
+        "k": "flower",
+        "x": 100,
+        "y": 205,
+        "s": 0.7
+       },
+       {
+        "k": "flower",
+        "x": 150,
+        "y": 210,
+        "s": 0.6
+       },
+       {
+        "k": "kid",
+        "x": 300,
+        "y": 195,
+        "s": 0.9
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} knelt down and wrote one more observation: Life always finds a way. Then {he} closed the notebook, ready for the next mystery. The end."
+    }
+   ]
+  },
+  {
+   "id": "exp-dragon-library",
+   "band": "explorers",
+   "tags": [
+    "fairy",
+    "books",
+    "reading",
+    "magic"
+   ],
+   "skill": "Reading and courage",
+   "title": "{name} and the Dragon's Library",
+   "pages": [
+    {
+     "t": "{name} loved the town library, especially the dusty corner where nobody ever went. One rainy afternoon, {he} found a book with a golden dragon on the cover.",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "book",
+        "x": 120,
+        "y": 190,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 220,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "lamp",
+        "x": 320,
+        "y": 160,
+        "s": 0.9
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 50,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "When {name} opened it, the pages fluttered and a warm wind swept out. Suddenly, {he} was standing in a huge cave lined with glowing shelves."
+    },
+    {
+     "t": "In the middle of the cave sat an enormous dragon wearing tiny round glasses. \"Ah, a reader at last!\" she rumbled. \"I am Saffron, keeper of every story ever told.\"",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "dragon",
+        "x": 170,
+        "y": 170,
+        "s": 1.4
+       },
+       {
+        "k": "kid",
+        "x": 290,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "book",
+        "x": 60,
+        "y": 200,
+        "s": 0.7
+       },
+       {
+        "k": "lamp",
+        "x": 330,
+        "y": 150,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"But something terrible has happened,\" said Saffron. \"The words are escaping from my books. Without them, the stories will disappear forever.\""
+    },
+    {
+     "t": "{name} looked around. Letters were floating in the air like fireflies, drifting out of a crack in the cave wall. \"We have to catch them!\" {he} said.",
+     "scene": {
+      "sky": "night",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "dragon",
+        "x": 110,
+        "y": 170,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 220,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 280,
+        "y": 60,
+        "s": 0.5
+       },
+       {
+        "k": "star",
+        "x": 320,
+        "y": 100,
+        "s": 0.4
+       },
+       {
+        "k": "star",
+        "x": 250,
+        "y": 110,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "Saffron gave {name} a net woven from spider silk. \"Words only stay with someone who reads them out loud,\" she said. \"Can you do that?\""
+    },
+    {
+     "t": "{name} took a deep breath. {He} caught the letters C, A and T, and read, \"Cat!\" Instantly, a tabby cat leaped back into its book. It worked!",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "cat",
+        "x": 120,
+        "y": 200,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "book",
+        "x": 280,
+        "y": 200,
+        "s": 0.8
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 60,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "Next came harder words: MOUNTAIN, ADVENTURE, ENORMOUS. {name} sounded them out slowly, one part at a time. Each word zoomed home to its story."
+    },
+    {
+     "t": "Then came the hardest word of all, a wriggling, twisting one: EXTRAORDINARY. {name}'s voice wobbled. \"I don't think I can,\" {he} whispered.",
+     "scene": {
+      "sky": "night",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "dragon",
+        "x": 120,
+        "y": 170,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 70,
+        "s": 0.6
+       },
+       {
+        "k": "book",
+        "x": 60,
+        "y": 205,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "Saffron leaned close. \"Brave readers don't know every word,\" she said. \"They just keep trying.\" {name} split it up: ex-tra-or-di-na-ry. \"Extraordinary!\""
+    },
+    {
+     "t": "The word glowed gold and slid into a book about a girl who could fly. The crack in the wall sealed shut with a happy sigh.",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "book",
+        "x": 170,
+        "y": 170,
+        "s": 1.4
+       },
+       {
+        "k": "kid",
+        "x": 280,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "lamp",
+        "x": 60,
+        "y": 160,
+        "s": 0.8
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 50,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"You saved every story in the world,\" said Saffron. \"As thanks, you may choose any book from my library to keep.\" There were millions to choose from!"
+    },
+    {
+     "t": "{name} chose a small blue book with an empty cover. \"What story is inside?\" {he} asked. Saffron smiled. \"That one is waiting for you to write it.\"",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "dragon",
+        "x": 130,
+        "y": 170,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 240,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "book",
+        "x": 280,
+        "y": 150,
+        "s": 0.6
+       },
+       {
+        "k": "crown",
+        "x": 60,
+        "y": 60,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "The warm wind swirled again, and {name} was back in the dusty corner of the town library, holding the little blue book."
+    },
+    {
+     "t": "That night, {name} opened the blue book and wrote the first line: Once upon a time, a reader found a dragon who loved words.",
+     "scene": {
+      "sky": "night",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "bed",
+        "x": 170,
+        "y": 195,
+        "s": 1.2
+       },
+       {
+        "k": "kid",
+        "x": 170,
+        "y": 165,
+        "s": 0.8
+       },
+       {
+        "k": "lamp",
+        "x": 290,
+        "y": 160,
+        "s": 0.9
+       },
+       {
+        "k": "moon",
+        "x": 60,
+        "y": 50,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "And every time {name} met a tricky word after that, {he} remembered Saffron and broke it into pieces until it gave up its secret. The end."
+    }
+   ]
+  },
+  {
+   "id": "tb-mars-signal",
+   "band": "trailblazers",
+   "tags": [
+    "space",
+    "coding",
+    "robots",
+    "science"
+   ],
+   "skill": "Problem solving and coding logic",
+   "title": "{name} and the Signal from Mars",
+   "pages": [
+    {
+     "t": "Chapter 1. {name} had built a radio telescope out of an old satellite dish, a laptop and a lot of duct tape. Most nights it picked up nothing but static and the occasional weather report.",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "house",
+        "x": 70,
+        "y": 165,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 190,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "satellite",
+        "x": 280,
+        "y": 170,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 40,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "But on Tuesday at 11:47 p.m., the static stopped. A pattern began: three short beeps, one long, three short. Then silence. Then the same pattern again, exactly fifteen seconds later."
+    },
+    {
+     "t": "{name} grabbed a notebook. Patterns that repeat aren't usually random. {He} timed the signal for an hour and pointed the dish in different directions. It was strongest when aimed at a small red dot in the sky: Mars.",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "satellite",
+        "x": 140,
+        "y": 170,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 240,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "planet",
+        "x": 300,
+        "y": 60,
+        "s": 0.7
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 40,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "{He} knew there was a rover on Mars called Wren, launched by a team at the space agency. Could it be Wren? But rovers send data to huge antennas, not homemade dishes in back gardens."
+    },
+    {
+     "t": "Chapter 2. {name} wrote down the beeps as ones and zeros: short meant 0, long meant 1. After ten minutes {he} had a long string: 0001000, 0001000, 0001000. In binary, 1000 is eight.",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "book",
+        "x": 220,
+        "y": 200,
+        "s": 0.8
+       },
+       {
+        "k": "lamp",
+        "x": 300,
+        "y": 160,
+        "s": 0.9
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 50,
+        "s": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "t": "Eight what? {name} searched the agency's public website. Wren had eight wheels. And a news story from last week said Wren had gone quiet after a dust storm. Nobody knew if it was broken."
+    },
+    {
+     "t": "{name}'s mum came in with cocoa. \"Still up?\" {name} showed her the notebook. She read it twice. \"This is either a big coincidence,\" she said slowly, \"or you've found something important.\"",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 120,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 220,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "cup",
+        "x": 300,
+        "y": 205,
+        "s": 0.7
+       },
+       {
+        "k": "lamp",
+        "x": 60,
+        "y": 160,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "They wrote an email to the agency together. {name} attached the recordings and a careful explanation: what {he} heard, when, which direction, and what {he} thought it meant. Then they waited."
+    },
+    {
+     "t": "Chapter 3. Two days later, a video call. A woman with a badge that said Dr. Okafor, Mission Engineer, smiled at {name}. \"Your recordings are real,\" she said. \"Wren is calling for help, and our main antenna can't hear it.\"",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 130,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "robot",
+        "x": 240,
+        "y": 180,
+        "s": 0.9
+       },
+       {
+        "k": "planet",
+        "x": 300,
+        "y": 60,
+        "s": 0.6
+       },
+       {
+        "k": "book",
+        "x": 60,
+        "y": 205,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "Wren's main transmitter was damaged by the storm. It was using a tiny backup radio, too weak for most antennas. But {name}'s dish, by luck, was tuned to exactly the right frequency."
+    },
+    {
+     "t": "\"We think Wren is sending a code,\" said Dr. Okafor. \"Eight might mean wheel eight is stuck. But we need the rest of the message. Can you keep listening?\" {name} nodded. \"Every night.\"",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "satellite",
+        "x": 150,
+        "y": 170,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 250,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 50,
+        "s": 0.5
+       },
+       {
+        "k": "planet",
+        "x": 310,
+        "y": 60,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "Chapter 4. Night after night, {name} recorded new patterns. Some repeated, some didn't. {He} built a little program to turn beeps into binary automatically and look for repeats."
+    },
+    {
+     "t": "The program found three messages. 1000 meant wheel eight. 0011 meant three. And 1111 kept appearing after them, like a full stop. {name} stared at the screen until {his} eyes ached.",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 160,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "robot",
+        "x": 260,
+        "y": 180,
+        "s": 0.7
+       },
+       {
+        "k": "lamp",
+        "x": 60,
+        "y": 160,
+        "s": 0.8
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 50,
+        "s": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "t": "{He} remembered something from the agency website: Wren's wheels were numbered, and each had three motors. Wheel eight, motor three. \"Wren is telling us exactly what's broken,\" {he} whispered."
+    },
+    {
+     "t": "Chapter 5. Dr. Okafor's team checked their models. If motor three on wheel eight was jammed, Wren couldn't turn left. That explained why it had been driving in slow circles since the storm.",
+     "scene": {
+      "sky": "space",
+      "ground": "moon",
+      "props": [
+       {
+        "k": "robot",
+        "x": 170,
+        "y": 185,
+        "s": 1.2
+       },
+       {
+        "k": "planet",
+        "x": 300,
+        "y": 70,
+        "s": 0.8
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 40,
+        "s": 0.5
+       },
+       {
+        "k": "cloud",
+        "x": 90,
+        "y": 120,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"We can send a command to reverse that motor and shake it loose,\" said Dr. Okafor. \"But Wren won't hear us unless we transmit at the moment its backup radio is listening.\" They needed a schedule."
+    },
+    {
+     "t": "{name} looked at {his} recordings. The signal always came fifteen seconds apart, and every 37 minutes there was a gap of exactly two minutes. \"Maybe that's when it listens,\" {he} said.",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "satellite",
+        "x": 140,
+        "y": 170,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 300,
+        "y": 40,
+        "s": 0.5
+       },
+       {
+        "k": "planet",
+        "x": 60,
+        "y": 60,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "The engineers were impressed. \"That's a classic listen window,\" one said. They scheduled the command for the next gap: Thursday, 3:12 a.m. {name} was allowed to stay up and watch the mission live."
+    },
+    {
+     "t": "Chapter 6. At 3:12, the command flew across 200 million kilometres of space. It would take eleven minutes to arrive. {name} sat on the floor of the control room, hugging {his} knees.",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 120,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 280,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "lamp",
+        "x": 330,
+        "y": 160,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "3:23. Silence. 3:30. Silence. Somebody coughed. Then a speaker crackled with three short beeps, one long and three short, but this time followed by 0000. Zero. Nothing broken."
+    },
+    {
+     "t": "The control room exploded with cheers. Dr. Okafor hugged {name}. \"Wheel eight is turning,\" she said. \"Wren is moving again, because you kept listening when everyone else heard only static.\"",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 110,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "robot",
+        "x": 290,
+        "y": 180,
+        "s": 0.8
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 50,
+        "s": 0.5
+       },
+       {
+        "k": "star",
+        "x": 320,
+        "y": 50,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "A week later, Wren sent its first new photo: a red hillside, glowing at sunset. In the corner, scratched into the dust by its wheels, was a shape that looked a lot like the letter of {name}'s name."
+    },
+    {
+     "t": "Chapter 7. The engineers swore it was an accident. {name} didn't mind either way. {He} printed the photo and stuck it above {his} desk, next to the old satellite dish.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "moon",
+      "props": [
+       {
+        "k": "robot",
+        "x": 170,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "planet",
+        "x": 290,
+        "y": 70,
+        "s": 0.9
+       },
+       {
+        "k": "mountain",
+        "x": 80,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 320,
+        "y": 40,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "Every night after that, {name} still listened to the static. Because sometimes, {he} had learned, the most important messages are the ones nobody else is patient enough to hear. The end."
+    }
+   ]
+  },
+  {
+   "id": "tb-whispering-woods",
+   "band": "trailblazers",
+   "tags": [
+    "mystery",
+    "nature",
+    "animals",
+    "detectives"
+   ],
+   "skill": "Inference and evidence",
+   "title": "{name} and the Secret of Whispering Woods",
+   "pages": [
+    {
+     "t": "Chapter 1. Everyone in Hollowmere knew the rule: never go into Whispering Woods after dark. Nobody remembered why. When {name}'s family moved into the cottage at the edge of the trees, {he} decided to find out.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "house",
+        "x": 80,
+        "y": 165,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 200,
+        "y": 160,
+        "s": 1.2
+       },
+       {
+        "k": "tree",
+        "x": 290,
+        "y": 165,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 195,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "On the first night, {name} heard it: a soft whispering that rose and fell like breathing. It came from deep in the woods, and it sounded almost like words."
+    },
+    {
+     "t": "In the morning, {name} walked to the edge of the woods with a notebook, a torch and a magnifying glass. Detective rule number one: collect evidence before you decide anything.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 130,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 220,
+        "y": 160,
+        "s": 1.2
+       },
+       {
+        "k": "tree",
+        "x": 300,
+        "y": 165,
+        "s": 1
+       },
+       {
+        "k": "bird",
+        "x": 80,
+        "y": 70,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "{He} found three clues. Clue one: the whispering was loudest near an old oak with a split trunk. Clue two: the ground there was covered in tiny white feathers. Clue three: a smell of peppermint."
+    },
+    {
+     "t": "Chapter 2. At the village shop, {name} asked about the woods. The shopkeeper, Mr. Hale, went pale. \"My grandmother said the trees whisper to warn us,\" he said. \"Some things are better left alone.\"",
+     "scene": {
+      "sky": "day",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "house",
+        "x": 60,
+        "y": 165,
+        "s": 0.8
+       },
+       {
+        "k": "cup",
+        "x": 300,
+        "y": 205,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "But Mr. Hale also sold peppermint tea, the only shop for miles that did. And {name} noticed his boots had flecks of white feather stuck to the laces. Interesting."
+    },
+    {
+     "t": "That afternoon, {name} met Priya, who lived on the farm next door. Priya had lived in Hollowmere her whole life and had never once gone into the woods. \"I'll come with you,\" she said, \"but only in daylight.\"",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 120,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 300,
+        "y": 160,
+        "s": 1.1
+       },
+       {
+        "k": "sun",
+        "x": 60,
+        "y": 45,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "They followed the feathers to the split oak. Inside the hollow trunk was a wooden box. Inside the box: a bag of birdseed, a flask of peppermint tea and a notebook full of numbers."
+    },
+    {
+     "t": "Chapter 3. The notebook had columns of dates and counts: 12, 15, 9, 22. At the top of each page was the same word: OWLS. \"Someone is counting owls,\" said Priya. \"But why in secret?\"",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "chest",
+        "x": 170,
+        "y": 195,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 90,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 270,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "owl",
+        "x": 200,
+        "y": 90,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} studied the numbers. They went up for years, then down sharply last spring. The last entry said: Only 4. Must protect the nest. Tell no one."
+    },
+    {
+     "t": "That night, {name} and Priya sat at the window with binoculars. At 9 p.m., a torch bobbed into the woods. Someone was going to the oak. The whispering began right after.",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "house",
+        "x": 90,
+        "y": 165,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 230,
+        "y": 160,
+        "s": 1.2
+       },
+       {
+        "k": "moon",
+        "x": 300,
+        "y": 50,
+        "s": 0.8
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 40,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "t": "Chapter 4. The next evening, they waited by the oak before sunset, hidden behind a fallen log. As the light faded, footsteps crunched closer. It was Mr. Hale, carrying the flask of tea."
+    },
+    {
+     "t": "He sat beside the oak, poured some tea, and began to whistle softly: a breathy, rising, falling sound. The whispering! High above, two golden eyes blinked open in the dark.",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "tree",
+        "x": 180,
+        "y": 150,
+        "s": 1.4
+       },
+       {
+        "k": "owl",
+        "x": 190,
+        "y": 70,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 300,
+        "y": 195,
+        "s": 0.8
+       },
+       {
+        "k": "moon",
+        "x": 60,
+        "y": 45,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "An owl swooped down and landed on a branch near him. Mr. Hale scattered seed for the mice that the owls hunted. {name} stepped out from behind the log. \"You're protecting them,\" {he} said."
+    },
+    {
+     "t": "Chapter 5. Mr. Hale jumped, then sighed. \"These are barn owls,\" he said. \"Rare ones. My family has looked after them for a hundred years. The whispering is how we call them, like they call each other.\"",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "owl",
+        "x": 150,
+        "y": 120,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 300,
+        "y": 190,
+        "s": 0.9
+       },
+       {
+        "k": "tree",
+        "x": 70,
+        "y": 160,
+        "s": 1
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"We told people the woods were dangerous so nobody would disturb the nests,\" he explained. \"But last spring, someone cut down three nesting trees. Now there are only four owls left.\""
+    },
+    {
+     "t": "{name} thought about the evidence. Keeping secrets had protected the owls for years, but it hadn't stopped the tree cutting. \"What if people knew?\" {he} asked. \"They might help instead.\"",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 130,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "tree",
+        "x": 230,
+        "y": 160,
+        "s": 1.1
+       },
+       {
+        "k": "owl",
+        "x": 250,
+        "y": 90,
+        "s": 0.7
+       },
+       {
+        "k": "book",
+        "x": 300,
+        "y": 205,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "Mr. Hale looked doubtful. But Priya said, \"I've lived here my whole life and I never knew we had rare owls. I'd want to protect them if someone had told me.\""
+    },
+    {
+     "t": "Chapter 6. So they made a plan. {name} drew posters. Priya wrote facts about barn owls. Mr. Hale opened the shop for a meeting. Thirty villagers came, curious and a little nervous.",
+     "scene": {
+      "sky": "day",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 90,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 170,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 250,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "owl",
+        "x": 310,
+        "y": 120,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} explained the clues, the notebook and the numbers. \"The woods aren't dangerous,\" {he} said. \"They're in danger.\" The room went very quiet. Then an old farmer stood up. \"I'll help build nest boxes.\""
+    },
+    {
+     "t": "By autumn, the villagers had put up twenty nest boxes and made the woods a protected reserve. The schoolkids took turns counting owls with Mr. Hale, peppermint tea and all.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "tree",
+        "x": 100,
+        "y": 160,
+        "s": 1.1
+       },
+       {
+        "k": "tree",
+        "x": 260,
+        "y": 160,
+        "s": 1.1
+       },
+       {
+        "k": "owl",
+        "x": 180,
+        "y": 80,
+        "s": 0.8
+       },
+       {
+        "k": "kid",
+        "x": 180,
+        "y": 195,
+        "s": 0.9
+       }
+      ]
+     }
+    },
+    {
+     "t": "The next spring, the notebook had a new entry in {name}'s handwriting: 11 owls. Three new nests. Everyone knows now, and everyone helps."
+    },
+    {
+     "t": "Chapter 7. People still say the trees of Whispering Woods whisper after dark. Now, when they hear it, they smile, because they know it means the owls are home.",
+     "scene": {
+      "sky": "night",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "tree",
+        "x": 180,
+        "y": 150,
+        "s": 1.4
+       },
+       {
+        "k": "owl",
+        "x": 160,
+        "y": 80,
+        "s": 0.7
+       },
+       {
+        "k": "owl",
+        "x": 220,
+        "y": 100,
+        "s": 0.6
+       },
+       {
+        "k": "moon",
+        "x": 300,
+        "y": 45,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "And {name} learned the best detective rule of all: the truth is most powerful when you share it with people who care. The end."
+    }
+   ]
+  },
+  {
+   "id": "tb-championship",
+   "band": "trailblazers",
+   "tags": [
+    "sports",
+    "teamwork",
+    "football"
+   ],
+   "skill": "Resilience and teamwork",
+   "title": "{name} and the Championship Comeback",
+   "pages": [
+    {
+     "t": "Chapter 1. The Riverside Rockets had not won a single match all season. They were the team other teams were happy to play. {name} had joined in September, and so far {he} had mostly practised picking the ball out of the net.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 120,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 190,
+        "y": 205,
+        "s": 0.7
+       },
+       {
+        "k": "kid",
+        "x": 270,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 320,
+        "y": 40,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "Then Coach Dee announced the end-of-season tournament. \"Eight teams. Knockout rounds. The winner gets the Silver Boot.\" Somebody laughed. \"We'll be knocked out by lunchtime.\""
+    },
+    {
+     "t": "{name} didn't laugh. That night, {he} watched videos of the Rockets' matches on {his} tablet. Not to feel bad, but to look for patterns. Detective work, football style.",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "kid",
+        "x": 150,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 230,
+        "y": 205,
+        "s": 0.6
+       },
+       {
+        "k": "lamp",
+        "x": 300,
+        "y": 160,
+        "s": 0.9
+       },
+       {
+        "k": "trophy",
+        "x": 60,
+        "y": 190,
+        "s": 0.7
+       }
+      ]
+     }
+    },
+    {
+     "t": "{He} noticed three things. One: the team ran out of energy in the second half. Two: everyone crowded the ball like bees. Three: Theo, the quietest player, made almost every pass he tried."
+    },
+    {
+     "t": "Chapter 2. {name} showed Coach Dee a page of notes and diagrams. Coach read it twice. \"You noticed Theo?\" she said. \"Most people don't.\" She looked at {name} for a long moment. \"Want to help me plan training?\"",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 230,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "book",
+        "x": 300,
+        "y": 205,
+        "s": 0.6
+       },
+       {
+        "k": "ball",
+        "x": 70,
+        "y": 205,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "The new plan was simple. Practise spreading out, like a net instead of a swarm. Build stamina with relay races. And pass the ball to Theo more, because Theo could see gaps nobody else could."
+    },
+    {
+     "t": "Not everyone liked the plan. Jaxon, the team's top scorer, folded his arms. \"I don't need to pass. I need the ball.\" {name} took a breath. \"You score more when Theo finds you in space. The numbers show it.\"",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 110,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 280,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 160,
+        "y": 210,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "Jaxon looked at the notes. He didn't say anything, but at the next practice he passed to Theo twice. Both times, Theo slid the ball back to him and he scored."
+    },
+    {
+     "t": "Chapter 3. On tournament day, the Rockets faced the Hillcrest Hawks in the quarter-final. The Hawks scored in the first minute. {name}'s stomach dropped. Old habits pulled everyone toward the ball.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 90,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 180,
+        "y": 200,
+        "s": 0.7
+       },
+       {
+        "k": "kid",
+        "x": 270,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "cloud",
+        "x": 300,
+        "y": 50,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "\"Spread out!\" {name} called. \"Net, not swarm!\" Slowly, the team stretched across the pitch. Theo found Jaxon. Goal! One all. In the last minute, {name} intercepted a pass and set up Priya. Two one!"
+    },
+    {
+     "t": "The Rockets had won a match for the first time all year. Parents on the sideline were cheering louder than anyone had ever heard. Even Coach Dee did a little dance.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 100,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 180,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 260,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 50,
+        "s": 0.5
+       },
+       {
+        "k": "star",
+        "x": 310,
+        "y": 50,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "Chapter 4. The semi-final was against the Northfield Foxes, the toughest defence in the league. Nobody had scored against them all season. At half-time it was still nil-nil, and everyone was exhausted."
+    },
+    {
+     "t": "In the huddle, Jaxon was frustrated. \"They mark me everywhere!\" {name} had an idea. \"If they're all watching you, someone else is free.\" Everyone turned to look at Theo, who went red.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 120,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 190,
+        "y": 185,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 260,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 190,
+        "y": 215,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "In the second half, Jaxon ran wide, dragging three defenders with him. Theo, unmarked, strolled into the gap and chipped the ball over the keeper. The Rockets were in the final!"
+    },
+    {
+     "t": "Chapter 5. The final was against the Eastbrook Eagles, last year's champions. By half-time, the Eagles were winning three-nil. In the changing room, nobody spoke. Somebody was crying.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 120,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "kid",
+        "x": 200,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 280,
+        "y": 195,
+        "s": 0.9
+       },
+       {
+        "k": "cloud",
+        "x": 290,
+        "y": 50,
+        "s": 1
+       }
+      ]
+     }
+    },
+    {
+     "t": "{name} felt it too, the heavy feeling of wanting to give up. But {he} remembered the notes from September. \"Three months ago we couldn't win any match,\" {he} said. \"We've already done the impossible twice today.\""
+    },
+    {
+     "t": "Coach Dee nodded. \"You don't have to win,\" she said. \"You just have to play like the team you've become.\" The Rockets stood up, one by one.",
+     "scene": {
+      "sky": "dusk",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 100,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 170,
+        "y": 185,
+        "s": 1.1
+       },
+       {
+        "k": "kid",
+        "x": 240,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 310,
+        "y": 190,
+        "s": 0.9
+       }
+      ]
+     }
+    },
+    {
+     "t": "Chapter 6. The second half was different. The Rockets spread out, passed quickly and never stopped running. Priya scored. Then Jaxon. Then, with two minutes left, Theo made it three all."
+    },
+    {
+     "t": "Then disaster: the Eagles broke away. Only {name} stood between their striker and the goal. {He} remembered every hour of relay races, sprinted back and slid in. Clean tackle! The crowd roared.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "kid",
+        "x": 140,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "ball",
+        "x": 200,
+        "y": 205,
+        "s": 0.7
+       },
+       {
+        "k": "kid",
+        "x": 260,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "sun",
+        "x": 320,
+        "y": 40,
+        "s": 0.6
+       }
+      ]
+     }
+    },
+    {
+     "t": "The referee blew the whistle. Three all. Penalties! The Rockets took their kicks one by one. On the last one, Theo stepped up, quiet as always, and placed it in the corner."
+    },
+    {
+     "t": "The Riverside Rockets had won the Silver Boot. The team piled into a giant, muddy hug. Jaxon lifted Theo onto his shoulders. Coach Dee held the trophy high.",
+     "scene": {
+      "sky": "day",
+      "ground": "grass",
+      "props": [
+       {
+        "k": "trophy",
+        "x": 180,
+        "y": 160,
+        "s": 1.2
+       },
+       {
+        "k": "kid",
+        "x": 90,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "kid",
+        "x": 270,
+        "y": 190,
+        "s": 1
+       },
+       {
+        "k": "star",
+        "x": 60,
+        "y": 50,
+        "s": 0.5
+       },
+       {
+        "k": "star",
+        "x": 310,
+        "y": 50,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "t": "At the celebration, Coach Dee asked {name} to say a few words. {He} thought for a moment. \"We didn't get better by wishing,\" {he} said. \"We got better by noticing, trying, and trusting each other.\""
+    },
+    {
+     "t": "Chapter 7. The Silver Boot now sits in a glass case at Riverside school. Underneath it is a small framed page of September notes, with three patterns circled in pencil.",
+     "scene": {
+      "sky": "indoor",
+      "ground": "floor",
+      "props": [
+       {
+        "k": "trophy",
+        "x": 170,
+        "y": 175,
+        "s": 1.2
+       },
+       {
+        "k": "book",
+        "x": 260,
+        "y": 205,
+        "s": 0.7
+       },
+       {
+        "k": "kid",
+        "x": 80,
+        "y": 190,
+        "s": 0.9
+       },
+       {
+        "k": "lamp",
+        "x": 320,
+        "y": 160,
+        "s": 0.8
+       }
+      ]
+     }
+    },
+    {
+     "t": "And whenever the Rockets lose a match now, and sometimes they still do, someone always says, \"Okay. What did we notice?\" The end."
+    }
+   ]
+  }
+ ]
+}

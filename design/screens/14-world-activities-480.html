@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>World activities</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.tile{cursor:pointer;font-family:Nunito,ui-rounded,system-ui,sans-serif}
+.scroller::-webkit-scrollbar{display:none}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(214,59,47,.4)}50%{box-shadow:0 0 0 8px rgba(214,59,47,0)}}
+.pulse{animation:pulse 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.pulse{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; padding-top: 54px">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 0 18px">
+    <a href="KidHome.dc.html" aria-label="Back home" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <span style="font-size: 24px; font-weight: 900; flex-grow: 1">Worlds</span>
+    <span style="font-size: 13px; font-weight: 800; color: #7A5A45">{{total}}</span>
+  </div>
+  <div class="scroller" style="display: flex; gap: 8px; overflow-x: auto; padding: 14px 18px 4px; scrollbar-width: none">
+    <sc-for list="{{worlds}}" as="w" hint-placeholder-count="8">
+      <button type="button" class="tile" onClick="{{w.pick}}" aria-pressed="{{w.pressed}}" style="flex: none; display: flex; align-items: center; gap: 6px; padding: 8px 12px 8px 8px; border-radius: 999px; border: {{w.border}}; background: {{w.bg}}; font-size: 14px; font-weight: 900; color: #3B2418"><span style="width: 22px; height: 22px; border-radius: 999px; background: {{w.c}}"></span><span>{{w.name}}</span></button>
+    </sc-for>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin: 10px 18px 0; padding: 4px; border-radius: 999px; background: #FCEBD3">
+    <sc-for list="{{bands}}" as="b" hint-placeholder-count="3">
+      <button type="button" class="tile" onClick="{{b.pick}}" aria-pressed="{{b.pressed}}" style="height: 38px; border-radius: 999px; border: 0; background: {{b.bg}}; font-size: 13px; font-weight: 900; color: {{b.fg}}">{{b.label}}</button>
+    </sc-for>
+  </div>
+  <div style="margin: 12px 18px 0; border-radius: 24px; background: {{cur.soft}}; padding: 14px 16px; display: flex; align-items: center; gap: 12px">
+    <span style="width: 48px; height: 48px; border-radius: 999px; background: {{cur.c}}; flex: none"></span>
+    <div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 20px; font-weight: 900">{{cur.name}}</span><span style="font-size: 13px; font-weight: 800; color: #5C4334">{{summary}}</span></div>
+  </div>
+  <sc-if value="{{loading}}" hint-placeholder-val="{{false}}"><span style="padding: 24px 18px; font-size: 15px; font-weight: 700; color: #7A5A45">Loading activities…</span></sc-if>
+  <sc-if value="{{failed}}" hint-placeholder-val="{{false}}"><span style="padding: 24px 18px; font-size: 15px; font-weight: 700; color: #A8281E">Couldn't load the activity list. Reopen this screen to try again.</span></sc-if>
+  <div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 12px 18px 24px; display: flex; flex-direction: column; gap: 8px">
+    <sc-for list="{{items}}" as="a" hint-placeholder-count="8">
+      <a href="Game.dc.html" onClick="{{a.go}}" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid {{a.border}}; text-decoration: none; color: #3B2418">
+        <span class="{{a.cls}}" style="width: 40px; height: 40px; border-radius: 999px; background: {{a.dotBg}}; color: {{a.dotFg}}; display: grid; place-items: center; flex: none; font-size: 15px; font-weight: 900">{{a.mark}}</span>
+        <span style="display: flex; flex-direction: column; flex-grow: 1; min-width: 0"><span style="font-size: 15px; line-height: 19px; font-weight: 900">{{a.title}}</span><span style="font-size: 12px; font-weight: 700; color: #7A5A45">{{a.meta}}</span></span>
+        <span style="font-size: 13px; font-weight: 900; color: #2F6B23; flex: none">{{a.score}}</span>
+      </a>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const W = [
+  { id: 'math', name: 'Math Meadow', c: '#4E9F3D', soft: '#E3F3DD' }, { id: 'reading', name: 'Reading Forest', c: '#2F86C9', soft: '#DDEEFB' },
+  { id: 'science', name: 'Science Sky', c: '#8466D6', soft: '#ECE6FB' }, { id: 'feelings', name: 'Feelings Cottage', c: '#E46A8E', soft: '#FCE4EB' },
+  { id: 'logic', name: 'Logic Lane', c: '#2F86C9', soft: '#DDEEFB' }, { id: 'memory', name: 'Memory Pond', c: '#8466D6', soft: '#ECE6FB' },
+  { id: 'creativity', name: 'Creativity Studio', c: '#D63B2F', soft: '#FCE4EB' }, { id: 'wiggle', name: 'Wiggle Park', c: '#D9894A', soft: '#FCEBD3' }
+];
+const B = [['cubs', 'Cubs 3–5', 'Little Cubs'], ['explorers', 'Explorers 6–8', 'Explorers'], ['trailblazers', 'Trailblazers 9–12', 'Trailblazers']];
+const E = { count: 'Count & tap', match: 'Memory match', sort: 'Sort it', trace: 'Join the dots', sound: 'Listen & pick', pick: 'Quiz', pattern: 'Patterns', changed: 'What changed?', pop: 'Pop & catch', choice: 'What would you do?', build: 'Build it', draw: 'Draw it', rhythm: 'Rhythm', motion: 'Timing' };
+function get(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
+class Component extends DCLogic {
+  componentDidMount() {
+    const age = parseInt(get('avilo.age') || '5', 10);
+    this.setState({ loading: true, world: get('avilo.world') || 'math', band: age <= 5 ? 'cubs' : age <= 8 ? 'explorers' : 'trailblazers' });
+    fetch('content/activities.json').then((r) => r.json()).then((d) => this.setState({ data: d, loading: false })).catch(() => this.setState({ failed: true, loading: false }));
+  }
+  renderVals() {
+    const s = this.state || {};
+    const world = s.world || 'math', band = s.band || 'cubs';
+    const cur = W.find((w) => w.id === world);
+    let done = {}; try { done = JSON.parse(get('avilo.done') || '{}'); } catch (e) {}
+    const all = (s.data && s.data.activities) || [];
+    const list = all.filter((a) => a.world === world && a.band === band);
+    const firstOpen = list.findIndex((a) => done[a.id] === undefined);
+    const items = list.map((a, i) => {
+      const isDone = done[a.id] !== undefined, next = i === firstOpen;
+      return { title: a.title, meta: E[a.engine] + ' · ' + a.skill + ' · ' + a.minutes + ' min', mark: isDone ? '✓' : String(a.order), score: isDone ? done[a.id] + '%' : '',
+        dotBg: isDone ? cur.c : next ? '#D63B2F' : '#FFF6E8', dotFg: isDone || next ? '#FFFFFF' : '#7A5A45', border: next ? '#D63B2F' : '#EED9BF', cls: next ? 'pulse' : '',
+        go: () => { try { localStorage.setItem('avilo.activity', a.id); } catch (e) {} } };
+    });
+    const nDone = list.filter((a) => done[a.id] !== undefined).length;
+    return {
+      total: (all.length || 480) + ' activities', loading: !!s.loading, failed: !!s.failed, cur: cur, items: items,
+      summary: B.find((b) => b[0] === band)[2] + ' · ' + list.length + ' activities · ' + nDone + ' done',
+      worlds: W.map((w) => { const on = w.id === world; return { ...w, pressed: on ? 'true' : 'false', border: on ? '3px solid ' + w.c : '2px solid #EED9BF', bg: on ? w.soft : '#FFFFFF', pick: () => { try { localStorage.setItem('avilo.world', w.id); } catch (e) {} this.setState({ world: w.id }); } }; }),
+      bands: B.map((b) => { const on = b[0] === band; return { label: b[1], pressed: on ? 'true' : 'false', bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#3B2418' : '#7A5A45', pick: () => this.setState({ band: b[0] }) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

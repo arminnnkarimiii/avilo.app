@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Avilo games</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.px{image-rendering:pixelated;object-fit:contain}
+.mul{mix-blend-mode:multiply}
+.tile{border:0;cursor:pointer;font-family:Nunito,ui-rounded,system-ui,sans-serif;color:#3B2418}
+.tile:focus-visible{outline:3px solid #2F86C9;outline-offset:2px}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+.shake{animation:shake .45s ease-in-out;background:#D63B2F !important;color:#FFFFFF !important}
+.right{background:#4E9F3D !important;color:#FFFFFF !important}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.up{animation:up .32s cubic-bezier(.2,.9,.3,1.15) both}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+.popin{animation:pop .3s ease-out both}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
+.float{animation:float 2.6s ease-in-out infinite}
+@keyframes f1{0%{transform:translate(0,-10px) rotate(0);opacity:1}100%{transform:translate(-30px,320px) rotate(300deg);opacity:0}}
+@keyframes f2{0%{transform:translate(0,-10px) rotate(0);opacity:1}100%{transform:translate(20px,360px) rotate(-260deg);opacity:0}}
+@keyframes f3{0%{transform:translate(0,-10px) rotate(0);opacity:1}100%{transform:translate(40px,300px) rotate(200deg);opacity:0}}
+.cf{position:absolute;top:0;width:9px;height:9px;border-radius:2px;opacity:0;pointer-events:none}
+.f1{animation:f1 1.5s ease-in forwards}.f2{animation:f2 1.7s ease-in forwards}.f3{animation:f3 1.4s ease-in forwards}
+@keyframes tipin{0%{transform:translate(-120px,40px) rotate(-12deg)}70%{transform:translate(6px,0) rotate(3deg)}100%{transform:none}}
+.tipin{animation:tipin .45s ease-out both}
+@keyframes sweep{0%{left:0%}100%{left:100%}}
+.marker{position:absolute;top:-6px;width:10px;height:44px;margin-left:-5px;border-radius:6px;background:#3B2418;animation:sweep linear infinite alternate}
+@keyframes flash{0%{filter:brightness(1)}50%{filter:brightness(1.6);transform:scale(1.06)}100%{filter:brightness(1)}}
+.lit{animation:flash .5s ease-in-out}
+@keyframes nextdot{0%,100%{r:9}50%{r:13}}
+@media (prefers-reduced-motion: reduce){.shake,.up,.popin,.float,.f1,.f2,.f3,.tipin,.lit{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: {{bg}}; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; padding: 54px 18px 22px; gap: 12px; position: relative; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="World.dc.html" aria-label="Close game" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    <div style="flex-grow: 1; height: 14px; border-radius: 999px; background: #FFFFFF; overflow: hidden"><div style="width: {{pct}}%; height: 100%; border-radius: 999px; background: {{accent}}; transition: width .4s"></div></div>
+    <span style="font-size: 15px; font-weight: 900; color: {{accentDark}}; min-width: 44px; text-align: right">{{roundLabel}}</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 8px">
+    <div style="display: flex; flex-direction: column; flex-grow: 1; min-width: 0">
+      <span style="font-size: 12px; font-weight: 900; letter-spacing: .8px; color: {{accentDark}}">{{worldLabel}}</span>
+      <span style="font-size: 15px; font-weight: 800; color: #5C4334">{{title}}</span>
+    </div>
+    <button type="button" class="tile" onClick="{{speak}}" aria-label="Hear it" style="width: 46px; height: 46px; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#2F86C9" d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 0 1 0 6" fill="none" stroke="#2F86C9" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+    <button type="button" class="tile" onClick="{{showTip}}" aria-label="Get a tip from Avi" style="width: 46px; height: 46px; border-radius: 999px; background: #F5B53D; display: grid; place-items: center; flex: none; box-shadow: 0 4px 0 #C98A1C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></button>
+  </div>
+  <sc-if value="{{loading}}" hint-placeholder-val="{{false}}"><div style="flex-grow: 1; display: grid; place-items: center; font-size: 18px; font-weight: 800; color: #7A5A45">{{loadingText}}</div></sc-if>
+  <sc-if value="{{ready}}" hint-placeholder-val="{{true}}">
+    <h1 style="margin: 0; font-size: 23px; line-height: 29px; font-weight: 900; text-wrap: balance">{{question}}</h1>
+    <sc-if value="{{memorizing}}" hint-placeholder-val="{{false}}"><span style="align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; font-size: 14px; font-weight: 900; color: {{accentDark}}">{{memorizeLabel}}</span></sc-if>
+    <sc-if value="{{hasRead}}" hint-placeholder-val="{{false}}"><div style="background: #FFFFFF; border-radius: 18px; padding: 12px 14px; font-size: 17px; line-height: 24px; font-weight: 700">{{read}}</div></sc-if>
+    <sc-if value="{{hasShow}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; background: #FFFFFF; border-radius: 20px; padding: 12px">
+        <sc-for list="{{show}}" as="t" hint-placeholder-count="3"><div style="min-width: 54px; height: 54px; border-radius: 14px; background: #FFF6E8; display: flex; align-items: center; justify-content: center; gap: 2px; padding: 0 8px; font-size: 18px; font-weight: 900"><sc-for list="{{t.icons}}" as="ic" hint-placeholder-count="1"><svg width="{{t.size}}" height="{{t.size}}" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{t.isText}}" hint-placeholder-val="{{false}}"><span>{{t.text}}</span></sc-if></div></sc-for>
+      </div>
+    </sc-if>
+
+    <div data-engine="count" style="display: {{dCount}}; flex-wrap: wrap; gap: 6px; justify-content: center; align-content: center; background: #FFFFFF; border-radius: 24px; padding: 14px; min-height: 150px">
+      <sc-for list="{{countIcons}}" as="ic" hint-placeholder-count="4"><svg class="popin" width="46" height="46" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for>
+      <sc-if value="{{countHidden}}" hint-placeholder-val="{{false}}"><span style="font-size: 20px; font-weight: 900; color: #7A5A45">{{hiddenText}}</span></sc-if>
+    </div>
+    <div data-engine="pick" style="display: {{dPickIcon}}; justify-content: center; background: #FFFFFF; border-radius: 24px; padding: 14px"><svg width="90" height="90" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{pickIcon}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></div>
+    <div data-engine="sound" style="display: {{dSound}}; justify-content: center">
+      <button type="button" class="tile" onClick="{{playSound}}" aria-label="Play the sound" style="width: 120px; height: 120px; border-radius: 999px; background: #2F86C9; display: grid; place-items: center; box-shadow: 0 6px 0 #1F5F92"><svg width="56" height="56" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8a5 5 0 0 1 0 8M18.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div data-engine="pattern" style="display: {{dPattern}}; flex-wrap: wrap; gap: 8px; justify-content: center; background: #FFFFFF; border-radius: 24px; padding: 14px">
+      <sc-for list="{{seq}}" as="t" hint-placeholder-count="4"><div style="min-width: 50px; height: 56px; border-radius: 14px; background: #FFF6E8; display: flex; align-items: center; justify-content: center; gap: 2px; padding: 0 6px; font-size: 20px; font-weight: 900"><sc-for list="{{t.icons}}" as="ic" hint-placeholder-count="1"><svg width="{{t.size}}" height="{{t.size}}" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{t.isText}}" hint-placeholder-val="{{false}}"><span>{{t.text}}</span></sc-if></div></sc-for>
+      <div style="min-width: 50px; height: 56px; border-radius: 14px; border: 3px dashed {{accent}}; box-sizing: border-box; display: grid; place-items: center; font-size: 24px; font-weight: 900; color: {{accentDark}}">?</div>
+    </div>
+    <div data-engine="choices" style="display: {{dChoices}}; flex-wrap: wrap; gap: 10px; justify-content: center">
+      <sc-for list="{{choices}}" as="c" hint-placeholder-count="3">
+        <button type="button" onClick="{{c.tap}}" class="tile {{c.cls}}" aria-label="{{c.aria}}" style="flex: 1 1 {{c.basis}}; min-height: 76px; border-radius: 22px; background: #FFFFFF; box-shadow: 0 5px 0 {{shadow}}; display: flex; align-items: center; justify-content: center; gap: 3px; flex-wrap: wrap; padding: 8px 10px; font-size: {{c.fs}}px; font-weight: 900; line-height: 1.2"><sc-for list="{{c.icons}}" as="ic" hint-placeholder-count="1"><svg width="{{c.size}}" height="{{c.size}}" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{c.isText}}" hint-placeholder-val="{{true}}"><span>{{c.text}}</span></sc-if></button>
+      </sc-for>
+    </div>
+
+    <div data-engine="match" style="display: {{dMatch}}; grid-template-columns: repeat({{matchCols}}, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{cards}}" as="k" hint-placeholder-count="6">
+        <button type="button" onClick="{{k.tap}}" class="tile {{k.cls}}" aria-label="{{k.aria}}" style="height: {{cardH}}px; border-radius: 16px; background: {{k.bg}}; box-shadow: 0 4px 0 {{shadow}}; display: flex; align-items: center; justify-content: center; gap: 2px; flex-wrap: wrap; padding: 4px; font-size: {{k.fs}}px; font-weight: 900; line-height: 1.15; color: {{k.fg}}"><sc-if value="{{k.up}}" hint-placeholder-val="{{false}}"><sc-for list="{{k.icons}}" as="ic" hint-placeholder-count="1"><svg width="{{k.size}}" height="{{k.size}}" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{k.isText}}" hint-placeholder-val="{{true}}"><span>{{k.text}}</span></sc-if></sc-if><sc-if value="{{k.down}}" hint-placeholder-val="{{true}}"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFF6E8" d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg></sc-if></button>
+      </sc-for>
+    </div>
+
+    <div data-engine="sort" style="display: {{dSort}}; flex-direction: column; gap: 12px">
+      <div style="align-self: center; min-width: 150px; min-height: 96px; border-radius: 24px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 10px 18px; font-size: 22px; font-weight: 900; box-shadow: 0 6px 0 {{shadow}}"><sc-for list="{{sortItem.icons}}" as="ic" hint-placeholder-count="1"><svg width="56" height="56" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{sortItem.isText}}" hint-placeholder-val="{{true}}"><span>{{sortItem.text}}</span></sc-if></div>
+      <span style="text-align: center; font-size: 14px; font-weight: 800; color: #7A5A45">{{sortLeft}}</span>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <sc-for list="{{bins}}" as="b" hint-placeholder-count="2"><button type="button" onClick="{{b.tap}}" class="tile {{b.cls}}" style="min-height: 110px; border-radius: 24px; background: {{b.bg}}; border: 3px dashed {{accent}}; font-size: 19px; font-weight: 900">{{b.label}}</button></sc-for>
+      </div>
+    </div>
+
+    <div data-engine="build" style="display: {{dBuild}}; flex-direction: column; gap: 12px">
+      <div style="min-height: 64px; border-radius: 20px; background: #FFFFFF; border: 3px dashed {{accent}}; display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; align-items: center">
+        <sc-for list="{{built}}" as="t" hint-placeholder-count="2"><div class="popin" style="padding: 8px 10px; border-radius: 12px; background: {{accentSoft}}; display: flex; align-items: center; gap: 2px; font-size: {{t.fs}}px; font-weight: 900"><sc-for list="{{t.icons}}" as="ic" hint-placeholder-count="1"><svg width="{{t.size}}" height="{{t.size}}" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{t.isText}}" hint-placeholder-val="{{true}}"><span>{{t.text}}</span></sc-if></div></sc-for>
+        <sc-if value="{{buildEmpty}}" hint-placeholder-val="{{true}}"><span style="font-size: 14px; font-weight: 800; color: #7A5A45">{{buildHint}}</span></sc-if>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center">
+        <sc-for list="{{pieces}}" as="t" hint-placeholder-count="4"><button type="button" onClick="{{t.tap}}" class="tile {{t.cls}}" style="padding: 12px 14px; border-radius: 16px; background: #FFFFFF; box-shadow: 0 4px 0 {{shadow}}; display: flex; align-items: center; gap: 2px; font-size: {{t.fs}}px; font-weight: 900; opacity: {{t.op}}"><sc-for list="{{t.icons}}" as="ic" hint-placeholder-count="1"><svg width="{{t.size}}" height="{{t.size}}" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{t.isText}}" hint-placeholder-val="{{true}}"><span>{{t.text}}</span></sc-if></button></sc-for>
+      </div>
+      <button type="button" class="tile" onClick="{{undo}}" style="align-self: center; padding: 8px 14px; border-radius: 999px; background: #FFFFFF; font-size: 14px; font-weight: 800; color: #A0531C">Undo</button>
+    </div>
+
+    <div data-engine="choice" style="display: {{dChoice}}; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: flex-end; gap: 8px"><img class="px" src="/_blob/cade50d4bbc8146df270b660e0427d35" alt="Avi thinking" style="width: 84px; height: 84px; flex: none"><div style="background: #FFFFFF; border-radius: 18px 18px 18px 6px; padding: 12px 14px; font-size: 17px; line-height: 23px; font-weight: 800">{{scene}}</div></div>
+      <sc-for list="{{options}}" as="o" hint-placeholder-count="2"><button type="button" onClick="{{o.tap}}" class="tile {{o.cls}}" style="text-align: left; padding: 14px 16px; border-radius: 18px; background: #FFFFFF; box-shadow: 0 4px 0 {{shadow}}; font-size: 17px; line-height: 22px; font-weight: 800">{{o.t}}</button></sc-for>
+      <sc-if value="{{hasWhy}}" hint-placeholder-val="{{false}}"><div class="popin" style="border-radius: 16px; background: {{whyBg}}; padding: 10px 14px; font-size: 15px; font-weight: 800; color: {{whyFg}}">{{why}}</div></sc-if>
+    </div>
+
+    <div data-engine="changed" style="display: {{dChanged}}; grid-template-columns: repeat({{gridCols}}, minmax(0, 1fr)); gap: 8px; background: #FFFFFF; border-radius: 24px; padding: 12px">
+      <sc-for list="{{gridCells}}" as="g" hint-placeholder-count="6"><button type="button" onClick="{{g.tap}}" class="tile {{g.cls}}" aria-label="{{g.aria}}" style="height: 74px; border-radius: 16px; background: #FFF6E8; display: grid; place-items: center"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{g.paths}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></button></sc-for>
+    </div>
+
+    <div data-engine="pop" style="display: {{dPop}}; position: relative; flex-grow: 1; min-height: 360px; border-radius: 24px; background: #FFFFFF; overflow: hidden">
+      <sc-for list="{{bubbles}}" as="b" hint-placeholder-count="6">
+        <button type="button" onClick="{{b.tap}}" class="tile float {{b.cls}}" aria-label="{{b.aria}}" style="position: absolute; left: {{b.x}}px; top: {{b.y}}px; width: {{b.s}}px; height: {{b.s}}px; border-radius: 999px; background: {{b.bg}}; border: 3px solid {{accentSoft}}; display: {{b.disp}}; align-items: center; justify-content: center; gap: 1px; flex-wrap: wrap; font-size: {{b.fs}}px; font-weight: 900; animation-delay: {{b.d}}s; padding: 4px"><sc-for list="{{b.icons}}" as="ic" hint-placeholder-count="1"><svg width="{{b.isz}}" height="{{b.isz}}" viewBox="0 0 24 24" aria-hidden="true"><sc-for list="{{ic}}" as="p" hint-placeholder-count="1"><path d="{{p.d}}" fill="{{p.f}}"/></sc-for></svg></sc-for><sc-if value="{{b.isText}}" hint-placeholder-val="{{true}}"><span>{{b.text}}</span></sc-if></button>
+      </sc-for>
+      <span style="position: absolute; left: 12px; bottom: 10px; padding: 5px 10px; border-radius: 999px; background: {{accentSoft}}; font-size: 13px; font-weight: 900">{{popLeft}}</span>
+    </div>
+
+    <div data-engine="trace" style="display: {{dTrace}}; justify-content: center; background: #FFFFFF; border-radius: 24px; padding: 8px">
+      <svg width="320" height="320" viewBox="0 0 100 100" role="img" aria-label="{{traceAria}}">
+        <polyline points="{{traceGuide}}" fill="none" stroke="#EED9BF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 3"/>
+        <polyline points="{{traceDone}}" fill="none" stroke="{{accent}}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <sc-for list="{{dots}}" as="d" hint-placeholder-count="5"><g onClick="{{d.tap}}" style="cursor: pointer"><circle cx="{{d.x}}" cy="{{d.y}}" r="{{d.r}}" fill="{{d.fill}}" stroke="#FFFFFF" stroke-width="1.2"/><text x="{{d.x}}" y="{{d.ty}}" text-anchor="middle" font-size="4.6" font-weight="900" fill="{{d.tf}}" font-family="Nunito, sans-serif">{{d.n}}</text></g></sc-for>
+      </svg>
+    </div>
+
+    <div data-engine="draw" style="display: {{dDraw}}; flex-direction: column; gap: 10px">
+      <svg width="354" height="300" viewBox="0 0 354 300" onPointerDown="{{penDown}}" onPointerMove="{{penMove}}" onPointerUp="{{penUp}}" onPointerLeave="{{penUp}}" role="img" aria-label="Drawing pad" style="background: #FFFFFF; border-radius: 24px; touch-action: none; cursor: crosshair">
+        <sc-for list="{{strokes}}" as="s" hint-placeholder-count="0"><path d="{{s.d}}" fill="none" stroke="{{s.c}}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></sc-for>
+      </svg>
+      <div style="display: flex; gap: 8px">
+        <sc-for list="{{inks}}" as="c" hint-placeholder-count="5"><button type="button" class="tile" onClick="{{c.tap}}" aria-label="{{c.name}}" style="width: 40px; height: 40px; border-radius: 999px; background: {{c.hex}}; border: {{c.ring}}"></button></sc-for>
+        <span style="flex-grow: 1"></span>
+        <button type="button" class="tile" onClick="{{clearPad}}" style="padding: 0 14px; height: 40px; border-radius: 999px; background: #FFFFFF; font-size: 14px; font-weight: 800; color: #A0531C">Clear</button>
+        <button type="button" class="tile" onClick="{{finishDrawing}}" style="padding: 0 16px; height: 40px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 15px; font-weight: 900; box-shadow: 0 4px 0 #A8281E">Done</button>
+      </div>
+      <sc-if value="{{guessing}}" hint-placeholder-val="{{false}}"><div class="popin" style="display: flex; align-items: center; gap: 8px; background: #FFFFFF; border-radius: 18px; padding: 10px 12px"><img class="px" src="/_blob/f44dde0afc81dc62738803f5cab9147e" alt="Avi guessing" style="width: 56px; height: 52px"><span style="font-size: 18px; font-weight: 900">{{guessText}}</span></div></sc-if>
+    </div>
+
+    <div data-engine="rhythm" style="display: {{dRhythm}}; flex-direction: column; gap: 12px">
+      <span style="align-self: center; padding: 6px 14px; border-radius: 999px; background: #FFFFFF; font-size: 15px; font-weight: 900; color: {{accentDark}}">{{rhythmLabel}}</span>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{pads}}" as="p" hint-placeholder-count="4"><button type="button" onClick="{{p.tap}}" class="tile {{p.cls}}" aria-label="{{p.aria}}" style="height: 130px; border-radius: 28px; background: {{p.bg}}; box-shadow: 0 6px 0 {{p.edge}}; opacity: {{p.op}}"></button></sc-for>
+      </div>
+      <button type="button" class="tile" onClick="{{replay}}" style="align-self: center; padding: 8px 16px; border-radius: 999px; background: #FFFFFF; font-size: 14px; font-weight: 800; color: #A0531C">Watch again</button>
+    </div>
+
+    <div data-engine="motion" style="display: {{dMotion}}; flex-direction: column; gap: 22px; padding-top: 30px">
+      <div style="position: relative; height: 32px; border-radius: 999px; background: #FFFFFF; margin: 0 8px">
+        <div style="position: absolute; top: 0; bottom: 0; left: {{zoneL}}%; width: {{zoneW}}%; border-radius: 999px; background: #4E9F3D"></div>
+        <div class="marker" style="animation-duration: {{sweepS}}s"></div>
+      </div>
+      <button type="button" onClick="{{motionTap}}" class="tile {{motionCls}}" style="align-self: center; width: 180px; height: 180px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 30px; font-weight: 900; box-shadow: 0 8px 0 #A8281E">TAP!</button>
+      <span style="text-align: center; font-size: 15px; font-weight: 800; color: #7A5A45">{{motionLabel}}</span>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{tip}}" hint-placeholder-val="{{false}}">
+    <div class="tipin" style="position: absolute; left: 12px; right: 12px; bottom: 26px; z-index: 30; display: flex; align-items: flex-end; gap: 6px">
+      <img class="px" src="/_blob/f44dde0afc81dc62738803f5cab9147e" alt="Avi with an idea" style="width: 116px; height: 106px; flex: none">
+      <div style="flex-grow: 1; background: #FFFFFF; border: 3px solid #F5B53D; border-radius: 20px 20px 20px 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; box-shadow: 0 8px 20px rgba(59, 36, 24, 0.15)">
+        <span style="font-size: 17px; line-height: 23px; font-weight: 800">{{tipText}}</span>
+        <button type="button" class="tile" onClick="{{hideTip}}" style="align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: #FCEBD3; font-size: 14px; font-weight: 800; color: #A0531C">Got it</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{right}}" hint-placeholder-val="{{false}}">
+    <div class="up" style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 20; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 18px 20px 30px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 -8px 24px rgba(59, 36, 24, 0.12)">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <div style="width: 92px; height: 92px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center; flex: none"><img class="px mul" src="/_blob/02ed70c93c5cdb78ced2aded4bf8695b" alt="Avi cheering" style="width: 86px; height: 86px"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 25px; font-weight: 900; color: #2F6B23">{{cheer}}</span><span style="font-size: 15px; font-weight: 800">{{cheerSub}}</span></div>
+      </div>
+      <button type="button" class="tile" onClick="{{next}}" style="height: 58px; border-radius: 999px; background: #4E9F3D; color: #FFFFFF; font-size: 20px; font-weight: 900; box-shadow: 0 5px 0 #2F6B23">Next</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{wrong}}" hint-placeholder-val="{{false}}">
+    <div class="up" style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 20; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 18px 20px 30px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 -8px 24px rgba(59, 36, 24, 0.12)">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <img class="px" src="/_blob/cade50d4bbc8146df270b660e0427d35" alt="Avi thinking" style="width: 92px; height: 92px; flex: none">
+        <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 25px; font-weight: 900; color: #A0531C">Great try!</span><span style="font-size: 15px; font-weight: 800">{{tryText}}</span></div>
+      </div>
+      <button type="button" class="tile" onClick="{{retry}}" style="height: 58px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 20px; font-weight: 900; box-shadow: 0 5px 0 #A8281E">Try again</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{finished}}" hint-placeholder-val="{{false}}">
+    <div class="up" style="position: absolute; inset: 0; z-index: 25; background: #FFF6E8; padding: 90px 24px 34px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+      <div style="width: 220px; height: 220px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center"><img class="px mul" src="/_blob/906e3900b0bb3de6052376ac615ce99f" alt="Avi winking" style="width: 200px; height: 200px"></div>
+      <span style="font-size: 30px; font-weight: 900">{{doneTitle}}</span>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%">
+        <sc-for list="{{stats}}" as="s" hint-placeholder-count="3"><div style="background: #FFFFFF; border-radius: 18px; padding: 12px 4px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 24px; font-weight: 900; color: {{accentDark}}">{{s.v}}</span><span style="font-size: 12px; font-weight: 800; color: #7A5A45">{{s.l}}</span></div></sc-for>
+      </div>
+      <span style="flex-grow: 1"></span>
+      <button type="button" class="tile" onClick="{{playNext}}" style="width: 100%; height: 58px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 900; box-shadow: 0 5px 0 #A8281E">{{nextLabel}}</button>
+      <a href="World.dc.html" style="font-size: 15px; font-weight: 800; color: #A0531C">Back to the world</a>
+    </div>
+  </sc-if>
+  <sc-if value="{{burst}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; inset: 0; pointer-events: none; z-index: 40">
+      <sc-for list="{{pieces2}}" as="p" hint-placeholder-count="0"><span class="cf {{p.k}}" style="left: {{p.x}}px; background: {{p.c}}; animation-delay: {{p.d}}s"></span></sc-for>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const COLORS = { red: '#D63B2F', blue: '#2F86C9', green: '#4E9F3D', yellow: '#F5B53D', purple: '#8466D6', orange: '#E9873A', pink: '#E46A8E', brown: '#7A3E14' };
+const D = '#3B2418', W = '#FFFFFF';
+const ICON = {
+  circle: [['M12 3a9 9 0 1 0 .01 0z', '#2F86C9']], square: [['M4 4h16v16H4z', '#E9873A']], rect: [['M2 7h20v10H2z', '#4E9F3D']],
+  triangle: [['M12 3l10 18H2z', '#8466D6']], diamond: [['M12 2l9 10-9 10-9-10z', '#E46A8E']],
+  star: [['M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z', '#F5B53D']],
+  heart: [['M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z', '#D63B2F']],
+  apple: [['M12 7c-2-2-7-1.5-7 4 0 5 3.5 10 7 8.5 3.5 1.5 7-3.5 7-8.5 0-5.5-5-6-7-4z', '#D63B2F'], ['M12 6c1-3 4-4 6-3-1 3-4 4-6 3z', '#4E9F3D']],
+  egg: [['M12 2c4 0 7 7 7 12a7 7 0 0 1-14 0c0-5 3-12 7-12z', '#F5E6C8'], ['M9 9a1.5 1.5 0 1 0 .01 0zM14 13a1.2 1.2 0 1 0 .01 0z', '#E9A263']],
+  fish: [['M2 12c3-5 9-6 13-3l5-4v14l-5-4c-4 3-10 2-13-3z', '#E9873A'], ['M7 11a1.2 1.2 0 1 0 .01 0z', D]],
+  car: [['M3 12l2-5h10l4 5h2v5H3z', '#D63B2F'], ['M7 15a2.2 2.2 0 1 0 .01 0zM17 15a2.2 2.2 0 1 0 .01 0z', D], ['M7 8h3v3H6zM12 8h3l2 3h-5z', '#DDEEFB']],
+  ball: [['M12 3a9 9 0 1 0 .01 0z', '#D63B2F'], ['M3 11h18v2H3z', W]],
+  flower: [['M12 2a3 3 0 0 1 3 4 3 3 0 0 1 4 4 3 3 0 0 1-2 5 3 3 0 0 1-5 3 3 3 0 0 1-5-3 3 3 0 0 1-2-5 3 3 0 0 1 4-4 3 3 0 0 1 3-4z', '#E46A8E'], ['M12 8.5a3 3 0 1 0 .01 0z', '#F5B53D']],
+  rocket: [['M12 1c4 3 5 8 4 13H8C7 9 8 4 12 1z', '#E9E4F5'], ['M8 13l-3 6 4-2zM16 13l3 6-4-2z', '#D63B2F'], ['M10 15h4l-2 7z', '#F5B53D'], ['M12 6a2 2 0 1 0 .01 0z', '#2F86C9']],
+  dino: [['M3 18c0-5 3-8 7-8h3c0-3 2-5 5-5s3 2 3 3-1 2-3 2v4c0 3-2 5-5 5v3h-2v-3H8v3H6v-3c-2 0-3-1-3-1z', '#4E9F3D'], ['M18 7a.9.9 0 1 0 .01 0z', D]],
+  cat: [['M5 9l1-6 4 4h4l4-4 1 6c1 2 1 4 0 6-1 4-4 6-7 6s-6-2-7-6c-1-2-1-4 0-6z', '#E9873A'], ['M9 12a1.2 1.2 0 1 0 .01 0zM15 12a1.2 1.2 0 1 0 .01 0z', D], ['M11 15h2l-1 1.2z', '#E46A8E']],
+  dog: [['M6 6c2-1 4-1 6-1s4 0 6 1l1 6v3c0 4-3 6-7 6s-7-2-7-6v-3z', '#C08552'], ['M3 11l3-6 1 7zM21 11l-3-6-1 7z', '#7A3E14'], ['M9 11a1.1 1.1 0 1 0 .01 0zM15 11a1.1 1.1 0 1 0 .01 0zM12 14a1.6 1.2 0 1 0 .01 0z', D]],
+  sun: [['M12 6a6 6 0 1 0 .01 0z', '#F5B53D'], ['M11 0h2v4h-2zM11 20h2v4h-2zM0 11h4v2H0zM20 11h4v2h-4zM3.5 5l1.4-1.4 2.8 2.8-1.4 1.4zM16.3 17.6l1.4-1.4 2.8 2.8-1.4 1.4zM3.5 19l2.8-2.8 1.4 1.4-2.8 2.8zM16.3 6.4l2.8-2.8 1.4 1.4-2.8 2.8z', '#E9873A']],
+  moon: [['M15 3a9 9 0 1 0 6 13 7 7 0 0 1-6-13z', '#F5B53D']],
+  tree: [['M12 2a7 7 0 1 0 .01 0z', '#4E9F3D'], ['M11 13h2v9h-2z', '#7A3E14']],
+  leaf: [['M4 20C4 9 11 4 20 4c0 9-5 16-16 16z', '#4E9F3D'], ['M5 19L17 7', '#2F6B23']],
+  duck: [['M4 15c0-3 3-5 7-5h1c0-3 2-5 4-5s3 2 3 3l-1 2c2 1 3 3 3 5 0 3-3 5-8 5s-9-2-9-5z', '#F5B53D'], ['M19 7l3 1-3 1z', '#E9873A'], ['M16 7a.9.9 0 1 0 .01 0z', D]],
+  cookie: [['M12 3a9 9 0 1 0 .01 0z', '#D9A066'], ['M8 8a1.3 1.3 0 1 0 .01 0zM14 7a1.1 1.1 0 1 0 .01 0zM15 13a1.4 1.4 0 1 0 .01 0zM9 15a1.2 1.2 0 1 0 .01 0z', '#5C3317']],
+  balloon: [['M12 2a7 8 0 0 1 7 8c0 5-4 8-7 8s-7-3-7-8a7 8 0 0 1 7-8z', '#D63B2F'], ['M11.4 18h1.2v5h-1.2z', '#7A5A45']],
+  shell: [['M12 3c5 0 9 4 9 9l-9 9-9-9c0-5 4-9 9-9z', '#F2B8A0'], ['M11.3 6h1.4v13h-1.4zM7 9l1-1 4 11zM17 9l-1-1-4 11z', '#E46A8E']],
+  block: [['M3 7l9-4 9 4v10l-9 4-9-4z', '#2F86C9'], ['M3 7l9-4 9 4-9 4z', '#6FB6EA']],
+  bug: [['M12 7a7 7 0 1 0 .01 0z', '#D63B2F'], ['M12 2a3 3 0 1 0 .01 0z', D], ['M11.4 7h1.2v13h-1.2zM8 11a1.4 1.4 0 1 0 .01 0zM16 11a1.4 1.4 0 1 0 .01 0zM9 16a1.3 1.3 0 1 0 .01 0zM15 16a1.3 1.3 0 1 0 .01 0z', D]],
+  cloud: [['M6 18a4 4 0 0 1 0-8 6 6 0 0 1 11.5-1.5A4.5 4.5 0 0 1 18 18z', '#9DC9EE']],
+  drop: [['M12 2c4 6 7 9 7 13a7 7 0 0 1-14 0c0-4 3-7 7-13z', '#2F86C9']],
+  house: [['M3 11l9-8 9 8v10H3z', '#E9873A'], ['M10 15h4v6h-4z', '#7A3E14'], ['M3 11l9-8 9 8-1.4 1.4L12 5.8 4.4 12.4z', '#D63B2F']],
+  bell: [['M6 16V11a6 6 0 0 1 12 0v5l2 2H4z', '#F5B53D'], ['M10 20h4a2 2 0 0 1-4 0z', '#C98A1C']],
+  drum: [['M4 8c0-2 16-2 16 0v9c0 3-16 3-16 0z', '#D63B2F'], ['M4 8c0 2 16 2 16 0s-16-2-16 0z', '#FCEBD3']],
+  book: [['M3 4h8c1 0 1 1 1 1v16c0-1-1-1-1-1H3z', '#2F86C9'], ['M21 4h-8c-1 0-1 1-1 1v16c0-1 1-1 1-1h8z', '#4E9F3D']],
+  cup: [['M5 6h12v8a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z', '#E9873A'], ['M17 8h2a3 3 0 0 1 0 6h-2v-2h2a1 1 0 0 0 0-2h-2z', '#C9631E']],
+  key: [['M7 7a5 5 0 1 0 .01 0zM11 11h11v3h-2v-2h-2v2h-2v-2h-5z', '#F5B53D'], ['M7 10a1.8 1.8 0 1 0 .01 0z', W]],
+  planet: [['M12 5a7 7 0 1 0 .01 0z', '#8466D6'], ['M1 14c4-3 18-7 22-5l-1.2 1.4c-4-1-15 3-19.6 4.8z', '#F5B53D']]
+};
+const WORLD = {
+  math: ['MATH MEADOW', '#4E9F3D', '#2F6B23', '#E3F3DD', '#B9DDB0'], reading: ['READING FOREST', '#2F86C9', '#1F5F92', '#DDEEFB', '#A9CDEE'],
+  science: ['SCIENCE SKY', '#8466D6', '#5A40A8', '#ECE6FB', '#CBBEF2'], feelings: ['FEELINGS COTTAGE', '#E46A8E', '#A3355A', '#FCE4EB', '#F2B6C8'],
+  logic: ['LOGIC LANE', '#2F86C9', '#1F5F92', '#DDEEFB', '#A9CDEE'], memory: ['MEMORY POND', '#8466D6', '#5A40A8', '#ECE6FB', '#CBBEF2'],
+  creativity: ['CREATIVITY STUDIO', '#D63B2F', '#A8281E', '#FCE4EB', '#F2B6C8'], wiggle: ['WIGGLE PARK', '#D9894A', '#A0531C', '#FCEBD3', '#EBCBA4']
+};
+const PADS = [['#D63B2F', '#A8281E'], ['#2F86C9', '#1F5F92'], ['#4E9F3D', '#2F6B23'], ['#F5B53D', '#C98A1C']];
+const INKS = [['Black', D], ['Red', '#D63B2F'], ['Blue', '#2F86C9'], ['Green', '#4E9F3D'], ['Yellow', '#F5B53D']];
+function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+function iconPaths(name, color) { const base = ICON[name] || ICON.circle; return base.map((p, i) => ({ d: p[0], f: i === 0 && color ? (COLORS[color] || color) : p[1] })); }
+function parse(t, big) {
+  if (typeof t === 'string' && t.charAt(0) === '@') {
+    const m = /^@([a-z]+)(?::([a-z]+))?(?:\*(\d+))?$/.exec(t) || [];
+    const k = Math.max(1, parseInt(m[3] || '1', 10));
+    const paths = iconPaths(m[1], m[2]);
+    const icons = []; for (let i = 0; i < k; i++) icons.push(paths);
+    const size = k === 1 ? (big || 44) : k <= 3 ? 30 : k <= 6 ? 22 : 16;
+    return { icons: icons, size: size, isText: false, text: '', fs: 16, label: (m[2] ? m[2] + ' ' : '') + (k > 1 ? k + ' ' : '') + m[1] };
+  }
+  const s = String(t);
+  return { icons: [], size: 0, isText: true, text: s, fs: s.length > 24 ? 15 : s.length > 12 ? 17 : s.length > 3 ? 20 : 30, label: s };
+}
+function shuffle(arr, seed) { const a = arr.slice(); let s = seed || 7; for (let i = a.length - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; const j = Math.floor(s / 233280 * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+class Component extends DCLogic {
+  componentDidMount() {
+    this.timers = [];
+    fetch('content/play.json').then((r) => r.json()).then((d) => {
+      const id = ls('avilo.activity') || 'math-cubs-01';
+      const act = d.activities.find((a) => a.id === id) || d.activities[0];
+      this.all = d.activities;
+      this.start(act);
+    }).catch(() => this.setState({ failed: true }));
+  }
+  componentWillUnmount() { (this.timers || []).forEach(clearTimeout); clearInterval(this.rt); }
+  later(fn, ms) { (this.timers = this.timers || []).push(setTimeout(fn, ms)); }
+  start(act) {
+    ls('avilo.activity', act.id);
+    this.setState({ act: act, i: 0, stats: { right: 0, tries: 0, hints: 0, t0: Date.now() }, done: false });
+    this.round(act, 0);
+  }
+  round(act, i) {
+    const rd = act.rounds[i];
+    const st = { i: i, picked: null, result: null, tip: false, open: [], matched: [], sortIdx: 0, built: [], used: [], popped: [], dotIdx: 0, strokes: [], ink: D, guess: -1, why: null, chosen: null, rhythmIn: [], flash: -1, rhythmPhase: 'watch', motionRes: null, look: false, bad: null, mStart: Date.now(), rStart: Date.now(), hintUsed: false };
+    if (rd.engine === 'match') { const cards = []; rd.pairs.forEach((p, k) => { cards.push({ k: k, t: p[0], id: k + 'a' }); cards.push({ k: k, t: p[1], id: k + 'b' }); }); st.cards = shuffle(cards, i * 31 + act.id.length * 7); }
+    if (rd.engine === 'build') st.order = shuffle(rd.pieces.map((p, k) => k), i + 3);
+    if (rd.engine === 'pop') st.layout = rd.bubbles.map((b, k) => ({ x: 14 + ((k * 97) % 260), y: 18 + ((k * 61) % 250), d: ((k * 37) % 20) / 10 }));
+    if (rd.hide || rd.engine === 'changed') { st.look = true; this.later(() => this.setState({ look: false, rStart: Date.now() }), act.band === 'cubs' ? 3800 : 3000); }
+    if (rd.engine === 'rhythm') this.later(() => this.playSeq(rd), 600);
+    if (rd.engine === 'motion') st.mStart = Date.now();
+    this.setState(st);
+    if (act.band === 'cubs') this.later(() => this.say(rd.q || rd.scene || act.prompt), 300);
+  }
+  say(text) { try { const u = new SpeechSynthesisUtterance(text); u.rate = 0.92; u.pitch = 1.05; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) {} }
+  playSeq(rd) {
+    this.setState({ rhythmPhase: 'watch', rhythmIn: [] });
+    rd.seq.forEach((p, k) => { this.later(() => this.setState({ flash: p, fk: k }), k * 700); this.later(() => this.setState({ flash: -1 }), k * 700 + 450); });
+    this.later(() => this.setState({ rhythmPhase: 'play', rStart: Date.now() }), rd.seq.length * 700 + 200);
+  }
+  fire(gentle) { this.setState({ burst: false }); this.later(() => this.setState({ burst: true, gentle: gentle }), 20); this.later(() => this.setState({ burst: false }), 2000); }
+  record(ok) {
+    const s = this.state, act = s.act, rd = act.rounds[s.i];
+    const entry = { id: act.id, world: act.world, band: act.band, engine: rd.engine, round: s.i, ok: ok, ms: Date.now() - (s.rStart || Date.now()), hint: !!s.hintUsed, ts: Date.now() };
+    try { const all = JSON.parse(ls('avilo.attempts') || '[]'); all.push(entry); ls('avilo.attempts', JSON.stringify(all.slice(-600))); } catch (e) {}
+    const stats = { ...s.stats, tries: s.stats.tries + 1, right: s.stats.right + (ok ? 1 : 0), hints: s.stats.hints + (s.hintUsed ? 1 : 0) };
+    this.setState({ stats: stats });
+  }
+  win() { this.record(true); this.fire(false); this.setState({ result: 'right' }); }
+  miss(soft) { this.record(false); this.fire(true); if (!soft) this.later(() => this.setState({ result: 'wrong' }), 450); }
+  nextRound() {
+    const s = this.state, act = s.act;
+    if (s.i + 1 < act.rounds.length) return this.round(act, s.i + 1);
+    try { const done = JSON.parse(ls('avilo.done') || '{}'); done[act.id] = Math.round(100 * s.stats.right / Math.max(1, s.stats.tries)); ls('avilo.done', JSON.stringify(done)); } catch (e) {}
+    this.fire(false);
+    this.setState({ done: true, result: null });
+  }
+  renderVals() {
+    const s = this.state || {};
+    const blank = { loading: true, ready: false, loadingText: s.failed ? 'Could not load the games. Reopen this screen.' : 'Getting the game ready…', bg: '#FFF6E8', accent: '#D9894A', accentDark: '#A0531C', pct: 0, roundLabel: '', worldLabel: 'AVILO', title: '', speak: () => {}, showTip: () => {} };
+    if (!s.act) return blank;
+    const act = s.act, rd = act.rounds[s.i], eng = rd.engine;
+    const wc = WORLD[act.world] || WORLD.math;
+    const look = !!s.look;
+    const showChoices = ['pick', 'sound', 'pattern', 'count'].includes(eng) && !look;
+    const vm = {
+      loading: false, ready: true, bg: wc[3], accent: wc[1], accentDark: wc[2], accentSoft: wc[4], shadow: wc[4],
+      worldLabel: wc[0], title: act.title, roundLabel: (s.i + 1) + ' of ' + act.rounds.length, pct: Math.round(100 * (s.i + (s.result === 'right' ? 1 : 0)) / act.rounds.length),
+      question: rd.q || (eng === 'choice' ? 'What would you do?' : eng === 'match' ? 'Find the pairs!' : eng === 'sort' ? 'Sort each one into the right group.' : eng === 'trace' ? 'Join the dots from 1 to the end.' : eng === 'draw' ? 'Draw a ' + rd.word + '!' : eng === 'rhythm' ? 'Watch, then copy the pattern.' : eng === 'pop' ? 'Pop the right ones!' : act.prompt),
+      memorizing: look, memorizeLabel: eng === 'changed' ? 'Remember the pictures…' : 'Look and remember…',
+      hasRead: !!rd.read && (look || !rd.hide), read: rd.read || '',
+      hasShow: !!rd.show && (look || !rd.hide), show: (rd.show || []).map((t) => parse(t, 40)),
+      dCount: eng === 'count' ? 'flex' : 'none', dPickIcon: eng === 'pick' && rd.icon ? 'flex' : 'none', dSound: eng === 'sound' ? 'flex' : 'none',
+      dPattern: eng === 'pattern' ? 'flex' : 'none', dChoices: showChoices ? 'flex' : 'none', dMatch: eng === 'match' ? 'grid' : 'none', dSort: eng === 'sort' ? 'flex' : 'none',
+      dBuild: eng === 'build' && !look ? 'flex' : 'none', dChoice: eng === 'choice' ? 'flex' : 'none', dChanged: eng === 'changed' ? 'grid' : 'none', dPop: eng === 'pop' ? 'block' : 'none',
+      dTrace: eng === 'trace' ? 'flex' : 'none', dDraw: eng === 'draw' ? 'flex' : 'none', dRhythm: eng === 'rhythm' ? 'flex' : 'none', dMotion: eng === 'motion' ? 'flex' : 'none',
+      tip: !!s.tip, tipText: act.tip, right: s.result === 'right' && !s.done, wrong: s.result === 'wrong' && !s.done, finished: !!s.done,
+      cheer: ['You did it!', 'Brilliant!', 'Super!', 'Way to go!', 'Amazing!'][s.i % 5], cheerSub: s.i + 1 < act.rounds.length ? 'On to the next one.' : 'That was the last one!',
+      tryText: eng === 'match' || eng === 'sort' ? 'Look closely and try once more.' : 'Mistakes help your brain grow. Try again!',
+      burst: !!s.burst,
+      speak: () => this.say(rd.say || rd.q || rd.scene || act.prompt),
+      showTip: () => { this.setState({ tip: true, hintUsed: true }); this.say(act.tip); },
+      hideTip: () => this.setState({ tip: false }),
+      next: () => this.nextRound(), retry: () => this.round(act, s.i),
+      // shared choices (pick, sound, pattern, count)
+      choices: (rd.choices || []).map((c, k) => {
+        const p = parse(c, eng === 'pattern' ? 40 : 46);
+        const isAns = k === rd.answer, tapped = s.picked === k;
+        return { ...p, aria: p.label, basis: (rd.choices.length > 3 ? 40 : 28) + '%', cls: tapped ? (isAns ? 'right' : 'shake') : '',
+          tap: () => { if (s.result) return; this.setState({ picked: k }); if (isAns) this.win(); else this.miss(); } };
+      }),
+      playSound: () => this.say(rd.say),
+      countIcons: eng === 'count' && (look || !rd.hide) ? Array.from({ length: rd.n }, () => iconPaths(rd.icon, rd.color)) : [],
+      countHidden: eng === 'count' && rd.hide && !look, hiddenText: 'How many were there?',
+      pickIcon: eng === 'pick' && rd.icon ? iconPaths(rd.icon) : [],
+      seq: (rd.seq && (look || !rd.hide) ? rd.seq : (rd.seq || []).map(() => '·')).map((t) => parse(t, 40))
+    };
+    vm.pieces2 = []; { const cols = s.gentle ? ['#F5B53D', '#FCEBD3', '#E9A263'] : ['#F5B53D', '#D63B2F', '#2F86C9', '#4E9F3D', '#8466D6', '#E46A8E']; const n = s.gentle ? 12 : 30; for (let k = 0; k < n; k++) vm.pieces2.push({ x: (k * 53) % 380, c: cols[k % cols.length], k: ['f1', 'f2', 'f3'][k % 3], d: ((k * 7) % 10) / 25 }); }
+    // match
+    if (eng === 'match') {
+      const cols = rd.pairs.length >= 5 ? 4 : 3; vm.matchCols = cols; vm.cardH = rd.pairs.length >= 5 ? 74 : 96;
+      vm.cards = (s.cards || []).map((c) => {
+        const up = s.open.includes(c.id) || s.matched.includes(c.k);
+        const p = parse(c.t, 38);
+        return { ...p, up: up, down: !up, aria: up ? p.label : 'Hidden card', fg: s.matched.includes(c.k) ? '#FFFFFF' : '#3B2418', bg: s.matched.includes(c.k) ? wc[1] : up ? '#FFFFFF' : wc[2], cls: '', fs: Math.min(p.fs, 16),
+          tap: () => {
+            if (up || s.open.length >= 2 || s.result) return;
+            const open = s.open.concat(c.id); this.setState({ open: open });
+            if (open.length === 2) {
+              const a = s.cards.find((x) => x.id === open[0]);
+              if (a.k === c.k) { const m = s.matched.concat(c.k); this.later(() => { this.setState({ matched: m, open: [] }); if (m.length === rd.pairs.length) this.win(); }, 350); }
+              else { this.record(false); this.later(() => this.setState({ open: [] }), 800); }
+            }
+          } };
+      });
+    }
+    // sort
+    if (eng === 'sort') {
+      const it = rd.items[Math.min(s.sortIdx, rd.items.length - 1)];
+      vm.sortItem = parse(it[0], 56); vm.sortLeft = (rd.items.length - s.sortIdx) + ' left to sort';
+      vm.bins = rd.bins.map((b, k) => ({ label: b, bg: '#FFFFFF', cls: s.bad === 'bin' + k ? 'shake' : '',
+        tap: () => { if (s.result) return; if (k === it[1]) { const n = s.sortIdx + 1; this.setState({ sortIdx: n, bad: null }); if (n >= rd.items.length) this.win(); } else { this.record(false); this.fire(true); this.setState({ bad: 'bin' + k }); this.later(() => this.setState({ bad: null }), 500); } } }));
+    }
+    // build
+    if (eng === 'build') {
+      vm.built = s.built.map((k) => parse(rd.pieces[k], 30)); vm.buildEmpty = !s.built.length; vm.buildHint = rd.free ? 'Tap them in any order you like.' : 'Tap the pieces in the right order.';
+      vm.pieces = (s.order || []).map((k) => {
+        const used = s.built.includes(k); const p = parse(rd.pieces[k], 30);
+        return { ...p, op: used ? 0.3 : 1, cls: s.bad === k ? 'shake' : '',
+          tap: () => {
+            if (used || s.result) return;
+            const nextNeeded = rd.answer[s.built.length];
+            if (rd.free || rd.pieces[k] === nextNeeded) { const b = s.built.concat(k); this.setState({ built: b, bad: null }); if (b.length === rd.answer.length) this.win(); }
+            else { this.record(false); this.fire(true); this.setState({ bad: k }); this.later(() => this.setState({ bad: null }), 500); }
+          } };
+      });
+      vm.undo = () => this.setState({ built: s.built.slice(0, -1) });
+    }
+    // choice
+    if (eng === 'choice') {
+      vm.scene = rd.scene;
+      vm.options = rd.options.map((o, k) => ({ t: o.t, cls: s.chosen === k ? (o.ok ? 'right' : 'shake') : '',
+        tap: () => { if (s.result) return; this.setState({ chosen: k, why: o.why, whyOk: o.ok }); if (o.ok) this.later(() => this.win(), 900); else { this.record(false); this.fire(true); } } }));
+      vm.hasWhy = !!s.why; vm.why = s.why || ''; vm.whyBg = s.whyOk ? '#E3F3DD' : '#FCE4EB'; vm.whyFg = s.whyOk ? '#2F6B23' : '#A3355A';
+    }
+    // changed
+    if (eng === 'changed') {
+      vm.gridCols = rd.grid.length > 6 ? 4 : 3;
+      vm.gridCells = rd.grid.map((g, k) => {
+        const name = !look && k === rd.idx ? rd.swap : g;
+        return { paths: iconPaths(name), aria: name, cls: s.picked === k ? (k === rd.idx ? 'right' : 'shake') : '',
+          tap: () => { if (look || s.result) return; this.setState({ picked: k }); if (k === rd.idx) this.win(); else this.miss(); } };
+      });
+    }
+    // pop
+    if (eng === 'pop') {
+      const left = rd.goal - s.popped.filter((k) => rd.bubbles[k] === rd.target).length;
+      vm.popLeft = left + ' to go'; vm.question = rd.q || ('Pop every ' + parse(rd.target).label + '!');
+      vm.bubbles = rd.bubbles.map((b, k) => {
+        const p = parse(b, 34); const L = (s.layout || [])[k] || { x: 0, y: 0, d: 0 }; const gone = s.popped.includes(k);
+        return { ...p, isz: p.icons.length > 1 ? 18 : 34, fs: Math.min(p.fs, 20), x: L.x, y: L.y, d: L.d, s: p.isText && p.text.length > 6 ? 92 : 76, disp: gone ? 'none' : 'flex', aria: p.label,
+          bg: s.bad === k ? '#D63B2F' : '#FFF6E8', cls: s.bad === k ? 'shake' : '',
+          tap: () => { if (gone || s.result) return; if (b === rd.target) { const pp = s.popped.concat(k); this.setState({ popped: pp }); if (pp.filter((x) => rd.bubbles[x] === rd.target).length >= rd.goal) this.win(); } else { this.record(false); this.fire(true); this.setState({ bad: k }); this.later(() => this.setState({ bad: null }), 450); } } };
+      });
+    }
+    // trace
+    if (eng === 'trace') {
+      const pts = rd.dots;
+      vm.traceAria = 'Dot path for ' + rd.label; vm.traceGuide = pts.map((p) => p.join(',')).join(' ');
+      vm.traceDone = pts.slice(0, s.dotIdx).map((p) => p.join(',')).join(' ');
+      vm.dots = pts.map((p, k) => ({ x: p[0], y: p[1], ty: p[1] + 1.6, n: String(k + 1), r: k === s.dotIdx ? 6.5 : 4.8,
+        fill: k < s.dotIdx ? wc[1] : k === s.dotIdx ? '#D63B2F' : s.bad === k ? '#D63B2F' : '#FFF6E8', tf: k <= s.dotIdx ? '#FFFFFF' : '#7A5A45',
+        tap: () => { if (s.result) return; if (k === s.dotIdx) { const n = s.dotIdx + 1; this.setState({ dotIdx: n }); if (n >= pts.length) this.win(); } else if (k > s.dotIdx) { this.record(false); this.setState({ bad: k }); this.later(() => this.setState({ bad: null }), 400); } } }));
+    }
+    // draw
+    if (eng === 'draw') {
+      vm.strokes = s.strokes; vm.guessing = s.guess >= 0;
+      const g = rd.guesses[Math.max(0, s.guess)]; const last = s.guess >= rd.guesses.length - 1;
+      vm.guessText = last ? 'It’s a ' + rd.word + '! I knew it!' : 'Hmm… is it a ' + g + '?';
+      vm.inks = INKS.map((c) => ({ name: c[0], hex: c[1], ring: s.ink === c[1] ? '4px solid #FFFFFF' : '2px solid #FFFFFF', tap: () => this.setState({ ink: c[1] }) }));
+      const pt = (e) => { const b = e.currentTarget.getBoundingClientRect(); return [Math.round((e.clientX - b.left) * 354 / b.width), Math.round((e.clientY - b.top) * 300 / b.height)]; };
+      vm.penDown = (e) => { const p = pt(e); this.pen = true; this.setState({ strokes: s.strokes.concat({ d: 'M' + p[0] + ' ' + p[1], c: s.ink }) }); };
+      vm.penMove = (e) => { if (!this.pen) return; const p = pt(e); const st = (this.state.strokes || []).slice(); if (!st.length) return; st[st.length - 1] = { ...st[st.length - 1], d: st[st.length - 1].d + ' L' + p[0] + ' ' + p[1] }; this.setState({ strokes: st }); };
+      vm.penUp = () => { this.pen = false; };
+      vm.clearPad = () => this.setState({ strokes: [], guess: -1 });
+      vm.finishDrawing = () => { if (s.guess >= 0 || !s.strokes.length) return; rd.guesses.forEach((x, k) => this.later(() => { this.setState({ guess: k }); this.say(k === rd.guesses.length - 1 ? 'It’s a ' + rd.word + '!' : 'Is it a ' + x + '?'); if (k === rd.guesses.length - 1) this.later(() => this.win(), 900); }, k * 1300)); };
+    }
+    // rhythm
+    if (eng === 'rhythm') {
+      vm.rhythmLabel = s.rhythmPhase === 'watch' ? 'Watch…' : 'Your turn! ' + s.rhythmIn.length + ' of ' + rd.seq.length;
+      vm.pads = Array.from({ length: rd.pads }, (_, k) => ({ bg: PADS[k][0], edge: PADS[k][1], aria: 'Pad ' + (k + 1), op: s.rhythmPhase === 'watch' && s.flash !== k ? 0.55 : 1, cls: s.flash === k ? 'lit' : s.bad === 'pad' + k ? 'shake' : '',
+        tap: () => {
+          if (s.rhythmPhase !== 'play' || s.result) return;
+          this.setState({ flash: k }); this.later(() => this.setState({ flash: -1 }), 220);
+          const inp = s.rhythmIn.concat(k);
+          if (rd.seq[inp.length - 1] !== k) { this.record(false); this.fire(true); this.setState({ bad: 'pad' + k }); this.later(() => { this.setState({ bad: null }); this.playSeq(rd); }, 700); return; }
+          this.setState({ rhythmIn: inp }); if (inp.length === rd.seq.length) this.win();
+        } }));
+      vm.replay = () => this.playSeq(rd);
+    }
+    // motion
+    if (eng === 'motion') {
+      const center = 30 + ((s.i * 17 + act.id.length * 5) % 40);
+      vm.zoneW = rd.zone; vm.zoneL = Math.max(0, center - rd.zone / 2); vm.sweepS = (1.6 / rd.speed).toFixed(2);
+      vm.motionCls = s.motionRes === 'miss' ? 'shake' : s.motionRes === 'hit' ? 'right' : '';
+      vm.motionLabel = s.motionRes === 'miss' ? 'So close! Wait for the green.' : 'Tap when the black marker is in the green.';
+      vm.motionTap = () => {
+        if (s.result) return;
+        const Dur = 1.6 / rd.speed, t = (Date.now() - s.mStart) / 1000, ph = t % (2 * Dur), pos = (ph < Dur ? ph / Dur : 2 - ph / Dur) * 100;
+        if (Math.abs(pos - (vm.zoneL + rd.zone / 2)) <= rd.zone / 2 + 2) { this.setState({ motionRes: 'hit' }); this.win(); }
+        else { this.record(false); this.fire(true); this.setState({ motionRes: 'miss' }); this.later(() => this.setState({ motionRes: null }), 600); }
+      };
+    }
+    // finished
+    if (s.done) {
+      const acc = Math.round(100 * s.stats.right / Math.max(1, s.stats.tries));
+      const secs = Math.round((Date.now() - s.stats.t0) / 1000);
+      vm.doneTitle = act.title + ' complete!';
+      vm.stats = [{ v: acc + '%', l: 'accuracy' }, { v: Math.floor(secs / 60) + ':' + String(secs % 60).padStart(2, '0'), l: 'time' }, { v: String(s.stats.hints), l: 'tips used' }];
+      const nxt = (this.all || []).find((a) => a.world === act.world && a.band === act.band && a.order === act.order + 1);
+      vm.nextLabel = nxt ? 'Next: ' + nxt.title : 'Back to the world';
+      vm.playNext = () => { if (nxt) this.start(nxt); };
+    }
+    return vm;
+  }
+}
+</script>
+</body>
+</html>

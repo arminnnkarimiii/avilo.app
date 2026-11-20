@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My progress</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.px{image-rendering:pixelated;object-fit:contain}
+.grow{transition:width .8s ease}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 54px 18px 10px">
+    <a href="KidHome.dc.html" aria-label="Back home" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <span style="font-size: 24px; font-weight: 900">My progress</span>
+  </div>
+  <div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 4px 18px 28px; display: flex; flex-direction: column; gap: 14px">
+    <div style="background: {{heroBg}}; border-radius: 28px; padding: 16px; display: flex; align-items: flex-end; gap: 14px; color: #FFFFFF; position: relative; overflow: hidden">
+      <div style="width: 92px; height: 120px; border-radius: 22px; background: #FCEBD3; display: grid; place-items: end center; padding-bottom: 6px; box-sizing: border-box; overflow: hidden; flex: none"><img class="px" src="/_blob/7d9d62f29d7d04f9c3e6fc67ffe18fbe" alt="Avi" style="width: 58px; height: 100px"></div>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px">
+        <span style="font-size: 28px; line-height: 30px; font-weight: 900">{{heroName}}</span>
+        <span style="font-size: 14px; font-weight: 800">{{heroPath}}</span>
+        <span style="align-self: flex-start; margin-top: 4px; padding: 5px 10px; border-radius: 999px; background: #FFF6E8; color: #3B2418; font-size: 13px; font-weight: 900">{{heroRoad}}</span>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+        <div style="background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 16px; padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 2px"><span style="font-size: 22px; font-weight: 900; color: {{s.c}}">{{s.v}}</span><span style="font-size: 11.5px; font-weight: 800; color: #7A5A45; text-align: center">{{s.l}}</span></div>
+      </sc-for>
+    </div>
+    <sc-if value="{{demo}}" hint-placeholder-val="{{true}}"><div style="border-radius: 16px; background: #FCEBD3; padding: 10px 12px; font-size: 13px; line-height: 18px; font-weight: 700; color: #A0531C">{{demoNote}}</div></sc-if>
+    <div style="background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 11px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 17px; font-weight: 900">My 8 worlds</span><span style="font-size: 12px; font-weight: 800; color: #7A5A45">accuracy · speed</span></div>
+      <sc-for list="{{worlds}}" as="w" hint-placeholder-count="8">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 800"><span>{{w.label}}</span><span style="color: {{w.tc}}">{{w.right}}</span></div>
+          <div style="height: 10px; border-radius: 999px; background: {{w.soft}}; overflow: hidden"><div class="grow" style="width: {{w.p}}%; height: 100%; border-radius: 999px; background: {{w.c}}"></div></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 17px; font-weight: 900">Little fingers</span>
+      <sc-for list="{{motor}}" as="m" hint-placeholder-count="3">
+        <div style="display: flex; align-items: center; gap: 10px"><span style="width: 40px; height: 36px; border-radius: 12px; background: #FCEBD3; display: grid; place-items: center; flex: none; font-size: 11px; font-weight: 900; color: #A0531C">{{m.icon}}</span><span style="flex-grow: 1; font-size: 14px; font-weight: 800">{{m.label}}</span><span style="font-size: 15px; font-weight: 900">{{m.v}}</span></div>
+      </sc-for>
+    </div>
+    <div style="background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 17px; font-weight: 900">Avi remembers</span>
+      <span style="font-size: 13px; line-height: 18px; font-weight: 700; color: #7A5A45">Skills come back after 1, 3 and 7 days so they stick.</span>
+      <sc-for list="{{review}}" as="r" hint-placeholder-count="3">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 14px; background: {{r.bg}}"><span style="flex-grow: 1; font-size: 14px; font-weight: 800">{{r.skill}}</span><span style="font-size: 12px; font-weight: 900; color: {{r.fg}}">{{r.when}}</span></div>
+      </sc-for>
+    </div>
+    <div style="background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 17px; font-weight: 900">Badges</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{badges}}" as="b" hint-placeholder-count="4"><span style="padding: 7px 11px; border-radius: 999px; background: {{b.bg}}; color: {{b.fg}}; font-size: 13px; font-weight: 900">{{b.t}}</span></sc-for></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const W = [['math', 'Math Meadow', '#4E9F3D', '#E3F3DD', '#2F6B23'], ['reading', 'Reading Forest', '#2F86C9', '#DDEEFB', '#1F5F92'], ['science', 'Science Sky', '#8466D6', '#ECE6FB', '#5A40A8'],
+  ['feelings', 'Feelings Cottage', '#E46A8E', '#FCE4EB', '#A3355A'], ['logic', 'Logic Lane', '#2F86C9', '#DDEEFB', '#1F5F92'], ['memory', 'Memory Pond', '#8466D6', '#ECE6FB', '#5A40A8'],
+  ['creativity', 'Creativity Studio', '#D63B2F', '#FCE4EB', '#A8281E'], ['wiggle', 'Wiggle Park', '#D9894A', '#FCEBD3', '#A0531C']];
+const DEMO = { math: [12, 91, 4.1], reading: [8, 74, 6.2], science: [5, 85, 5.0], feelings: [10, 88, 7.5], logic: [6, 80, 5.8], memory: [7, 83, 4.9], creativity: [9, 96, 9.0], wiggle: [14, 86, 1.9] };
+function get(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
+class Component extends DCLogic {
+  renderVals() {
+    const name = get('avilo.kid').trim() || 'Your child';
+    const age = parseInt(get('avilo.age') || '5', 10);
+    const band = age <= 5 ? 'cubs' : age <= 8 ? 'explorers' : 'trailblazers';
+    const COL = { red: '#D63B2F', orange: '#E9873A', yellow: '#C98A1C', green: '#4E9F3D', blue: '#2F86C9', purple: '#8466D6', pink: '#E46A8E', brown: '#A0531C' };
+    let at = []; try { at = JSON.parse(get('avilo.attempts') || '[]'); } catch (e) {}
+    let done = {}; try { done = JSON.parse(get('avilo.done') || '{}'); } catch (e) {}
+    const demo = at.length < 5;
+    const worlds = W.map((w) => {
+      const mine = at.filter((a) => a.world === w[0]);
+      const n = demo ? DEMO[w[0]][0] : Object.keys(done).filter((id) => id.startsWith(w[0] + '-')).length;
+      const acc = demo ? DEMO[w[0]][1] : mine.length ? Math.round(100 * mine.filter((a) => a.ok).length / mine.length) : 0;
+      const sec = demo ? DEMO[w[0]][2] : mine.length ? (mine.reduce((s, a) => s + a.ms, 0) / mine.length / 1000) : 0;
+      return { label: w[1] + ' · ' + n + '/20', right: mine.length || demo ? acc + '% · ' + sec.toFixed(1) + ' s' : 'not started', p: Math.min(100, Math.round(n / 20 * 100)), c: w[2], soft: w[3], tc: w[4] };
+    });
+    const motorAt = at.filter((a) => ['pop', 'trace', 'motion', 'rhythm'].includes(a.engine));
+    const tapAcc = motorAt.length ? Math.round(100 * motorAt.filter((a) => a.ok).length / motorAt.length) + '%' : '86%';
+    const react = motorAt.length ? (motorAt.reduce((s, a) => s + a.ms, 0) / motorAt.length / 1000).toFixed(1) + ' s' : '0.9 s';
+    const total = demo ? 61 : Object.keys(done).length;
+    const accAll = demo ? 85 : Math.round(100 * at.filter((a) => a.ok).length / Math.max(1, at.length));
+    const mins = demo ? 48 : Math.round(at.reduce((s, a) => s + a.ms, 0) / 60000);
+    const weak = worlds.slice().sort((a, b) => parseInt(a.right) - parseInt(b.right))[0];
+    return {
+      heroBg: COL[get('avilo.color')] || '#8466D6', heroName: name, heroPath: { cubs: 'Little Cubs path · age ', explorers: 'Explorers path · age ', trailblazers: 'Trailblazers path · age ' }[band] + age,
+      heroRoad: 'Road level ' + (Math.floor(total / 2) + 1) + ' · ' + (total < 20 ? 'Rainbow Hills' : total < 40 ? 'Pancake Valley' : 'Fruit Forest'),
+      stats: [{ v: String(demo ? 5 : new Set(at.map((a) => new Date(a.ts).toDateString())).size), l: 'days learning', c: '#D63B2F' }, { v: accAll + '%', l: 'accuracy', c: '#2F6B23' }, { v: String(total), l: 'activities', c: '#3B2418' }, { v: mins + 'm', l: 'time spent', c: '#3B2418' }],
+      demo: demo, demoNote: 'Example numbers. Play a few games and this page fills in with real accuracy, speed and progress.',
+      worlds: worlds,
+      motor: [{ icon: 'TAP', label: 'Tap accuracy', v: tapAcc }, { icon: 'SPEED', label: 'Average reaction time', v: react }, { icon: 'LINE', label: 'Tracing games done', v: String(at.filter((a) => a.engine === 'trace' && a.ok).length || (demo ? 6 : 0)) }],
+      review: [{ skill: 'Practise: ' + weak.label.split(' · ')[0], when: 'Today', bg: '#FCE4EB', fg: '#A8281E' }, { skill: 'Review yesterday’s skills', when: 'In 1 day', bg: '#FFF6E8', fg: '#7A5A45' }, { skill: 'Check last week’s skills', when: 'In 7 days', bg: '#FFF6E8', fg: '#7A5A45' }],
+      badges: [{ t: 'First week', bg: '#FCEBD3', fg: '#A0531C' }, { t: 'Counting star', bg: '#E3F3DD', fg: '#2F6B23' }, { t: 'Kind heart', bg: '#FCE4EB', fg: '#A3355A' }, { t: 'Rainbow Hills', bg: '#ECE6FB', fg: '#5A40A8' }, { t: 'Speedy fingers', bg: '#DDEEFB', fg: '#1F5F92' }]
+    };
+  }
+}
+</script>
+</body>
+</html>

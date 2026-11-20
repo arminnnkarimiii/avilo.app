@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quiz: interests</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.avi{image-rendering:pixelated;mix-blend-mode:multiply;object-fit:contain}
+.tile{cursor:pointer;font-family:Nunito,ui-rounded,system-ui,sans-serif}
+input:focus{outline:3px solid #D9894A;outline-offset:2px}
+@keyframes c1{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(-30px,-50px) rotate(220deg);opacity:0}}
+@keyframes c2{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(6px,-60px) rotate(-200deg);opacity:0}}
+@keyframes c3{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(34px,-46px) rotate(260deg);opacity:0}}
+.confetti{position:absolute;width:6px;height:6px;border-radius:2px;opacity:0;pointer-events:none}
+.c1{animation:c1 .8s ease-out forwards}.c2{animation:c2 .8s ease-out forwards}.c3{animation:c3 .8s ease-out forwards}
+@media (prefers-reduced-motion: reduce){.c1,.c2,.c3{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; padding: 58px 18px 30px; gap: 14px">
+  <div style="display: flex; align-items: center; gap: 14px">
+    <a href="QuizName.dc.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div style="flex-grow: 1; height: 14px; border-radius: 999px; background: #EED9BF; overflow: hidden"><div style="width: 20%; height: 100%; border-radius: 999px; background: #D9894A"></div></div>
+    <span style="font-size: 14px; font-weight: 800; color: #7A5A45">3/15</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 12px">
+    <div style="width: 72px; height: 72px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center; flex: none"><img class="avi" src="/_blob/8a179e8ed31ad24d65845f676910d08e" alt="Avi with an idea" style="width: 66px; height: 66px"></div>
+    <div style="display: flex; flex-direction: column; gap: 3px">
+      <h1 style="margin: 0; font-size: 22px; font-weight: 900; line-height: 27px">{{q}}</h1>
+      <span style="font-size: 13px; line-height: 18px; font-weight: 600; color: #7A5A45">{{sub}}</span>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+    <sc-for list="{{items}}" as="i" hint-placeholder-count="16">
+      <button type="button" class="tile" onClick="{{i.pick}}" aria-pressed="{{i.pressed}}" style="width: 100%; height: 82px; border-radius: 18px; border: {{i.border}}; background: {{i.bg}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 6px 2px; box-sizing: border-box; font-size: 12px; line-height: 14px; font-weight: 800; color: #3B2418; position: relative">
+        <span style="width: 32px; height: 32px; border-radius: 999px; background: {{i.color}}; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{i.d}}"/></svg></span>
+        <span>{{i.label}}</span>
+        <sc-if value="{{i.on}}" hint-placeholder-val="{{false}}"><span style="position: absolute; right: 5px; top: 5px; width: 18px; height: 18px; border-radius: 999px; background: #D63B2F; display: grid; place-items: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></sc-if>
+        <sc-if value="{{i.burst}}" hint-placeholder-val="{{false}}"><span class="confetti c1" style="left: 40%; top: 30%; background: #F5B53D"></span><span class="confetti c2" style="left: 50%; top: 30%; background: #D63B2F"></span><span class="confetti c3" style="left: 60%; top: 30%; background: #2F86C9"></span></sc-if>
+      </button>
+    </sc-for>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <label for="other" style="font-size: 15px; font-weight: 800">{{otherQ}}</label>
+    <input id="other" type="text" value="{{other}}" onChange="{{onOther}}" placeholder="{{otherHint}}" style="height: 48px; border-radius: 16px; border: 2px solid #EED9BF; background: #FFFFFF; padding: 0 14px; font: 700 16px Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; box-sizing: border-box">
+  </div>
+  <div style="flex-grow: 1"></div>
+  <a href="QuizMore.dc.html" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 800; text-decoration: none; box-shadow: 0 5px 0 #A8281E">Continue</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const D = {
+  dino: 'M4 17c0-5 3-9 8-9 2 0 3-2 5-2s3 1 3 3-2 2-3 2c0 4-2 6-5 6v2M8 17v2', star: 'M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z',
+  paw: 'M7 11a2 2 0 1 0 0-.1M17 11a2 2 0 1 0 0-.1M10 7a2 2 0 1 0 0-.1M14 7a2 2 0 1 0 0-.1M8 18c0-3 2-5 4-5s4 2 4 5c0 1.5-2 1.5-4 1s-4 .5-4-1z',
+  wave: 'M3 15c2 0 2-2 4.5-2s2.5 2 4.5 2 2-2 4.5-2 2.5 2 4.5 2M3 19c2 0 2-2 4.5-2s2.5 2 4.5 2 2-2 4.5-2 2.5 2 4.5 2', car: 'M3 15V11l2-4h10l3 4h3v4M3 15h18M7 18a2 2 0 1 0 0-.1M17 18a2 2 0 1 0 0-.1',
+  music: 'M9 18V5l11-2v13M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3zM20 16a3 3 0 1 1-3-3 3 3 0 0 1 3 3z', pen: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3',
+  ball: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18', crown: 'M4 18h16l1-10-5 4-4-7-4 7-5-4z',
+  robot: 'M6 8h12v10H6zM9 12h.01M15 12h.01M10 15h4M12 8V5M12 5h.01', pot: 'M6 13h12v4a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3zM6 13a6 6 0 0 1 12 0M12 4v3',
+  leaf: 'M12 21V11M12 11c0-4 3-7 8-7 0 5-3 7-8 7zM12 14c0-3-2-5-6-5 0 4 2 5 6 5z', blocks: 'M4 20h16M6 20V10h5v10M13 20V5h5v15', shield: 'M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6zM9 12l2 2 4-4',
+  dance: 'M12 5a2 2 0 1 0 0-.1M12 8v6l-3 6M12 14l3 6M8 10l4-2 4 2', pet: 'M5 9l2-5 3 4h4l3-4 2 5v5a7 7 0 0 1-14 0zM10 13h.01M14 13h.01',
+  code: 'M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14', game: 'M6 9h12a4 4 0 0 1 0 8H6a4 4 0 0 1 0-8zM8 11v4M6 13h4M15 12h.01M17 14h.01', search: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4',
+  book: 'M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2zM4 19V5', flask: 'M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3', camera: 'M4 8h4l2-3h4l2 3h4v11H4zM12 11a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
+  globe: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18', shirt: 'M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z', wand: 'M4 20L16 8M15 3v3M18 6h3M19 3l-2 2'
+};
+const LIST = {
+  cubs: [['dino', 'Dinosaurs', 'dino', '#4E9F3D'], ['animals', 'Animals', 'paw', '#D9894A'], ['vehicles', 'Cars & trains', 'car', '#2F86C9'], ['fairy', 'Princesses & knights', 'crown', '#8466D6'],
+    ['ocean', 'Ocean', 'wave', '#2F86C9'], ['music', 'Songs', 'music', '#E46A8E'], ['art', 'Colouring', 'pen', '#F5B53D'], ['building', 'Blocks', 'blocks', '#D63B2F'],
+    ['pets', 'Pets', 'pet', '#D9894A'], ['nature', 'Bugs & flowers', 'leaf', '#4E9F3D'], ['space', 'Moon & stars', 'star', '#8466D6'], ['superheroes', 'Superheroes', 'shield', '#E46A8E'],
+    ['dance', 'Dancing', 'dance', '#8466D6'], ['cooking', 'Pretend cooking', 'pot', '#A0531C'], ['sports', 'Ball games', 'ball', '#D63B2F'], ['books', 'Bedtime stories', 'book', '#2F86C9']],
+  explorers: [['dino', 'Dinosaurs', 'dino', '#4E9F3D'], ['space', 'Space', 'star', '#8466D6'], ['animals', 'Wild animals', 'paw', '#D9894A'], ['robots', 'Robots', 'robot', '#2F86C9'],
+    ['building', 'Building & Lego', 'blocks', '#D63B2F'], ['sports', 'Football & sports', 'ball', '#D63B2F'], ['science', 'Experiments', 'flask', '#4E9F3D'], ['art', 'Drawing', 'pen', '#F5B53D'],
+    ['music', 'Music', 'music', '#E46A8E'], ['magic', 'Magic & dragons', 'wand', '#8466D6'], ['ocean', 'Ocean life', 'wave', '#2F86C9'], ['games', 'Video games', 'game', '#A0531C'],
+    ['mystery', 'Mysteries', 'search', '#3B2418'], ['books', 'Reading', 'book', '#2F86C9'], ['dance', 'Dance', 'dance', '#E46A8E'], ['nature', 'Nature', 'leaf', '#4E9F3D']],
+  trailblazers: [['coding', 'Coding', 'code', '#2F86C9'], ['space', 'Space & astronomy', 'star', '#8466D6'], ['sports', 'Sports', 'ball', '#D63B2F'], ['games', 'Gaming', 'game', '#A0531C'],
+    ['mystery', 'Mysteries & detectives', 'search', '#3B2418'], ['science', 'Science', 'flask', '#4E9F3D'], ['music', 'Music', 'music', '#E46A8E'], ['art', 'Art & design', 'pen', '#F5B53D'],
+    ['history', 'History', 'globe', '#A0531C'], ['nature', 'Animals & nature', 'leaf', '#4E9F3D'], ['robots', 'Robots & tech', 'robot', '#2F86C9'], ['books', 'Fantasy books', 'book', '#8466D6'],
+    ['fashion', 'Fashion', 'shirt', '#E46A8E'], ['cooking', 'Cooking', 'pot', '#D9894A'], ['film', 'Film & photos', 'camera', '#3B2418'], ['building', 'Inventing', 'blocks', '#D63B2F']]
+};
+class Component extends DCLogic {
+  componentDidMount() {
+    const get = (k) => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } };
+    let picked = {}; try { JSON.parse(get('avilo.interests') || '[]').forEach((x) => { picked[x] = true; }); } catch (e) {}
+    this.setState({ picked: picked, other: get('avilo.otherInterest'), age: parseInt(get('avilo.age') || '5', 10), name: get('avilo.kid').trim(), gender: get('avilo.gender') });
+  }
+  save(picked) { try { localStorage.setItem('avilo.interests', JSON.stringify(Object.keys(picked).filter((k) => picked[k]))); } catch (e) {} }
+  renderVals() {
+    const s = this.state || {};
+    const age = s.age || 5, band = age <= 5 ? 'cubs' : age <= 8 ? 'explorers' : 'trailblazers';
+    const who = s.name || 'your child';
+    const picked = s.picked || {};
+    const he = s.gender === 'boy' ? 'he' : s.gender === 'girl' ? 'she' : 'they';
+    const items = LIST[band].map((x) => {
+      const on = !!picked[x[0]];
+      return { label: x[1], d: D[x[2]], color: x[3], on: on, pressed: on ? 'true' : 'false', border: on ? '3px solid #D9894A' : '2px solid #EED9BF', bg: on ? '#FCEBD3' : '#FFFFFF', burst: s.burst === x[0],
+        pick: () => { const p = { ...picked, [x[0]]: !on }; this.save(p); this.setState({ picked: p, burst: null }); if (!on) { setTimeout(() => this.setState({ burst: x[0] }), 20); setTimeout(() => this.setState({ burst: null }), 900); } } };
+    });
+    const n = items.filter((i) => i.on).length;
+    return {
+      q: 'What does ' + who + ' love?',
+      sub: n ? n + ' picked. Pick as many as you like.' : 'Pick as many as you like. They go into ' + (s.name ? s.name + '’s' : 'the') + ' stories and games.',
+      items: items,
+      otherQ: 'Anything else ' + he + (he === 'they' ? ' love?' : ' loves?'),
+      otherHint: band === 'cubs' ? 'For example: a cat called Pepper' : band === 'explorers' ? 'For example: volcanoes, Minecraft' : 'For example: chess, photography',
+      other: s.other || '',
+      onOther: (e) => { const v = e.target.value; try { localStorage.setItem('avilo.otherInterest', v); } catch (err) {} this.setState({ other: v }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

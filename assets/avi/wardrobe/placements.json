@@ -1,0 +1,90 @@
+{
+ "base": "avi-base.png",
+ "note": "Percent of avi-base size. One item per slot.",
+ "items": {
+  "fedora": {
+   "left": 9.2,
+   "top": -2.01,
+   "width": 82.76,
+   "slot": "head"
+  },
+  "crown": {
+   "left": 27.59,
+   "top": -5.35,
+   "width": 45.98,
+   "slot": "head"
+  },
+  "sunglasses": {
+   "left": 21.84,
+   "top": 20.05,
+   "width": 57.47,
+   "slot": "face"
+  },
+  "headphones": {
+   "left": -14.25,
+   "top": 1.34,
+   "width": 128.74,
+   "slot": "ears"
+  },
+  "aviator-cap": {
+   "left": 10.34,
+   "top": -9.36,
+   "width": 80.46,
+   "slot": "head"
+  },
+  "hoodie": {
+   "left": 6.9,
+   "top": 40.11,
+   "width": 87.36,
+   "slot": "body"
+  },
+  "varsity-jacket": {
+   "left": 5.75,
+   "top": 40.11,
+   "width": 89.66,
+   "slot": "body"
+  },
+  "hero-cape": {
+   "left": 5.75,
+   "top": 44.12,
+   "width": 89.66,
+   "slot": "back"
+  },
+  "wizard-hat": {
+   "left": 13.79,
+   "top": -23.4,
+   "width": 73.56,
+   "slot": "head"
+  },
+  "beanie": {
+   "left": 17.93,
+   "top": -13.37,
+   "width": 65.29,
+   "slot": "head"
+  },
+  "round-glasses": {
+   "left": 25.29,
+   "top": 22.73,
+   "width": 50.57,
+   "slot": "face"
+  },
+  "scarf": {
+   "left": 25.29,
+   "top": 42.78,
+   "width": 50.57,
+   "slot": "neck"
+  },
+  "satchel": {
+   "left": 57.47,
+   "top": 57.49,
+   "width": 39.08,
+   "slot": "side"
+  },
+  "detective-cap": {
+   "left": 13.79,
+   "top": -4.01,
+   "width": 73.56,
+   "slot": "head"
+  }
+ }
+}

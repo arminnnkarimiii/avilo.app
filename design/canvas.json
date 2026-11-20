@@ -1,0 +1,209 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-18T16:10:00Z"
+ },
+ "title": "Avilo App Screens",
+ "launch": {
+  "view": "canvas"
+ },
+ "pages": [],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "1 · Welcome",
+   "is_interactive": true
+  },
+  "QuizName.dc.html": {
+   "x": 470,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "2 · Quiz: name and age",
+   "is_interactive": true
+  },
+  "QuizInterests.dc.html": {
+   "x": 940,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "3 · Quiz: interests",
+   "is_interactive": true
+  },
+  "QuizMore.dc.html": {
+   "x": 1410,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "4 · Quiz: more about your child",
+   "is_interactive": true
+  },
+  "Building.dc.html": {
+   "x": 1880,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "5 · Avi builds the profile",
+   "is_interactive": true
+  },
+  "Profile.dc.html": {
+   "x": 2350,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "6 · Learning profile reveal",
+   "is_interactive": true
+  },
+  "Paywall.dc.html": {
+   "x": 2820,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "7 · Paywall",
+   "is_interactive": true
+  },
+  "SignIn.dc.html": {
+   "x": 0,
+   "y": 1290,
+   "w": 390,
+   "h": 844,
+   "title": "8 · Sign in with Apple",
+   "is_interactive": true
+  },
+  "TrialStarted.dc.html": {
+   "x": 470,
+   "y": 1290,
+   "w": 390,
+   "h": 844,
+   "title": "9 · Trial started",
+   "is_interactive": true
+  },
+  "KidHome.dc.html": {
+   "x": 940,
+   "y": 1290,
+   "w": 390,
+   "h": 844,
+   "title": "10 · Kid home",
+   "is_interactive": true
+  },
+  "Game.dc.html": {
+   "x": 1410,
+   "y": 1290,
+   "w": 390,
+   "h": 844,
+   "title": "11 · Games (14 game types, 480 activities)",
+   "is_interactive": true
+  },
+  "Story.dc.html": {
+   "x": 1880,
+   "y": 1290,
+   "w": 390,
+   "h": 844,
+   "title": "12 · Story book reader",
+   "is_interactive": true
+  },
+  "ParentDash.dc.html": {
+   "x": 2350,
+   "y": 1290,
+   "w": 390,
+   "h": 844,
+   "title": "13 · Parent dashboard",
+   "is_interactive": true
+  },
+  "World.dc.html": {
+   "x": 0,
+   "y": 2580,
+   "w": 390,
+   "h": 844,
+   "title": "14 · World activities (480)",
+   "is_interactive": true
+  },
+  "TrophyRoad.dc.html": {
+   "x": 470,
+   "y": 2580,
+   "w": 390,
+   "h": 844,
+   "title": "15 · Trophy road",
+   "is_interactive": true
+  },
+  "ChildProfile.dc.html": {
+   "x": 1410,
+   "y": 2580,
+   "w": 390,
+   "h": 844,
+   "title": "17 · My progress",
+   "is_interactive": true
+  },
+  "Stories.dc.html": {
+   "x": 940,
+   "y": 2580,
+   "w": 390,
+   "h": 844,
+   "title": "16 · Story library (9 books)",
+   "is_interactive": true
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "QuizName.dc.html",
+  "QuizInterests.dc.html",
+  "QuizMore.dc.html",
+  "Building.dc.html",
+  "Profile.dc.html",
+  "Paywall.dc.html",
+  "SignIn.dc.html",
+  "TrialStarted.dc.html",
+  "KidHome.dc.html",
+  "Game.dc.html",
+  "Story.dc.html",
+  "ParentDash.dc.html",
+  "World.dc.html",
+  "TrophyRoad.dc.html",
+  "Stories.dc.html",
+  "ChildProfile.dc.html"
+ ],
+ "notes": {
+  "onboarding": {
+   "x": 0,
+   "y": -300,
+   "text": "Parent onboarding: meet Avi, quiz, AI profile, paywall",
+   "kind": "title1",
+   "maxW": 3210
+  },
+  "kids": {
+   "x": 0,
+   "y": 990,
+   "text": "After the trial starts: kid app and parent dashboard",
+   "kind": "title1",
+   "maxW": 3210
+  },
+  "kids2": {
+   "x": 0,
+   "y": 2280,
+   "text": "Worlds, trophy road, story library, progress",
+   "kind": "title1",
+   "maxW": 2210
+  },
+  "protonotes": {
+   "x": 1880,
+   "y": 2580,
+   "w": 420,
+   "fill": "yellow",
+   "size": "m",
+   "text": "Prototype notes\n\n• Start at 1 · Welcome and press Play. Answers you give in the quiz (boy or girl, name, age, interests, colour) are saved in this browser and used on every screen.\n• World activities: pick any of the 480 and it opens in its own game type.\n• Every game records accuracy and speed; My progress and the parent dashboard read it.\n• Avi peeks on Kid home: first peek after ~6 s for the demo, then every 3–6 min.\n• Story pictures are drawn vector scenes; the real app swaps in AI paintings."
+  }
+ },
+ "designSystems": [
+  {
+   "title": "Avilo",
+   "namespace": "avilo",
+   "artifact": "https://claude.ai/artifact/N7TC8gcLqnGgG4VnR2LDom",
+   "version": "1795017687-3f1c",
+   "copiedAt": "2026-11-18T16:10:00Z"
+  }
+ ]
+}

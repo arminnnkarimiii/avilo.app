@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Avi builds the profile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.avi{image-rendering:pixelated;mix-blend-mode:multiply;object-fit:contain}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.bob{animation:bob 2.4s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin .9s linear infinite}
+@keyframes popin{0%{transform:scale(.3)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+.popin{animation:popin .35s ease-out both}
+@keyframes cfa{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(-26px,-34px) rotate(200deg);opacity:0}}
+@keyframes cfb{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(4px,-44px) rotate(-160deg);opacity:0}}
+@keyframes cfc{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(30px,-30px) rotate(240deg);opacity:0}}
+.cf{position:absolute;left:14px;top:14px;width:6px;height:6px;border-radius:1px;opacity:0}
+.cfa{animation:cfa .8s ease-out forwards}.cfb{animation:cfb .8s ease-out forwards}.cfc{animation:cfc .8s ease-out forwards}
+.bar{transition:width .9s ease}
+@media (prefers-reduced-motion: reduce){.bob,.spin,.popin,.cfa,.cfb,.cfc{animation:none}.bar{transition:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; align-items: center; padding: 84px 24px 40px; gap: 22px">
+  <div class="bob" style="width: 230px; height: 230px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center"><img class="avi" src="/_blob/ca58f1dd0f3c402ed2b8ec880944f2f4" alt="Avi reading a book" style="width: 206px; height: 206px"></div>
+  <div style="display: flex; flex-direction: column; gap: 8px; text-align: center">
+    <h1 style="margin: 0; font-size: 27px; line-height: 33px; font-weight: 900; text-wrap: balance">{{headline}}</h1>
+    <p style="margin: 0; font-size: 15px; font-weight: 600; color: #7A5A45">Matching 480 activities to their age, interests and personality.</p>
+  </div>
+  <div style="width: 100%; height: 16px; border-radius: 999px; background: #EED9BF; overflow: hidden"><div class="bar" style="width: {{pct}}%; height: 100%; border-radius: 999px; background: #D9894A"></div></div>
+  <div style="width: 100%; display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+      <div style="display: flex; align-items: center; gap: 12px; background: #FFFFFF; border: 2px solid {{s.border}}; border-radius: 16px; padding: 12px 14px; font-size: 16px; font-weight: 700; color: {{s.fg}}">
+        <span style="position: relative; width: 28px; height: 28px; flex: none">
+          <sc-if value="{{s.done}}" hint-placeholder-val="{{false}}">
+            <span class="popin" style="position: absolute; inset: 0; border-radius: 999px; background: #4E9F3D; display: grid; place-items: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+            <span class="cf cfa" style="background: #F5B53D"></span><span class="cf cfb" style="background: #D63B2F"></span><span class="cf cfc" style="background: #2F86C9"></span><span class="cf cfa" style="background: #8466D6; animation-delay: .08s"></span><span class="cf cfc" style="background: #4E9F3D; animation-delay: .1s"></span>
+          </sc-if>
+          <sc-if value="{{s.active}}" hint-placeholder-val="{{false}}"><span class="spin" style="position: absolute; inset: 2px; border-radius: 999px; border: 3px solid #EED9BF; border-top-color: #D9894A"></span></sc-if>
+          <sc-if value="{{s.waiting}}" hint-placeholder-val="{{true}}"><span style="position: absolute; inset: 2px; border-radius: 999px; border: 3px solid #EED9BF"></span></sc-if>
+        </span>
+        <span>{{s.label}}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <sc-if value="{{finished}}" hint-placeholder-val="{{false}}">
+    <a href="Profile.dc.html" class="popin" style="width: 100%; display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 800; text-decoration: none; box-shadow: 0 5px 0 #A8281E">{{txt1}}</a>
+    <button type="button" onClick="{{replay}}" style="border: 0; background: none; font: 800 14px Nunito, ui-rounded, system-ui, sans-serif; color: #A0531C; cursor: pointer">Replay</button>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+componentDidMount() { this.run(); }
+componentWillUnmount() { (this.timers || []).forEach(clearTimeout); }
+run() {
+(this.timers || []).forEach(clearTimeout);
+this.setState({ step: 0 });
+const at = [1600, 3300, 5100, 7200];
+this.timers = at.map((ms, i) => setTimeout(() => this.setState({ step: i + 1 }), ms));
+}
+kidNames() {
+let v = '';
+try { v = (localStorage.getItem('avilo.kid') || '').trim(); } catch (e) {}
+const has = !!v;
+const K = has ? v : 'your child';
+const KC = has ? v : 'Your child';
+const KP = has ? v + (/s$/i.test(v) ? "'" : "'s") : "your child's";
+const KPC = has ? KP : "Your child's";
+return { K: K, KC: KC, KP: KP, KPC: KPC, KPU: KP.toUpperCase(), KI: has ? v.charAt(0).toUpperCase() : '?' };
+}
+renderVals() {
+const n = this.kidNames();
+return Object.assign({ txt1: ("See " + n.KP + " profile").trim(), kid: n.K, kidCap: n.KC, kidPos: n.KP, kidPosCap: n.KPC, kidPosUpper: n.KPU, kidInitial: n.KI }, this._rv());
+}
+_rv() {
+const { K, KC, KP, KPC } = this.kidNames();
+const step = (this.state && this.state.step) || 0;
+const labels = ['Reading what makes ' + K + ' unique', 'Choosing the best ways to learn', 'Writing the first dinosaur story', 'Planning the first week'];
+const steps = labels.map((label, i) => ({
+label: label, done: i < step, active: i === step, waiting: i > step,
+border: i === step ? '#D9894A' : '#EED9BF',
+fg: i > step ? '#7A5A45' : '#3B2418'
+}));
+return {
+steps: steps, pct: step * 25, finished: step >= 4,
+headline: step >= 4 ? "" + KPC + " plan is ready!" : "Avi is making " + KP + " learning plan…",
+replay: () => this.run()
+};
+}
+}
+</script>
+</body>
+</html>

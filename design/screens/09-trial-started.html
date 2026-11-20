@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trial started</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.avi{image-rendering:pixelated;mix-blend-mode:multiply;object-fit:contain}
+@keyframes pop{0%{transform:scale(.6);opacity:.4}60%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.pop{animation:pop .7s ease-out both}
+@media (prefers-reduced-motion: reduce){.pop{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; align-items: center; padding: 96px 24px 40px; gap: 22px; position: relative; overflow: hidden">
+  <sc-for list="{{stars}}" as="s" hint-placeholder-count="10">
+    <span class="pop" style="position: absolute; left: {{s.x}}px; top: {{s.y}}px; width: {{s.size}}px; height: {{s.size}}px; background: {{s.c}}; animation-delay: {{s.d}}s"></span>
+  </sc-for>
+  <div class="pop" style="width: 280px; height: 280px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center; position: relative"><img class="avi" src="/_blob/906e3900b0bb3de6052376ac615ce99f" alt="Avi winking with a thumbs up" style="width: 260px; height: 260px"></div>
+  <div style="display: flex; flex-direction: column; gap: 8px; text-align: center; position: relative">
+    <h1 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 900">Yay! You're all set</h1>
+    <p style="margin: 0; font-size: 16px; line-height: 23px; font-weight: 600; color: #7A5A45">{{txt1}}</p>
+  </div>
+  <div style="width: 100%; display: flex; align-items: center; gap: 12px; background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 20px; padding: 12px 14px; box-sizing: border-box; position: relative">
+    <span style="width: 40px; height: 40px; border-radius: 12px; background: #DDEEFB; display: grid; place-items: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F5F92" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+    <span style="font-size: 14px; line-height: 19px; font-weight: 700">{{txt2}}</span>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <a href="KidHome.dc.html" style="width: 100%; display: flex; align-items: center; justify-content: center; height: 58px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 800; text-decoration: none; box-shadow: 0 5px 0 #A8281E; position: relative">{{txt3}}</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+kidNames() {
+let v = '';
+try { v = (localStorage.getItem('avilo.kid') || '').trim(); } catch (e) {}
+const has = !!v;
+const K = has ? v : 'your child';
+const KC = has ? v : 'Your child';
+const KP = has ? v + (/s$/i.test(v) ? "'" : "'s") : "your child's";
+const KPC = has ? KP : "Your child's";
+return { K: K, KC: KC, KP: KP, KPC: KPC, KPU: KP.toUpperCase(), KI: has ? v.charAt(0).toUpperCase() : '?' };
+}
+renderVals() {
+const n = this.kidNames();
+return Object.assign({ txt1: ("Your 7-day free trial has started. " + n.KPC + " first adventure is waiting.").trim(), txt2: ("Grown-up area is locked with a parent check, so " + n.K + " can't change settings or buy anything.").trim(), txt3: ("Hand the phone to " + n.K).trim(), kid: n.K, kidCap: n.KC, kidPos: n.KP, kidPosCap: n.KPC, kidPosUpper: n.KPU, kidInitial: n.KI }, this._rv());
+}
+_rv() {
+const { K, KC, KP, KPC } = this.kidNames();
+const c = ['#F5B53D', '#D63B2F', '#D9894A', '#4E9F3D', '#2F86C9'];
+const pts = [[38,70,12],[300,60,16],[340,180,10],[20,250,14],[60,410,10],[330,380,12],[180,40,10],[260,300,8],[110,140,8],[350,470,14]];
+return { stars: pts.map((p, i) => ({ x: p[0], y: p[1], size: p[2], c: c[i % c.length], d: (i * 0.08).toFixed(2) })) };
+}
+}
+</script>
+</body>
+</html>

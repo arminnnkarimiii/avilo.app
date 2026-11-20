@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quiz: more about your child</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.avi{image-rendering:pixelated;mix-blend-mode:multiply;object-fit:contain}
+.tile{cursor:pointer;font-family:Nunito,ui-rounded,system-ui,sans-serif}
+@keyframes slidein{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+.slidein{animation:slidein .3s ease-out both}
+.bar{transition:width .4s ease}
+textarea:focus{outline:3px solid #D9894A;outline-offset:2px}
+@keyframes c1{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(-34px,-54px) rotate(220deg);opacity:0}}
+@keyframes c2{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(6px,-66px) rotate(-200deg);opacity:0}}
+@keyframes c3{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(38px,-50px) rotate(260deg);opacity:0}}
+.confetti{position:absolute;width:6px;height:6px;border-radius:2px;opacity:0;pointer-events:none}
+.c1{animation:c1 .8s ease-out forwards}.c2{animation:c2 .8s ease-out forwards}.c3{animation:c3 .8s ease-out forwards}
+@media (prefers-reduced-motion: reduce){.slidein,.c1,.c2,.c3{animation:none}.bar{transition:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; padding: 58px 18px 30px; gap: 16px">
+  <div style="display: flex; align-items: center; gap: 14px">
+    <button type="button" class="tile" onClick="{{back}}" aria-label="Back" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 2px solid #EED9BF; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B2418" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div style="flex-grow: 1; height: 14px; border-radius: 999px; background: #EED9BF; overflow: hidden"><div class="bar" style="width: {{pct}}%; height: 100%; border-radius: 999px; background: #D9894A"></div></div>
+    <span style="font-size: 14px; font-weight: 800; color: #7A5A45">{{counter}}</span>
+  </div>
+  <div class="slidein" style="display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: flex-end; gap: 10px">
+      <div style="width: 78px; height: 78px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center; flex: none"><img class="avi" src="/_blob/2689b009c7d552d9f0bd44bebc7b4054" alt="Avi thinking" style="width: 72px; height: 72px"></div>
+      <div style="background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 18px 18px 18px 6px; padding: 10px 12px; font-size: 14px; line-height: 19px; font-weight: 700">{{why}}</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <h1 style="margin: 0; font-size: 23px; line-height: 29px; font-weight: 900; text-wrap: balance">{{title}}</h1>
+      <span style="font-size: 14px; font-weight: 600; color: #7A5A45">{{sub}}</span>
+    </div>
+    <sc-if value="{{isChips}}" hint-placeholder-val="{{true}}">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{opts}}" as="o" hint-placeholder-count="8"><button type="button" class="tile" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="position: relative; padding: 11px 15px; border-radius: 999px; border: {{o.border}}; background: {{o.bg}}; color: #3B2418; font-size: 15px; font-weight: 800">{{o.label}}<sc-if value="{{o.burst}}" hint-placeholder-val="{{false}}"><span class="confetti c1" style="left: 35%; top: 20%; background: #F5B53D"></span><span class="confetti c2" style="left: 50%; top: 20%; background: #D63B2F"></span><span class="confetti c3" style="left: 65%; top: 20%; background: #2F86C9"></span></sc-if></button></sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{isCards}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{opts}}" as="o" hint-placeholder-count="4"><button type="button" class="tile" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="position: relative; display: flex; align-items: center; gap: 12px; padding: 13px 15px; border-radius: 18px; border: {{o.border}}; background: {{o.bg}}; color: #3B2418; font-size: 16px; font-weight: 800; text-align: left"><span style="width: 22px; height: 22px; border-radius: 999px; border: {{o.dot}}; box-sizing: border-box; flex: none"></span><span style="flex-grow: 1">{{o.label}}</span><sc-if value="{{o.rec}}" hint-placeholder-val="{{false}}"><span style="padding: 3px 9px; border-radius: 999px; background: #E3F3DD; color: #2F6B23; font-size: 12px; font-weight: 900">Recommended</span></sc-if><sc-if value="{{o.burst}}" hint-placeholder-val="{{false}}"><span class="confetti c1" style="left: 20%; top: 30%; background: #F5B53D"></span><span class="confetti c2" style="left: 30%; top: 30%; background: #D63B2F"></span><span class="confetti c3" style="left: 40%; top: 30%; background: #2F86C9"></span></sc-if></button></sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{isColors}}" hint-placeholder-val="{{false}}">
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{opts}}" as="o" hint-placeholder-count="8"><button type="button" class="tile" onClick="{{o.pick}}" aria-label="{{o.label}}" aria-pressed="{{o.pressed}}" style="position: relative; height: 68px; border-radius: 20px; border: {{o.ring}}; background: {{o.swatch}}; box-sizing: border-box"><sc-if value="{{o.burst}}" hint-placeholder-val="{{false}}"><span class="confetti c1" style="left: 35%; top: 30%; background: #F5B53D"></span><span class="confetti c2" style="left: 50%; top: 30%; background: #FFFFFF"></span><span class="confetti c3" style="left: 65%; top: 30%; background: #2F86C9"></span></sc-if></button></sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{isText}}" hint-placeholder-val="{{false}}">
+      <label for="special" style="font-size: 14px; font-weight: 800; color: #7A5A45">{{textLabel}}</label>
+      <textarea id="special" rows="5" value="{{special}}" onChange="{{onSpecial}}" placeholder="Pets, siblings, favourite toys, funny habits…" style="width: 100%; box-sizing: border-box; border-radius: 18px; border: 2px solid #EED9BF; background: #FFFFFF; padding: 14px; font: 700 16px/23px Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; resize: none"></textarea>
+    </sc-if>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <sc-if value="{{notLast}}" hint-placeholder-val="{{true}}">
+      <button type="button" class="tile" onClick="{{next}}" style="height: 56px; border-radius: 999px; border: 0; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 800; box-shadow: 0 5px 0 #A8281E">Continue</button>
+      <button type="button" class="tile" onClick="{{next}}" style="height: 38px; border: 0; background: none; color: #A0531C; font-size: 15px; font-weight: 800">Skip this one</button>
+    </sc-if>
+    <sc-if value="{{last}}" hint-placeholder-val="{{false}}">
+      <a href="Building.dc.html" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 800; text-decoration: none; box-shadow: 0 5px 0 #A8281E">{{finishLabel}}</a>
+      <span style="height: 38px; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: #7A5A45">You can change every answer later.</span>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+// Question banks per age band. {name}, {he}, {him}, {his} are filled from the earlier answers.
+const BANK = {
+  cubs: [
+    { id: 'personality', kind: 'chips', multi: true, title: 'Which words sound like {name}?', sub: 'Pick all that fit.', why: 'This helps me choose the right kind of games.', opts: [['curious', 'Curious'], ['energetic', 'Full of energy'], ['shy', 'Shy at first'], ['creative', 'Creative'], ['chatty', 'Chatty'], ['careful', 'Careful'], ['silly', 'Silly'], ['determined', 'Determined'], ['gentle', 'Gentle']] },
+    { id: 'learn', kind: 'chips', multi: true, title: 'How does {name} learn best?', sub: 'Think of when {he} gets really into something.', why: 'I will mix in more of what works.', opts: [['stories', 'Stories'], ['puzzles', 'Puzzles'], ['moving', 'Moving around'], ['making', 'Drawing and making'], ['songs', 'Songs'], ['pretend', 'Pretend play']] },
+    { id: 'animal', kind: 'chips', multi: false, title: 'What is {his} favourite animal?', sub: 'It may star in {his} stories.', why: 'A favourite animal makes a great story sidekick!', opts: [['dino', 'Dinosaur'], ['cat', 'Cat'], ['dog', 'Dog'], ['bunny', 'Bunny'], ['lion', 'Lion'], ['penguin', 'Penguin'], ['unicorn', 'Unicorn'], ['bear', 'Bear']] },
+    { id: 'color', kind: 'colors', multi: false, title: 'What is {his} favourite colour?', sub: 'Tap one.', why: 'I will use it for {his} character in the stories.' },
+    { id: 'letters', kind: 'cards', multi: false, title: 'Does {name} know {his} letters?', sub: 'A rough guess is fine.', why: 'This tells me where to start reading.', opts: [['no', 'Not yet'], ['some', 'Some letters'], ['most', 'Most letters'], ['words', 'Reads simple words']] },
+    { id: 'count', kind: 'cards', multi: false, title: 'How high can {name} count?', sub: 'Out loud, without help.', why: 'This tells me where to start maths.', opts: [['5', 'Up to 5'], ['10', 'Up to 10'], ['20', 'Up to 20'], ['more', 'Beyond 20']] },
+    { id: 'tricky', kind: 'chips', multi: true, title: 'What feels tricky for {name} right now?', sub: 'No wrong answers. This stays private.', why: 'I will make these extra fun and go slowly.', opts: [['still', 'Sitting still'], ['letters', 'Letters'], ['numbers', 'Numbers'], ['feelings', 'Big feelings'], ['sharing', 'Sharing'], ['sleep', 'Bedtime'], ['fine', 'Holding a crayon'], ['nothing', 'Nothing really']] },
+    { id: 'goals', kind: 'chips', multi: true, title: 'What matters most to you?', sub: 'Pick up to 3.', why: 'I will focus {his} path and your reports on these.', opts: [['school', 'Ready for school'], ['reading', 'Early reading'], ['math', 'Numbers'], ['feelings', 'Feelings and friends'], ['motor', 'Fine motor skills'], ['creative', 'Creativity']] }
+  ],
+  explorers: [
+    { id: 'personality', kind: 'chips', multi: true, title: 'Which words sound like {name}?', sub: 'Pick all that fit.', why: 'This helps me choose the right challenges.', opts: [['curious', 'Curious'], ['energetic', 'Energetic'], ['shy', 'Shy at first'], ['creative', 'Creative'], ['competitive', 'Competitive'], ['careful', 'Careful'], ['funny', 'Funny'], ['determined', 'Determined'], ['kind', 'Kind']] },
+    { id: 'learn', kind: 'chips', multi: true, title: 'How does {name} learn best?', sub: 'Think of when {he} is most focused.', why: 'I will lean into what works for {him}.', opts: [['stories', 'Stories'], ['puzzles', 'Puzzles and challenges'], ['moving', 'Moving around'], ['making', 'Building and making'], ['games', 'Games and points'], ['talking', 'Talking it through']] },
+    { id: 'color', kind: 'colors', multi: false, title: 'What is {his} favourite colour?', sub: 'Tap one.', why: 'I will use it for {his} character in the stories.' },
+    { id: 'reading', kind: 'cards', multi: false, title: 'What does {name} read on {his} own?', sub: 'Choose the closest.', why: 'This sets the level of {his} books.', opts: [['picture', 'Picture books'], ['early', 'Early readers'], ['short', 'Short chapter books'], ['long', 'Longer chapter books']] },
+    { id: 'math', kind: 'cards', multi: false, title: 'Where is {name} with maths?', sub: 'Choose the closest.', why: 'This sets where maths starts.', opts: [['add10', 'Adding within 10'], ['add20', 'Adding and taking away within 20'], ['place', 'Tens and ones to 100'], ['times', 'Starting times tables']] },
+    { id: 'tricky', kind: 'chips', multi: true, title: 'What feels tricky for {name} right now?', sub: 'This stays private.', why: 'I will add gentle practice for these.', opts: [['reading', 'Reading'], ['spelling', 'Spelling'], ['maths', 'Maths facts'], ['focus', 'Focus'], ['feelings', 'Big feelings'], ['friends', 'Making friends'], ['handwriting', 'Handwriting'], ['nothing', 'Nothing really']] },
+    { id: 'subject', kind: 'chips', multi: false, title: 'What is {his} favourite thing at school?', sub: 'Pick one.', why: 'I will use it to keep {him} excited.', opts: [['science', 'Science'], ['art', 'Art'], ['pe', 'PE'], ['reading', 'Reading'], ['maths', 'Maths'], ['music', 'Music'], ['break', 'Break time!']] },
+    { id: 'goals', kind: 'chips', multi: true, title: 'What matters most to you?', sub: 'Pick up to 3.', why: 'Your reports will focus on these.', opts: [['reading', 'Reading confidence'], ['math', 'Maths confidence'], ['focus', 'Focus and memory'], ['feelings', 'Feelings and friends'], ['creative', 'Creativity'], ['science', 'Curiosity about science']] }
+  ],
+  trailblazers: [
+    { id: 'personality', kind: 'chips', multi: true, title: 'Which words describe {name}?', sub: 'Pick all that fit.', why: 'This shapes {his} challenges and stories.', opts: [['curious', 'Curious'], ['independent', 'Independent'], ['shy', 'Reserved'], ['creative', 'Creative'], ['competitive', 'Competitive'], ['thoughtful', 'Thoughtful'], ['funny', 'Funny'], ['determined', 'Determined'], ['leader', 'A leader']] },
+    { id: 'learn', kind: 'chips', multi: true, title: 'How does {name} learn best?', sub: 'Think of when {he} is most motivated.', why: 'I will match {his} learning style.', opts: [['reading', 'Reading about it'], ['puzzles', 'Solving puzzles'], ['projects', 'Hands-on projects'], ['competing', 'Competing'], ['videos', 'Watching first'], ['discussing', 'Discussing ideas']] },
+    { id: 'color', kind: 'colors', multi: false, title: 'What is {his} favourite colour?', sub: 'Tap one.', why: 'I will use it for {his} character in the stories.' },
+    { id: 'reading', kind: 'cards', multi: false, title: 'What does {name} read for fun?', sub: 'Choose the closest.', why: 'This sets the level of {his} books.', opts: [['rarely', 'Not much, prefers other things'], ['chapter', 'Chapter books'], ['novels', 'Full novels'], ['anything', 'Reads anything, fast']] },
+    { id: 'math', kind: 'cards', multi: false, title: 'Where is {name} with maths?', sub: 'Choose the closest.', why: 'This sets where maths starts.', opts: [['times', 'Times tables'], ['fractions', 'Fractions and decimals'], ['percent', 'Percentages and ratios'], ['algebra', 'Early algebra']] },
+    { id: 'tricky', kind: 'chips', multi: true, title: 'What is hard for {name} right now?', sub: 'This stays private.', why: 'I will build confidence step by step.', opts: [['focus', 'Staying focused'], ['maths', 'Maths'], ['writing', 'Writing'], ['stress', 'Worry or stress'], ['friends', 'Friendships'], ['screens', 'Too much screen time'], ['organising', 'Organising homework'], ['nothing', 'Nothing really']] },
+    { id: 'subject', kind: 'chips', multi: false, title: 'What subject does {name} enjoy most?', sub: 'Pick one.', why: 'I will use it to keep {him} challenged.', opts: [['science', 'Science'], ['maths', 'Maths'], ['english', 'English'], ['history', 'History'], ['art', 'Art'], ['computing', 'Computing'], ['pe', 'PE']] },
+    { id: 'goals', kind: 'chips', multi: true, title: 'What matters most to you?', sub: 'Pick up to 3.', why: 'Your reports will focus on these.', opts: [['ahead', 'Getting ahead at school'], ['confidence', 'Confidence'], ['focus', 'Focus and habits'], ['wellbeing', 'Wellbeing'], ['coding', 'Thinking and coding skills'], ['reading', 'Reading for fun']] }
+  ]
+};
+// Follow-up questions appear only when an earlier answer calls for them.
+const FOLLOW = [
+  { when: (a) => (a.tricky || {}).feelings || (a.tricky || {}).stress, after: 'tricky', q: { id: 'calm', kind: 'chips', multi: true, title: 'What helps {name} calm down?', sub: 'Pick any that work.', why: 'I will suggest these when big feelings show up.', opts: [['hug', 'A hug'], ['breathing', 'Deep breaths'], ['quiet', 'Quiet time'], ['music', 'Music'], ['moving', 'Moving or jumping'], ['talking', 'Talking it out']] } },
+  { when: (a) => (a.tricky || {}).letters || (a.tricky || {}).reading || (a.letters || {}).no, after: 'tricky', q: { id: 'readto', kind: 'cards', multi: false, title: 'Does {name} enjoy being read to?', sub: 'Stories build reading skills.', why: 'If yes, I will start with listening stories.', opts: [['love', 'Loves it'], ['sometimes', 'Sometimes'], ['rarely', 'Not really']] } },
+  { when: (a) => (a.learn || {}).moving || (a.tricky || {}).still || (a.tricky || {}).focus, after: 'learn', q: { id: 'breaks', kind: 'cards', multi: false, title: 'Should Avi add movement breaks between games?', sub: 'Short stretch and wiggle moments.', why: 'Movement helps many kids focus.', opts: [['yes', 'Yes, please'], ['some', 'Now and then'], ['no', 'No thanks']] } },
+  { when: (a) => (a.personality || {}).shy, after: 'personality', q: { id: 'gentle', kind: 'cards', multi: false, title: 'Should Avi start gently?', sub: 'Quieter games first, then bigger challenges.', why: 'Shy kids often warm up with a slow start.', opts: [['yes', 'Yes, start gently'], ['no', 'No, dive right in']] } },
+  { when: (a) => (a.tricky || {}).screens, after: 'tricky', q: { id: 'limit', kind: 'cards', multi: false, title: 'Would you like a daily lock after the session?', sub: 'Avi says goodbye and the app pauses.', why: 'A clear end makes stopping easier.', opts: [['yes', 'Yes'], ['no', 'Not needed']] } }
+];
+const TAIL = [
+  { id: 'when', kind: 'cards', multi: false, title: 'When will {name} usually play?', sub: 'I will send gentle reminders then.', why: 'Calm games before bed, active ones in the morning.', opts: [['morning', 'In the morning'], ['after', 'After school'], ['evening', 'Before bed'], ['varies', 'It varies']] },
+  { id: 'minutes', kind: 'cards', multi: false, title: 'How long each day?', sub: '15–20 minutes a day is the sweet spot for learning.', why: 'Short and regular beats long and rare.', opts: [['5', '5 minutes'], ['10', '10 minutes'], ['15', '15 minutes'], ['20', '20 minutes'], ['30', '30 minutes']], rec: ['15', '20'] },
+  { id: 'special', kind: 'text', multi: false, title: 'Anything that makes {name} special?', sub: 'Optional.', why: 'Little details make {his} stories feel personal.' }
+];
+const COLORS = [['red', 'Red', '#D63B2F'], ['orange', 'Orange', '#E9873A'], ['yellow', 'Yellow', '#F5B53D'], ['green', 'Green', '#4E9F3D'], ['blue', 'Blue', '#2F86C9'], ['purple', 'Purple', '#8466D6'], ['pink', 'Pink', '#E46A8E'], ['brown', 'Brown', '#A0531C']];
+class Component extends DCLogic {
+  componentDidMount() {
+    const get = (k) => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } };
+    let ans = {}; try { ans = JSON.parse(get('avilo.answers') || '{}'); } catch (e) {}
+    const age = parseInt(get('avilo.age') || '5', 10);
+    const band = age <= 5 ? 'cubs' : age <= 8 ? 'explorers' : 'trailblazers';
+    if (!ans.minutes) ans.minutes = { [band === 'cubs' ? '15' : '20']: 1 };
+    this.setState({ ans: ans, band: band, name: get('avilo.kid').trim(), gender: get('avilo.gender'), special: get('avilo.special'), i: 0 });
+  }
+  persist(ans) {
+    try {
+      localStorage.setItem('avilo.answers', JSON.stringify(ans));
+      const c = Object.keys(ans.color || {})[0]; if (c) localStorage.setItem('avilo.color', c);
+      const m = Object.keys(ans.minutes || {})[0]; if (m) localStorage.setItem('avilo.minutes', m);
+    } catch (e) {}
+  }
+  questions(ans, band) {
+    const list = BANK[band].slice();
+    FOLLOW.forEach((f) => { if (f.when(ans)) { const at = list.findIndex((q) => q.id === f.after); list.splice(at + 1, 0, f.q); } });
+    return list.concat(TAIL);
+  }
+  renderVals() {
+    const s = this.state || {};
+    const band = s.band || 'cubs';
+    const ans = s.ans || {};
+    const name = s.name || 'your child';
+    const pron = s.gender === 'boy' ? { he: 'he', him: 'him', his: 'his' } : s.gender === 'girl' ? { he: 'she', him: 'her', his: 'her' } : { he: 'they', him: 'them', his: 'their' };
+    const fill = (t) => t.replace(/\{name\}/g, name).replace(/\{he\}/g, pron.he).replace(/\{him\}/g, pron.him).replace(/\{his\}/g, pron.his);
+    const Q = this.questions(ans, band);
+    const i = Math.min(s.i || 0, Q.length - 1), q = Q[i];
+    const sel = ans[q.id] || {};
+    const total = Q.length + 3, n = i + 4;
+    const set = (id) => {
+      const cur = { ...(ans[q.id] || {}) };
+      const turningOn = !cur[id];
+      if (q.multi) { if (cur[id]) delete cur[id]; else cur[id] = 1; } else { Object.keys(cur).forEach((k) => delete cur[k]); cur[id] = 1; }
+      const next = { ...ans, [q.id]: cur };
+      this.persist(next);
+      this.setState({ ans: next, burst: null });
+      if (turningOn) { setTimeout(() => this.setState({ burst: q.id + ':' + id }), 20); setTimeout(() => this.setState({ burst: null }), 900); }
+    };
+    const raw = q.kind === 'colors' ? COLORS : (q.opts || []);
+    const opts = raw.map((o) => {
+      const on = !!sel[o[0]];
+      return { label: o[1], swatch: o[2] || '', pressed: on ? 'true' : 'false', rec: !!(q.rec && q.rec.includes(o[0])), burst: s.burst === q.id + ':' + o[0], pick: () => set(o[0]),
+        border: on ? '3px solid #D9894A' : '2px solid #EED9BF', bg: on ? '#FCEBD3' : '#FFFFFF', dot: on ? '7px solid #D63B2F' : '2px solid #C9AE92', ring: on ? '4px solid #3B2418' : '4px solid #FFF6E8' };
+    });
+    return {
+      title: fill(q.title), sub: fill(q.sub), why: fill(q.why), opts: opts, counter: n + '/' + total, pct: Math.round(n / total * 100),
+      isChips: q.kind === 'chips', isCards: q.kind === 'cards', isColors: q.kind === 'colors', isText: q.kind === 'text',
+      textLabel: 'Tell Avi about ' + name, special: s.special || '',
+      onSpecial: (e) => { const v = e.target.value; try { localStorage.setItem('avilo.special', v); } catch (err) {} this.setState({ special: v }); },
+      last: i === Q.length - 1, notLast: i < Q.length - 1,
+      finishLabel: s.name ? 'Make ' + s.name + '’s plan' : 'Make the plan',
+      next: () => this.setState({ i: Math.min(Q.length - 1, i + 1) }),
+      back: () => { if (i > 0) this.setState({ i: i - 1 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

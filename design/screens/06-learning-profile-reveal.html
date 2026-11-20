@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Learning profile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap">
+<style>
+body{margin:0}
+.avi{image-rendering:pixelated;mix-blend-mode:multiply;object-fit:contain}
+@keyframes rise{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+.rise{animation:rise .5s ease-out both}
+@media (prefers-reduced-motion: reduce){.rise{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FFF6E8; font-family: Nunito, ui-rounded, system-ui, sans-serif; color: #3B2418; display: flex; flex-direction: column; padding: 54px 20px 30px; gap: 14px">
+  <div class="rise" style="background: #A0531C; border-radius: 28px; padding: 18px; display: flex; align-items: center; gap: 12px; position: relative; overflow: hidden">
+    <div style="position: absolute; right: -30px; top: -30px; width: 120px; height: 120px; border-radius: 999px; background: #B8692F"></div>
+    <div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1; position: relative">
+      <span style="font-size: 13px; font-weight: 800; letter-spacing: 1px; color: #FFF6E8">{{eyebrow}}</span>
+      <span style="font-size: 28px; line-height: 31px; font-weight: 900; color: #FFFFFF">{{archetype}}</span>
+      <span style="font-size: 14px; line-height: 19px; font-weight: 700; color: #FFF6E8">{{archetypeLine}}</span>
+    </div>
+    <div style="width: 108px; height: 108px; border-radius: 999px; background: #FCEBD3; display: grid; place-items: center; flex: none; position: relative"><img class="avi" src="/_blob/03ccb838521997548079d3118c523436" alt="Avi the explorer" style="width: 100px; height: 100px"></div>
+  </div>
+  <div class="rise" style="display: flex; flex-wrap: wrap; gap: 8px; animation-delay: .1s">
+    <sc-for list="{{chips}}" as="c" hint-placeholder-count="4"><span style="padding: 7px 12px; border-radius: 999px; background: {{c.bg}}; color: {{c.fg}}; font-size: 14px; font-weight: 800">{{c.t}}</span></sc-for>
+  </div>
+  <div class="rise" style="background: #FFFFFF; border: 2px solid #EED9BF; border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; animation-delay: .2s">
+    <span style="font-size: 17px; font-weight: 900">{{weekTitle}}</span>
+    <sc-for list="{{week}}" as="d" hint-placeholder-count="3">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 38px; height: 38px; border-radius: 12px; background: {{d.bg}}; color: {{d.fg}}; display: grid; place-items: center; font-size: 15px; font-weight: 900; flex: none">{{d.day}}</span>
+        <div style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 800">{{d.title}}</span><span style="font-size: 13px; font-weight: 600; color: #7A5A45">{{d.sub}}</span></div>
+      </div>
+    </sc-for>
+  </div>
+  <div class="rise" style="position: relative; border-radius: 20px; overflow: hidden; background: #DDEEFB; padding: 14px 16px; display: flex; gap: 12px; align-items: center; animation-delay: .3s">
+    <div style="display: flex; flex-direction: column; gap: 4px; filter: blur(3px); flex-grow: 1">
+      <span style="font-size: 16px; font-weight: 900">{{storyTitle}}</span>
+      <span style="font-size: 13px; font-weight: 600">{{storyTeaser}}</span>
+    </div>
+    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 900; color: #1F5F92; background: rgba(221, 238, 251, 0.35)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F5F92" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>{{storyLock}}</span></div>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <a href="Paywall.dc.html" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; background: #D63B2F; color: #FFFFFF; font-size: 19px; font-weight: 800; text-decoration: none; box-shadow: 0 5px 0 #A8281E">{{cta}}</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+// The learning profile is built from the parent's quiz answers.
+const ARCH = [
+  ['curious', 'The Curious Explorer', 'Asks “why?” and loves finding out how the world works.'],
+  ['creative', 'The Creative Maker', 'Turns every idea into a drawing, a story or a build.'],
+  ['energetic', 'The Busy Adventurer', 'Learns best on the move, with games full of action.'],
+  ['determined', 'The Brave Problem-Solver', 'Keeps going until the puzzle is cracked.'],
+  ['careful', 'The Thoughtful Planner', 'Takes time to get things just right.'],
+  ['shy', 'The Quiet Thinker', 'Notices everything and shines with a gentle start.'],
+  ['competitive', 'The Champion Challenger', 'Loves a goal to beat and a score to improve.'],
+  ['leader', 'The Natural Leader', 'Brings others along and likes to take charge.']
+];
+const LOVE = { dino: 'dinosaurs', animals: 'animals', vehicles: 'cars and trains', fairy: 'princesses and knights', ocean: 'the ocean', music: 'music', art: 'drawing', building: 'building', pets: 'pets', nature: 'nature', space: 'space', superheroes: 'superheroes', dance: 'dancing', cooking: 'cooking', sports: 'sports', books: 'stories', robots: 'robots', science: 'experiments', magic: 'magic', games: 'games', mystery: 'mysteries', coding: 'coding', history: 'history', fashion: 'fashion', film: 'film' };
+const LEARN = { stories: 'stories', puzzles: 'puzzles', moving: 'moving around', making: 'making things', songs: 'songs', pretend: 'pretend play', games: 'games', talking: 'talking it through', reading: 'reading', projects: 'projects', competing: 'friendly challenges', videos: 'watching first', discussing: 'discussing ideas' };
+const WEEK = {
+  cubs: [['math-cubs-01', 'Count the dino eggs', 'Math Meadow'], ['reading-cubs-01', 'Letter sounds A to E', 'Reading Forest'], ['feelings-cubs-01', 'How does Avi feel?', 'Feelings Cottage']],
+  explorers: [['math-explorers-01', 'Add with dino tracks', 'Math Meadow'], ['reading-explorers-01', 'Blend 3-letter words', 'Reading Forest'], ['science-explorers-02', 'Solar system order', 'Science Sky']],
+  trailblazers: [['math-trailblazers-01', 'Times tables race', 'Math Meadow'], ['logic-trailblazers-03', 'Logic grid: mystery', 'Logic Lane'], ['reading-trailblazers-02', 'Context clues', 'Reading Forest']]
+};
+const BOOKS = {
+  cubs: [['cubs-star-dino', '{name} and the Star-Counting Dinosaur', ['dino', 'space']], ['cubs-ocean-splash', '{name}’s Big Ocean Splash', ['ocean', 'animals', 'music']], ['cubs-lost-puppy', '{name} and the Lost Puppy', ['pets', 'animals']]],
+  explorers: [['exp-robot-friend', '{name} and the Robot Who Wanted a Friend', ['robots', 'building', 'games']], ['exp-volcano-mystery', '{name} and the Volcano Mystery', ['science', 'dino', 'nature']], ['exp-dragon-library', '{name} and the Dragon’s Library', ['magic', 'books', 'mystery']]],
+  trailblazers: [['tb-mars-signal', '{name} and the Signal from Mars', ['space', 'coding', 'robots', 'science']], ['tb-whispering-woods', '{name} and the Secret of Whispering Woods', ['mystery', 'nature', 'history']], ['tb-championship', '{name} and the Championship Comeback', ['sports', 'games']]]
+};
+function get(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
+class Component extends DCLogic {
+  componentDidMount() {
+    const pick = this.book();
+    try { localStorage.setItem('avilo.book', pick[0]); } catch (e) {}
+  }
+  band() { const age = parseInt(get('avilo.age') || '5', 10); return age <= 5 ? 'cubs' : age <= 8 ? 'explorers' : 'trailblazers'; }
+  interests() { try { return JSON.parse(get('avilo.interests') || '[]'); } catch (e) { return []; } }
+  book() { const ints = this.interests(); const list = BOOKS[this.band()]; return list.find((b) => b[2].some((t) => ints.includes(t))) || list[0]; }
+  renderVals() {
+    const name = get('avilo.kid').trim() || 'Your child';
+    const poss = name === 'Your child' ? 'Your child’s' : name + (/s$/i.test(name) ? '’' : '’s');
+    let ans = {}; try { ans = JSON.parse(get('avilo.answers') || '{}'); } catch (e) {}
+    const band = this.band(), ints = this.interests();
+    const pers = Object.keys(ans.personality || {});
+    const arch = ARCH.find((a) => pers.includes(a[0])) || ARCH[0];
+    const loves = ints.map((i) => LOVE[i]).filter(Boolean).slice(0, 2);
+    const learn = Object.keys(ans.learn || {}).map((l) => LEARN[l]).filter(Boolean).slice(0, 1);
+    const tricky = Object.keys(ans.tricky || {}).filter((t) => t !== 'nothing');
+    const strong = band === 'cubs' ? ({ '5': 'counting to 5', '10': 'counting to 10', '20': 'counting to 20', more: 'counting past 20' }[Object.keys(ans.count || {})[0]] || 'curiosity')
+      : ({ add10: 'adding within 10', add20: 'sums to 20', place: 'place value', times: 'times tables', fractions: 'fractions', percent: 'percentages', algebra: 'early algebra' }[Object.keys(ans.math || {})[0]] || 'problem solving');
+    const nextSkill = { letters: 'letter sounds', reading: 'reading fluency', numbers: 'number sense', maths: 'maths facts', focus: 'focus', feelings: 'naming feelings', still: 'calm focus', spelling: 'spelling', writing: 'writing', friends: 'friendships', stress: 'calm strategies', fine: 'pencil control', handwriting: 'handwriting' }[tricky[0]] || (band === 'cubs' ? 'letter sounds' : 'reading confidence');
+    const book = this.book();
+    const mins = get('avilo.minutes') || (band === 'cubs' ? '15' : '20');
+    const W = WEEK[band];
+    const days = ['Mon', 'Tue', 'Wed'];
+    const cols = [['#E3F3DD', '#2F6B23'], ['#DDEEFB', '#1F5F92'], ['#ECE6FB', '#5A40A8']];
+    return {
+      eyebrow: poss.toUpperCase() + ' LEARNING PROFILE', archetype: arch[1], archetypeLine: arch[2],
+      chips: [
+        { t: 'Strong: ' + strong, bg: '#E3F3DD', fg: '#2F6B23' },
+        { t: 'Next: ' + nextSkill, bg: '#DDEEFB', fg: '#1F5F92' },
+        { t: 'Loves: ' + (loves.length ? loves.join(', ') : 'discovering new things'), bg: '#ECE6FB', fg: '#5A40A8' },
+        { t: 'Learns by: ' + (learn[0] || 'playing'), bg: '#FCE4EB', fg: '#A3355A' },
+        { t: 'Daily goal: ' + mins + ' min', bg: '#FCEBD3', fg: '#A0531C' }
+      ],
+      weekTitle: poss + ' first week',
+      week: W.map((w, k) => ({ day: days[k], title: w[1], sub: w[2] + ' · ' + (band === 'cubs' ? 4 : band === 'explorers' ? 6 : 8) + ' min', bg: cols[k][0], fg: cols[k][1] })),
+      storyTitle: book[1].replace('{name}', name), storyTeaser: 'A story starring ' + name + (loves.length ? ', full of ' + loves.join(' and ') : '') + '…',
+      storyLock: name === 'Your child' ? 'The first story is ready' : name + '’s first story is ready',
+      cta: 'Unlock ' + poss.replace('Your child’s', 'the') + ' plan'
+    };
+  }
+}
+</script>
+</body>
+</html>
